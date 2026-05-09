@@ -1,0 +1,4162 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+<meta name="google-site-verification" content="h-JzfmLzhXDGR7f2dqqIzEmFsOcoK2wlbg6yDKahgKs" />
+    <meta name="theme-color" content="#007AFF">
+<meta name="google-site-verification" content="h-JzfmLzhXDGR7f2dqqIzEmFsOcoK2wlbg6yDKahgKs" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiH5Tji4WfG5r2d_T0XAd2LBBNB28t2dhFqJAcbR5JSpyMqqNB6IbugiC2Vos-2smWIa3tMpA7kEHf3iMcHSsbmkZUw9I1AwP-ocTRnlzLDJWjCb8eH5m2cRXiWpIa-O6a1bOSdyB9hUg-FepVa9QPjTs8Co6nX0_GDnednjERDFmN1quZbkIbW5wQjh2I/s1024/103777.png">
+    <title>elgoharyX · منصة متكاملة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <style>
+        * { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', sans-serif; 
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        :root {
+            --blue: #007AFF;
+            --green: #34C759;
+            --red: #FF3B30;
+            --orange: #FF9500;
+            --purple: #AF52DE;
+            --pink: #FF2D55;
+            --bg-primary: #F2F2F7;
+            --bg-secondary: #FFFFFF;
+            --bg-tertiary: #F8F8FC;
+            --text-primary: #000000;
+            --text-secondary: #8E8E93;
+            --border-color: #E5E5EA;
+            --shadow: rgba(0,0,0,0.1);
+            --overlay: rgba(0,0,0,0.3);
+            --toast-bg: #1C1C1E;
+            --toast-text: #FFFFFF;
+            --icon-color: #007AFF;
+            --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            --transition-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .dark-mode {
+            --blue: #0A84FF;
+            --green: #30D158;
+            --red: #FF453A;
+            --orange: #FF9F0A;
+            --purple: #BF5AF2;
+            --pink: #FF375F;
+            --bg-primary: #000000;
+            --bg-secondary: #1C1C1E;
+            --bg-tertiary: #2C2C2E;
+            --text-primary: #FFFFFF;
+            --text-secondary: #98989E;
+            --border-color: #38383A;
+            --shadow: rgba(255,255,255,0.1);
+            --overlay: rgba(0,0,0,0.7);
+            --toast-bg: #3A3A3C;
+            --toast-text: #FFFFFF;
+            --icon-color: #0A84FF;
+        }
+        
+        body { 
+            background: var(--bg-primary); 
+            min-height: 100vh; 
+            display: flex; 
+            justify-content: center; 
+            margin: 0;
+            color: var(--text-primary);
+            transition: background 0.4s var(--transition-smooth), color 0.3s var(--transition-smooth);
+            overflow-x: hidden;
+        }
+        
+        .container { 
+            width: 100%; 
+            max-width: 428px; 
+            background: var(--bg-primary); 
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        .container-pc { max-width: 600px !important; }
+        
+        @keyframes slideInFromRight {
+            0% { opacity: 0; transform: translateX(30px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInFromBottom {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        
+        @keyframes scaleIn {
+            0% { opacity: 0; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        @keyframes floatIn {
+            0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .card { 
+            background: var(--bg-secondary); 
+            border-radius: 16px; 
+            padding: 20px; 
+            margin-bottom: 16px;
+            color: var(--text-primary);
+            animation: floatIn 0.5s var(--transition-spring) forwards;
+            opacity: 0;
+            animation-delay: calc(var(--card-index, 0) * 0.1s);
+            box-shadow: 0 2px 8px var(--shadow);
+            transition: all 0.3s var(--transition-smooth);
+            backdrop-filter: blur(10px);
+            border: 0.5px solid var(--border-color);
+        }
+        
+        .input-group { 
+            background: var(--bg-tertiary); 
+            border-radius: 14px; 
+            padding: 4px 16px; 
+            margin-bottom: 16px; 
+            border: 0.5px solid var(--border-color);
+            transition: all 0.3s var(--transition-smooth);
+            animation: slideInFromBottom 0.4s var(--transition-smooth) forwards;
+            opacity: 0;
+        }
+        
+        .input-group:focus-within { 
+            border-color: var(--blue); 
+            background: var(--bg-secondary);
+            transform: scale(1.02);
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.15);
+        }
+        
+        .input-label { 
+            font-size: 11px; 
+            color: var(--text-secondary); 
+            text-transform: uppercase; 
+            padding-top: 8px;
+            font-weight: 600;
+            letter-spacing: 0.8px;
+        }
+        
+        .input-field { 
+            width: 100%; 
+            border: none; 
+            background: transparent; 
+            padding: 8px 0 10px; 
+            font-size: 16px; 
+            outline: none; 
+            color: var(--text-primary);
+        }
+        
+        .input-field::placeholder {
+            color: var(--text-secondary);
+        }
+        
+        .btn { 
+            background: var(--blue); 
+            color: white; 
+            font-size: 17px; 
+            font-weight: 600; 
+            padding: 14px; 
+            border-radius: 14px; 
+            border: none; 
+            width: 100%; 
+            cursor: pointer;
+            transition: all 0.3s var(--transition-bounce);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+        }
+        
+        .btn:active { 
+            transform: scale(0.96);
+            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.3);
+        }
+        
+        .btn:disabled { 
+            opacity: 0.5; 
+            transform: none;
+        }
+        
+        .btn i { font-size: 18px; }
+        
+        .btn-outline {
+            background: transparent;
+            color: var(--blue);
+            border: 1px solid var(--blue);
+            box-shadow: none;
+        }
+        
+        .sidebar { 
+            position: fixed; 
+            top: 0; 
+            right: -100%; 
+            width: 100%; 
+            max-width: 380px; 
+            height: 100%; 
+            background: var(--bg-secondary); 
+            z-index: 1000; 
+            transition: right 0.4s var(--transition-smooth); 
+            box-shadow: -5px 0 30px var(--shadow); 
+            overflow-y: auto; 
+            color: var(--text-primary);
+            backdrop-filter: blur(20px);
+        }
+        
+        .sidebar.open { right: 0; }
+        
+        .overlay { 
+            position: fixed; 
+            inset: 0; 
+            background: var(--overlay); 
+            z-index: 999; 
+            display: none;
+            backdrop-filter: blur(8px);
+        }
+        
+        .overlay.active { display: block; }
+        
+        .toast { 
+            position: fixed; 
+            bottom: 30px; 
+            left: 50%; 
+            transform: translateX(-50%) translateY(100px); 
+            background: var(--toast-bg); 
+            color: var(--toast-text); 
+            padding: 14px 24px; 
+            border-radius: 30px; 
+            font-size: 15px; 
+            z-index: 2000; 
+            display: none;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            font-weight: 500;
+            transition: transform 0.4s var(--transition-bounce);
+            backdrop-filter: blur(10px);
+            border: 0.5px solid rgba(255,255,255,0.1);
+        }
+        
+        .toast.show { 
+            display: block; 
+            transform: translateX(-50%) translateY(0);
+        }
+        
+        .dir-ltr { direction: ltr; text-align: left; }
+        .hidden { display: none !important; }
+        
+        .nav-bar { 
+            padding: 12px 16px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: space-between; 
+            background: var(--bg-secondary); 
+            backdrop-filter: blur(20px); 
+            position: sticky; 
+            top: 0; 
+            z-index: 50; 
+            border-bottom: 0.5px solid var(--border-color);
+        }
+        
+        .avatar { 
+            width: 60px; 
+            height: 60px; 
+            border-radius: 20px; 
+            margin: 0 auto 16px; 
+            display: block; 
+            object-fit: cover;
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+        
+        .user-avatar-img { 
+            width: 50px; 
+            height: 50px; 
+            border-radius: 25px; 
+            object-fit: cover;
+        }
+        
+        .post-avatar, .site-thumbnail {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            object-fit: cover;
+        }
+        
+        .link-item, .device-item, .site-item, .post-item, .browser-item, .contact-item { 
+            background: var(--bg-tertiary); 
+            border-radius: 14px; 
+            padding: 16px; 
+            margin-bottom: 10px;
+            transition: all 0.3s var(--transition-spring);
+            animation: slideInFromRight 0.4s var(--transition-smooth) forwards;
+            opacity: 0;
+            border: 0.5px solid transparent;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+        }
+        .contact-item:hover {
+            background: var(--bg-secondary);
+            border-color: var(--blue);
+            transform: translateY(-2px);
+        }
+
+        .browser-item {
+            display: flex;
+            gap: 12px;
+            cursor: pointer;
+        }
+
+        .browser-item:hover {
+            background: var(--bg-secondary);
+            border-color: var(--blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow);
+        }
+
+        .browser-thumbnail {
+            width: 60px;
+            height: 60px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            flex-shrink: 0;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .browser-info {
+            flex: 1;
+        }
+
+        .browser-title {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .browser-url {
+            font-size: 12px;
+            color: var(--blue);
+            margin-bottom: 4px;
+            font-family: monospace;
+        }
+
+        .browser-description {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .browser-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 11px;
+            color: var(--text-secondary);
+            flex-wrap: wrap;
+        }
+
+        .browser-meta i {
+            margin-left: 4px;
+        }
+
+        .browser-actions {
+            display: flex;
+            gap: 4px;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
+
+        .browser-btn {
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+            border: 0.5px solid var(--border-color);
+        }
+
+        .browser-btn:hover {
+            background: var(--blue);
+            color: white;
+        }
+
+        .browser-btn.visit:hover {
+            background: var(--green);
+        }
+
+        .search-bar {
+            background: var(--bg-secondary);
+            border-radius: 30px;
+            padding: 8px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 6px var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .search-bar:focus-within {
+            border-color: var(--blue);
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
+            transform: scale(1.01);
+        }
+
+        .search-bar i {
+            color: var(--text-secondary);
+            font-size: 18px;
+        }
+
+        .search-bar input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            padding: 12px 0;
+            font-size: 16px;
+            color: var(--text-primary);
+            outline: none;
+        }
+
+        .search-bar input::placeholder {
+            color: var(--text-secondary);
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+
+        .filter-tab {
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 0.5px solid var(--border-color);
+        }
+
+        .filter-tab.active {
+            background: var(--blue);
+            color: white;
+            border-color: var(--blue);
+        }
+
+        .filter-tab i {
+            margin-left: 6px;
+        }
+
+        .trending-section, .recent-section {
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .section-header h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .section-header i {
+            color: var(--blue);
+            margin-left: 6px;
+        }
+
+        .view-all {
+            color: var(--blue);
+            font-size: 13px;
+            cursor: pointer;
+        }
+
+        .trending-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .trending-card {
+            background: var(--bg-tertiary);
+            border-radius: 14px;
+            padding: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 0.5px solid var(--border-color);
+        }
+
+        .trending-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px var(--shadow);
+            border-color: var(--blue);
+        }
+
+        .trending-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .trending-title {
+            font-weight: 600;
+            font-size: 14px;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+
+        .trending-url {
+            font-size: 10px;
+            color: var(--text-secondary);
+            font-family: monospace;
+        }
+        
+        .device-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .device-icon, .site-icon, .contact-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+        }
+        
+        .device-info, .site-info, .contact-info {
+            flex: 1;
+        }
+        
+        .device-name, .site-name, .post-author, .contact-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        
+        .contact-phone {
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-family: monospace;
+            direction: ltr;
+            text-align: left;
+        }
+        
+        .device-details, .site-details, .post-time {
+            font-size: 12px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .post-content {
+            margin: 12px 0;
+            line-height: 1.5;
+            color: var(--text-primary);
+        }
+        
+        .post-image {
+            width: 100%;
+            border-radius: 12px;
+            margin: 12px 0;
+            max-height: 300px;
+            object-fit: cover;
+        }
+        
+        .post-actions {
+            display: flex;
+            gap: 16px;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 0.5px solid var(--border-color);
+        }
+        
+        .post-action-btn {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-secondary);
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            padding: 6px 12px;
+            border-radius: 20px;
+            background: transparent;
+        }
+        
+        .post-action-btn:hover {
+            background: var(--border-color);
+        }
+        
+        .post-action-btn.liked {
+            color: var(--red);
+        }
+        
+        .post-action-btn.liked i {
+            color: var(--red);
+        }
+        
+        .device-badge, .site-badge {
+            background: var(--blue);
+            color: white;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+        
+        .device-badge.current {
+            background: var(--green);
+        }
+        
+        .device-actions, .site-actions {
+            display: flex;
+            gap: 4px;
+        }
+        
+        .device-action-btn, .site-action-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s var(--transition-bounce);
+            color: var(--text-secondary);
+            background: transparent;
+        }
+        
+        .device-action-btn:hover, .site-action-btn:hover {
+            background: var(--border-color);
+            transform: scale(1.1);
+        }
+        
+        .device-action-btn.edit:hover, .site-action-btn.copy:hover {
+            color: var(--blue);
+        }
+        
+        .device-action-btn.delete:hover, .site-action-btn.delete:hover {
+            color: var(--red);
+        }
+        
+        .site-action-btn.open:hover {
+            color: var(--green);
+        }
+        
+        .link-actions { 
+            display: flex; 
+            gap: 8px; 
+            margin-top: 12px; 
+        }
+        
+        .link-btn { 
+            flex: 1; 
+            padding: 10px; 
+            border-radius: 10px; 
+            text-align: center; 
+            font-size: 13px; 
+            font-weight: 500; 
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            transition: all 0.3s var(--transition-bounce);
+        }
+        
+        .btn-copy { background: rgba(52,199,89,0.1); color: var(--green); }
+        .btn-edit { background: rgba(0,122,255,0.1); color: var(--blue); }
+        .btn-delete { background: rgba(255,59,48,0.1); color: var(--red); }
+        
+        .loader { 
+            width: 44px; 
+            height: 44px; 
+            border: 3px solid var(--border-color); 
+            border-top-color: var(--blue); 
+            border-radius: 50%; 
+            animation: spin 0.8s linear infinite; 
+            margin: 20px auto;
+        }
+        
+        #qrScanner { 
+            position: fixed; 
+            inset: 0; 
+            background: black; 
+            z-index: 3000; 
+            display: none;
+        }
+        
+        #qrVideo { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        }
+        
+        #qrScanner .close-scanner { 
+            position: absolute; 
+            top: 20px; 
+            left: 20px; 
+            width: 48px; 
+            height: 48px; 
+            background: rgba(0,0,0,0.5); 
+            backdrop-filter: blur(10px);
+            border-radius: 24px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: white; 
+            font-size: 22px; 
+            cursor: pointer; 
+            z-index: 3001;
+            border: 0.5px solid rgba(255,255,255,0.2);
+        }
+        
+        #qrScanner .scanner-overlay { 
+            position: absolute; 
+            inset: 0; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            pointer-events: none; 
+        }
+        
+        #qrScanner .scanner-frame { 
+            width: 260px; 
+            height: 260px; 
+            border: 3px solid var(--blue); 
+            border-radius: 24px; 
+            box-shadow: 0 0 0 9999px rgba(0,0,0,0.5);
+            animation: pulse 2s infinite;
+        }
+        
+        #qrScanner .scan-status { 
+            position: absolute; 
+            bottom: 100px; 
+            left: 20px; 
+            right: 20px; 
+            background: rgba(0,0,0,0.7);
+            backdrop-filter: blur(10px);
+            color: white; 
+            padding: 16px; 
+            border-radius: 16px; 
+            text-align: center; 
+            font-size: 15px; 
+            z-index: 3001;
+            font-weight: 500;
+        }
+        
+        .sidebar-menu-item { 
+            display: flex; 
+            align-items: center; 
+            gap: 14px; 
+            padding: 16px; 
+            background: var(--bg-tertiary); 
+            border-radius: 14px; 
+            margin-bottom: 8px; 
+            cursor: pointer; 
+            transition: all 0.3s var(--transition-spring);
+            color: var(--text-primary);
+            border: 0.5px solid transparent;
+            animation: slideInFromRight 0.4s var(--transition-smooth) forwards;
+            opacity: 0;
+        }
+        
+        .sidebar-menu-item .icon { 
+            width: 32px;
+            font-size: 22px; 
+            color: var(--blue);
+            text-align: center;
+        }
+        
+        .sidebar-menu-item .label { 
+            font-weight: 500; 
+            flex: 1;
+            font-size: 16px;
+        }
+        
+        .sidebar-menu-item .arrow {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+        
+        .link-icon, .site-icon-small {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, rgba(0,122,255,0.15), rgba(0,122,255,0.05));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blue);
+        }
+        
+        #redirectScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg-primary);
+            z-index: 500;
+        }
+        
+        #redirectScreen .redirect-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        #redirectScreen .redirect-content {
+            text-align: center;
+            animation: scaleIn 0.4s var(--transition-smooth);
+        }
+        
+        .modal {
+            position: fixed;
+            inset: 0;
+            background: var(--overlay);
+            backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 24px;
+            max-width: 400px;
+            width: 100%;
+            animation: scaleIn 0.3s var(--transition-spring);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        .modal-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .modal-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: var(--border-color);
+            margin: 20px 0;
+        }
+
+        .code-editor {
+            background: #1e1e1e;
+            border-radius: 14px;
+            padding: 16px;
+            margin-bottom: 16px;
+            border: 0.5px solid var(--border-color);
+        }
+        
+        .code-editor textarea {
+            width: 100%;
+            min-height: 400px;
+            background: transparent;
+            border: none;
+            color: #d4d4d4;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            resize: vertical;
+            outline: none;
+            direction: ltr;
+            text-align: left;
+        }
+
+        .qr-container {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .qr-container canvas {
+            margin: 0 auto;
+            border-radius: 16px;
+            padding: 10px;
+            background: white;
+        }
+        
+        .qr-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .create-post-btn {
+            position: fixed;
+            bottom: 80px;
+            left: 20px;
+            width: 56px;
+            height: 56px;
+            border-radius: 28px;
+            background: var(--blue);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.4);
+            z-index: 100;
+            border: none;
+            transition: all 0.3s var(--transition-bounce);
+        }
+        
+        .create-post-btn:hover {
+            transform: scale(1.1);
+        }
+        
+        .comment-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            padding: 8px;
+            background: var(--bg-secondary);
+            border-radius: 10px;
+        }
+        
+        .comment-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 16px;
+            object-fit: cover;
+        }
+        
+        .comment-content {
+            flex: 1;
+        }
+        
+        .comment-author {
+            font-weight: 600;
+            font-size: 13px;
+            color: var(--text-primary);
+        }
+        
+        .comment-text {
+            font-size: 14px;
+            color: var(--text-primary);
+            margin: 4px 0;
+        }
+        
+        .comment-time {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+        
+        .reply-input {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+        
+        .reply-input input {
+            flex: 1;
+            background: var(--bg-tertiary);
+            border: 0.5px solid var(--border-color);
+            border-radius: 20px;
+            padding: 10px 16px;
+            color: var(--text-primary);
+            outline: none;
+        }
+        
+        .reply-input button {
+            background: var(--blue);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        /* Rating Stars */
+        .rating-stars {
+            display: inline-flex;
+            gap: 4px;
+            direction: ltr;
+        }
+        .rating-star {
+            font-size: 18px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: color 0.2s;
+        }
+        .rating-star.active {
+            color: #FFD700;
+        }
+        .rating-star:hover,
+        .rating-star:hover ~ .rating-star {
+            color: #FFD700;
+        }
+
+        /* Chat Screen */
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .message-bubble {
+            max-width: 80%;
+            padding: 10px 14px;
+            border-radius: 20px;
+            font-size: 14px;
+            word-wrap: break-word;
+        }
+        .message-sent {
+            background: var(--blue);
+            color: white;
+            align-self: flex-end;
+            border-bottom-left-radius: 4px;
+        }
+        .message-received {
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
+            align-self: flex-start;
+            border-bottom-right-radius: 4px;
+        }
+        .message-time {
+            font-size: 10px;
+            margin-top: 4px;
+            opacity: 0.7;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+        }
+        
+        .empty-state i {
+            font-size: 48px;
+            margin-bottom: 16px;
+            opacity: 0.3;
+        }
+        
+        .empty-state p {
+            font-size: 16px;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .profile-header:hover {
+            opacity: 0.8;
+        }
+
+        /* Conversations Drawer */
+        .drawer {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 350px;
+            height: 100%;
+            background: var(--bg-secondary);
+            z-index: 1100;
+            transition: right 0.3s var(--transition-smooth);
+            box-shadow: -2px 0 10px var(--shadow);
+            display: flex;
+            flex-direction: column;
+        }
+        .drawer.open {
+            right: 0;
+        }
+        .conversation-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border-bottom: 0.5px solid var(--border-color);
+            cursor: pointer;
+            transition: background 0.2s;
+            position: relative;
+        }
+        .conversation-item:hover {
+            background: var(--bg-tertiary);
+        }
+        .conversation-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            object-fit: cover;
+        }
+        .conversation-info {
+            flex: 1;
+        }
+        .conversation-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .conversation-last-msg {
+            font-size: 12px;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 180px;
+        }
+        .conversation-time {
+            font-size: 10px;
+            color: var(--text-secondary);
+        }
+        .conversation-unread {
+            width: 10px;
+            height: 10px;
+            background: var(--blue);
+            border-radius: 50%;
+        }
+        .conversation-delete {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--red);
+            background: var(--bg-tertiary);
+            width: 32px;
+            height: 32px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .conversation-item:hover .conversation-delete {
+            opacity: 1;
+        }
+        .conversation-delete:hover {
+            background: var(--red);
+            color: white;
+        }
+        
+        .user-action-buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        .user-action-btn {
+            flex: 1;
+            padding: 8px;
+            text-align: center;
+            border-radius: 10px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        /* Grid layout for main cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            padding: 16px;
+        }
+        .main-card {
+            background: var(--bg-secondary);
+            border-radius: 20px;
+            padding: 20px 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s var(--transition-spring);
+            border: 0.5px solid var(--border-color);
+            box-shadow: 0 2px 8px var(--shadow);
+        }
+        .main-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--blue);
+            box-shadow: 0 8px 20px var(--shadow);
+        }
+        .main-card-icon {
+            font-size: 40px;
+            color: var(--blue);
+            margin-bottom: 12px;
+        }
+        .main-card-title {
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        .main-card-desc {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+        
+        /* Shorten link card inside grid */
+        .shorten-card {
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            color: white;
+        }
+        .shorten-card .main-card-icon {
+            color: white;
+        }
+        .shorten-card .main-card-title {
+            color: white;
+        }
+        .shorten-card .main-card-desc {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .profile-section {
+            padding: 20px 16px 0;
+            text-align: center;
+        }
+        .profile-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-top: 8px;
+        }
+        .profile-email {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="mainContainer">
+        <!-- شاشة المصادقة -->
+        <div id="authScreen">
+            <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px;">
+                <div class="card" style="width: 100%;">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiH5Tji4WfG5r2d_T0XAd2LBBNB28t2dhFqJAcbR5JSpyMqqNB6IbugiC2Vos-2smWIa3tMpA7kEHf3iMcHSsbmkZUw9I1AwP-ocTRnlzLDJWjCb8eH5m2cRXiWpIa-O6a1bOSdyB9hUg-FepVa9QPjTs8Co6nX0_GDnednjERDFmN1quZbkIbW5wQjh2I/s1024/103777.png" class="avatar" alt="Logo">
+                    <h2 style="font-size: 28px; font-weight: 700; text-align: center; margin-bottom: 20px; color: var(--text-primary);">elgoharyX</h2>
+                    
+                    <div id="mobileAuthContent">
+                        <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+                            <div id="loginTab" onclick="switchTab('login')" style="flex: 1; text-align: center; padding: 12px; font-weight: 600; color: var(--blue); border-bottom: 2px solid var(--blue); cursor: pointer;">دخول</div>
+                            <div id="signupTab" onclick="switchTab('signup')" style="flex: 1; text-align: center; padding: 12px; font-weight: 600; color: var(--text-secondary); border-bottom: 2px solid transparent; cursor: pointer;">حساب جديد</div>
+                        </div>
+
+                        <div id="loginForm">
+                            <div class="input-group">
+                                <div class="input-label">البريد الإلكتروني</div>
+                                <input type="email" id="loginEmail" class="input-field dir-ltr" placeholder="example@email.com">
+                            </div>
+                            <div class="input-group">
+                                <div class="input-label">كلمة المرور</div>
+                                <input type="password" id="loginPassword" class="input-field dir-ltr" placeholder="••••••••">
+                            </div>
+                            <button class="btn" onclick="login()" id="loginBtn">
+                                <i class="fas fa-arrow-right-to-bracket"></i>
+                                تسجيل الدخول
+                            </button>
+                        </div>
+
+                        <div id="signupForm" class="hidden">
+                            <div class="input-group">
+                                <div class="input-label">الاسم</div>
+                                <input type="text" id="signupName" class="input-field" placeholder="محمد أحمد">
+                            </div>
+                            <div class="input-group">
+                                <div class="input-label">البريد الإلكتروني</div>
+                                <input type="email" id="signupEmail" class="input-field dir-ltr" placeholder="example@email.com">
+                            </div>
+                            <div class="input-group">
+                                <div class="input-label">كلمة المرور</div>
+                                <input type="password" id="signupPassword" class="input-field dir-ltr" placeholder="••••••••">
+                            </div>
+                            <div class="input-group">
+                                <div class="input-label">رقم الهاتف (للتواصل)</div>
+                                <input type="tel" id="signupPhone" class="input-field dir-ltr" placeholder="+966XXXXXXXXX">
+                            </div>
+                            <button class="btn" onclick="signup()" id="signupBtn">
+                                <i class="fas fa-user-plus"></i>
+                                إنشاء حساب
+                            </button>
+                        </div>
+                        
+                        <div id="authError" style="color: var(--red); font-size: 13px; text-align: center; margin-top: 12px;"></div>
+                    </div>
+                    
+                    <div id="pcAuthContent" class="hidden">
+                        <div style="text-align: center; padding: 10px 0;">
+                            <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                                <i class="fas fa-qrcode" style="margin-left: 5px;"></i>
+                                امسح الكود من هاتفك لتسجيل الدخول
+                            </p>
+                            <div id="pcQrcode" style="display: flex; justify-content: center; margin: 20px 0; padding: 20px; background: white; border-radius: 20px;"></div>
+                            <p id="pcSessionId" class="dir-ltr" style="font-size: 18px; color: var(--text-secondary); margin: 10px 0; font-family: monospace; letter-spacing: 3px;"></p>
+                            <div id="pcWaitingStatus" style="color: var(--blue); font-weight: 500;">
+                                <i class="fas fa-clock"></i>
+                                في انتظار المسح...
+                            </div>
+                            <button class="btn" onclick="refreshPCSession()" style="margin-top: 20px; background: var(--text-secondary);">
+                                <i class="fas fa-rotate"></i>
+                                تحديث الكود
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; justify-content: center; margin-top: 20px;">
+                        <div class="sidebar-menu-item" onclick="toggleTheme()" style="margin: 0 auto; padding: 12px 24px;">
+                            <span class="icon" id="themeToggleIcon"><i class="fas fa-moon"></i></span>
+                            <span class="label" id="themeToggleLabel">الوضع الليلي</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- شاشة ربط جهاز -->
+        <div id="linkDeviceScreen" class="hidden">
+            <div style="display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 20px;">
+                <div class="card" style="width: 100%;">
+                    <div style="display: flex; align-items: center; margin-bottom: 20px;">
+                        <span onclick="hideLinkDevice()" style="font-size: 22px; cursor: pointer; margin-left: 15px; color: var(--blue);">
+                            <i class="fas fa-chevron-right"></i>
+                        </span>
+                        <h2 style="font-size: 22px; font-weight: 700; color: var(--text-primary);">ربط جهاز كمبيوتر</h2>
+                    </div>
+                    
+                    <button class="btn" onclick="startQRScanner()" style="margin-bottom: 15px;">
+                        <i class="fas fa-camera"></i>
+                        مسح QR Code
+                    </button>
+                    
+                    <div style="text-align: center; color: var(--text-secondary); margin: 15px 0;">أو</div>
+                    
+                    <div class="input-group">
+                        <div class="input-label">كود الجلسة</div>
+                        <input type="text" id="sessionCodeInput" class="input-field dir-ltr" placeholder="مثال: ABC123">
+                    </div>
+                    <button class="btn" onclick="linkBySessionCode()">
+                        <i class="fas fa-link"></i>
+                        ربط الجهاز
+                    </button>
+                    
+                    <div id="linkError" style="color: var(--red); font-size: 13px; text-align: center; margin-top: 12px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- شاشة المتصفح -->
+        <div id="browserScreen" class="hidden">
+            <div class="nav-bar">
+                <div onclick="hideBrowser()" style="color: var(--blue); font-size: 20px; cursor: pointer;">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div style="font-size: 18px; font-weight: 600; color: var(--text-primary);">المتصفح</div>
+                <div onclick="refreshBrowser()" style="color: var(--blue); font-size: 18px; cursor: pointer;">
+                    <i class="fas fa-sync-alt"></i>
+                </div>
+            </div>
+            <div style="padding: 16px;">
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="browserSearchInput" placeholder="ابحث عن مواقع..." onkeyup="handleBrowserSearch(event)" autocomplete="off">
+                    <i class="fas fa-times" onclick="clearBrowserSearch()" style="cursor: pointer;" id="clearSearchBtn"></i>
+                </div>
+
+                <div class="filter-tabs">
+                    <div class="filter-tab active" onclick="setBrowserFilter('all')">
+                        <i class="fas fa-globe"></i>
+                        الكل
+                    </div>
+                    <div class="filter-tab" onclick="setBrowserFilter('trending')">
+                        <i class="fas fa-fire"></i>
+                        الأكثر زيارة
+                    </div>
+                    <div class="filter-tab" onclick="setBrowserFilter('recent')">
+                        <i class="fas fa-clock"></i>
+                        الأحدث
+                    </div>
+                    <div class="filter-tab" onclick="setBrowserFilter('popular')">
+                        <i class="fas fa-star"></i>
+                        الأفضل تقييماً
+                    </div>
+                </div>
+
+                <div id="browserContent">
+                    <div id="browserLoading"><div class="loader"></div></div>
+                    <div id="browserResults"></div>
+                </div>
+
+                <div id="browserEmptyState" class="empty-state hidden">
+                    <i class="fas fa-globe"></i>
+                    <p>لا توجد مواقع متاحة</p>
+                    <p style="font-size: 14px; margin-top: 8px;">كن أول من يرفع موقعاً!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- شاشة المنتدى -->
+        <div id="forumScreen" class="hidden">
+            <div class="nav-bar">
+                <div onclick="hideForum()" style="color: var(--blue); font-size: 20px; cursor: pointer;">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div style="font-size: 18px; font-weight: 600; color: var(--text-primary);">المنتدى</div>
+                <div onclick="showCreatePostModal()" style="color: var(--blue); font-size: 20px; cursor: pointer;">
+                    <i class="fas fa-plus"></i>
+                </div>
+            </div>
+            <div style="padding: 16px; padding-bottom: 80px;">
+                <div id="forumLoading"><div class="loader"></div></div>
+                <div id="postsList"></div>
+                <div id="forumEmptyState" class="hidden" style="text-align: center; padding: 40px 20px; color: var(--text-secondary);">
+                    <i class="fas fa-comments" style="font-size: 48px; margin-bottom: 16px; opacity: 0.3;"></i>
+                    <p style="font-size: 16px;">لا توجد منشورات بعد</p>
+                    <p style="font-size: 14px; margin-top: 8px;">كن أول من يكتب منشوراً!</p>
+                </div>
+            </div>
+            <div class="create-post-btn" onclick="showCreatePostModal()">
+                <i class="fas fa-pen"></i>
+            </div>
+        </div>
+
+        <!-- مودال إنشاء منشور -->
+        <div id="createPostModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-title">منشور جديد</div>
+                <div class="input-group">
+                    <div class="input-label">ماذا تريد أن تشارك؟</div>
+                    <textarea id="postContent" class="input-field" rows="4" placeholder="اكتب منشورك هنا..." style="min-height: 100px;"></textarea>
+                </div>
+                <div class="input-group">
+                    <div class="input-label">رابط صورة (اختياري)</div>
+                    <input type="text" id="postImageUrl" class="input-field dir-ltr" placeholder="https://example.com/image.jpg">
+                </div>
+                <div class="modal-actions">
+                    <button class="btn btn-outline" onclick="closeCreatePostModal()">إلغاء</button>
+                    <button class="btn" onclick="createPost()">نشر</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- شاشة المحادثة الخاصة -->
+        <div id="chatScreen" class="hidden" style="display: flex; flex-direction: column; height: 100vh;">
+            <div class="nav-bar">
+                <div onclick="hideChatScreen()" style="color: var(--blue); font-size: 20px; cursor: pointer;">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div style="font-size: 18px; font-weight: 600; color: var(--text-primary);" id="chatUserName"></div>
+                <div onclick="deleteCurrentConversation()" style="color: var(--red); font-size: 18px; cursor: pointer;">
+                    <i class="fas fa-trash-alt"></i>
+                </div>
+            </div>
+            <div id="chatMessages" class="chat-messages" style="flex: 1;"></div>
+            <div class="reply-input" style="margin: 12px; padding: 8px; background: var(--bg-secondary); border-top: 0.5px solid var(--border-color);">
+                <input type="text" id="chatMessageInput" placeholder="اكتب رسالتك..." style="flex: 1;">
+                <button onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+
+        <!-- مودال التعليقات -->
+        <div id="commentsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-title">التعليقات</div>
+                <div id="commentsList"></div>
+                <div id="commentsLoading"><div class="loader"></div></div>
+                <div class="reply-input">
+                    <input type="text" id="commentInput" placeholder="اكتب تعليقاً...">
+                    <button onclick="addComment()">إرسال</button>
+                </div>
+                <div style="margin-top: 12px;">
+                    <button class="btn btn-outline" onclick="closeCommentsModal()">إغلاق</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- لوحة تحكم الموقع -->
+        <div id="siteDashboardScreen" class="hidden">
+            <div class="nav-bar">
+                <div onclick="hideSiteDashboard()" style="color: var(--blue); font-size: 20px; cursor: pointer;">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div style="font-size: 18px; font-weight: 600; color: var(--text-primary);" id="dashboardSiteName"></div>
+                <div onclick="saveSiteEdits()" style="color: var(--blue); font-size: 18px; cursor: pointer;">
+                    <i class="fas fa-save"></i>
+                </div>
+            </div>
+            <div style="padding: 16px;">
+                <div class="card">
+                    <div class="section-title">إحصائيات الموقع</div>
+                    <div class="site-details" style="display: flex; justify-content: space-between; margin-bottom: 16px;">
+                        <span><i class="fas fa-eye"></i> <span id="dashboardViews">0</span> مشاهدة</span>
+                        <span><i class="fas fa-star"></i> <span id="dashboardRating">0</span> / 5</span>
+                        <span><i class="fas fa-calendar"></i> <span id="dashboardDate"></span></span>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-label">رابط الموقع</div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <input type="text" id="dashboardSiteUrl" class="input-field dir-ltr" readonly>
+                            <span onclick="copyDashboardUrl()" style="color: var(--blue); cursor: pointer;"><i class="far fa-copy"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="section-title">تعديل الكود</div>
+                    <div class="code-editor">
+                        <textarea id="dashboardHtmlCode" style="min-height: 300px;"></textarea>
+                    </div>
+                    <button class="btn" onclick="saveSiteEdits()" style="margin-top: 8px;">حفظ التغييرات</button>
+                    <button class="btn btn-outline" onclick="deleteSiteFromDashboard()" style="margin-top: 8px; background: var(--red); color: white;">حذف الموقع</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- مودال تعديل الملف الشخصي -->
+        <div id="editProfileModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-title">تعديل الملف الشخصي</div>
+                <div class="input-group">
+                    <div class="input-label">الاسم</div>
+                    <input type="text" id="editProfileName" class="input-field" placeholder="الاسم">
+                </div>
+                <div class="input-group">
+                    <div class="input-label">رابط الصورة الجديد</div>
+                    <input type="text" id="editProfileAvatar" class="input-field dir-ltr" placeholder="https://example.com/avatar.jpg">
+                </div>
+                <div class="modal-actions">
+                    <button class="btn btn-outline" onclick="closeEditProfileModal()">إلغاء</button>
+                    <button class="btn" onclick="saveProfileChanges()">حفظ التغييرات</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- مودال طلبات الصداقة -->
+        <div id="friendRequestsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-title">طلبات الصداقة</div>
+                <div id="friendRequestsList"></div>
+                <div id="friendRequestsEmpty" class="empty-state hidden">
+                    <i class="fas fa-user-friends"></i>
+                    <p>لا توجد طلبات صداقة</p>
+                </div>
+                <div style="margin-top: 12px;">
+                    <button class="btn btn-outline" onclick="closeFriendRequestsModal()">إغلاق</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- مودال عرض منشورات الصديق -->
+        <div id="friendPostsModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-title" id="friendPostsTitle"></div>
+                <div id="friendPostsList"></div>
+                <div id="friendPostsEmpty" class="empty-state hidden">
+                    <i class="fas fa-newspaper"></i>
+                    <p>لا توجد منشورات بعد</p>
+                </div>
+                <div style="margin-top: 12px;">
+                    <button class="btn btn-outline" onclick="closeFriendPostsModal()">إغلاق</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- مودال تفاعل المستخدم -->
+        <div id="userActionModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-title" id="userActionTitle"></div>
+                <div id="userActionButtons" class="user-action-buttons"></div>
+                <div style="margin-top: 12px;">
+                    <button class="btn btn-outline" onclick="closeUserActionModal()">إغلاق</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- شاشة مولد QR -->
+        <div id="qrGeneratorScreen" class="hidden">
+            <div class="nav-bar">
+                <div onclick="hideQRGenerator()" style="color: var(--blue); font-size: 20px; cursor: pointer;">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div style="font-size: 18px; font-weight: 600; color: var(--text-primary);">مولد QR</div>
+                <div></div>
+            </div>
+            <div style="padding: 16px;">
+                <div class="card">
+                    <div class="input-group">
+                        <div class="input-label">
+                            <i class="fas fa-qrcode" style="margin-left: 4px;"></i>
+                            النص أو الرابط
+                        </div>
+                        <textarea id="qrText" class="input-field dir-ltr" placeholder="أدخل النص أو الرابط هنا..." rows="3" style="resize: vertical;"></textarea>
+                    </div>
+                    
+                    <button class="btn" onclick="generateQRCode()" id="generateQRBtn">
+                        <i class="fas fa-qrcode"></i>
+                        توليد QR Code
+                    </button>
+                </div>
+                
+                <div id="qrResult" class="hidden">
+                    <div class="card">
+                        <div class="qr-container">
+                            <div id="qrCodeDisplay" style="display: flex; justify-content: center;"></div>
+                            <div class="qr-actions">
+                                <button class="btn" onclick="downloadGeneratedQR()" style="width: auto; padding: 12px 24px;">
+                                    <i class="fas fa-download"></i>
+                                    تحميل
+                                </button>
+                                <button class="btn btn-outline" onclick="copyQRText()" style="width: auto; padding: 12px 24px;">
+                                    <i class="far fa-copy"></i>
+                                    نسخ النص
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div style="text-align: center; color: var(--text-secondary);">
+                        <i class="fas fa-camera" style="font-size: 32px; margin-bottom: 12px;"></i>
+                        <p>يمكنك أيضاً مسح QR Code من صورة</p>
+                        <input type="file" id="qrImageInput" accept="image/*" style="display: none;" onchange="scanQRFromImage(event)">
+                        <button class="btn btn-outline" onclick="document.getElementById('qrImageInput').click()" style="margin-top: 12px;">
+                            <i class="fas fa-image"></i>
+                            اختيار صورة
+                        </button>
+                        <div id="qrScanResult" style="margin-top: 16px; padding: 12px; background: var(--bg-tertiary); border-radius: 12px; display: none;">
+                            <div class="input-label">نتيجة المسح</div>
+                            <div id="scannedText" class="dir-ltr" style="word-break: break-all;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- شاشة رفع الكود -->
+        <div id="codeHostingScreen" class="hidden">
+            <div class="nav-bar">
+                <div onclick="hideCodeHosting()" style="color: var(--blue); font-size: 20px; cursor: pointer;">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div style="font-size: 18px; font-weight: 600; color: var(--text-primary);">رفع موقع</div>
+                <div></div>
+            </div>
+            <div style="padding: 16px;">
+                <div class="card">
+                    <div class="input-group">
+                        <div class="input-label">اسم المشروع</div>
+                        <input type="text" id="projectName" class="input-field" placeholder="مشروعي الأول">
+                    </div>
+                    
+                    <div class="input-group">
+                        <div class="input-label">وصف الموقع (اختياري)</div>
+                        <input type="text" id="siteDescription" class="input-field" placeholder="وصف مختصر للموقع...">
+                    </div>
+                    
+                    <div class="input-group">
+                        <div class="input-label">رابط صورة الموقع (اختياري)</div>
+                        <input type="text" id="siteThumbnail" class="input-field dir-ltr" placeholder="https://example.com/thumbnail.jpg">
+                    </div>
+
+                    <div class="input-group">
+                        <div class="input-label">رابط مخصص (اختياري)</div>
+                        <input type="text" id="customSiteSlug" class="input-field dir-ltr" placeholder="my-site">
+                    </div>
+                    
+                    <div class="code-editor">
+                        <textarea id="htmlCode" placeholder="أكتب كود HTML/CSS/JavaScript هنا..."><!DOCTYPE html>
+<html>
+<head>
+    <title>elgoharyX</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
+            padding: 20px; 
+            margin: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            max-width: 400px;
+        }
+        h1 { color: #333; margin-bottom: 10px; }
+        p { color: #666; line-height: 1.6; }
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🚀 مرحباً بالعالم!</h1>
+        <p>تم إنشاء هذا الموقع باستخدام elgoharyX</p>
+        <button class="btn" onclick="alert('مرحباً بك!')">اضغط هنا</button>
+    </div>
+</body>
+</html></textarea>
+                    </div>
+                    
+                    <button class="btn" onclick="deploySite()" id="deployBtn">
+                        <i class="fas fa-rocket"></i>
+                        رفع ونشر
+                    </button>
+                </div>
+                
+                <div id="deployResult" class="hidden">
+                    <div class="card">
+                        <div style="margin-bottom: 16px;">
+                            <div class="input-label">تم رفع الموقع بنجاح!</div>
+                            <div style="background: var(--bg-tertiary); border-radius: 12px; padding: 16px; display: flex; align-items: center; justify-content: space-between;">
+                                <a id="siteUrl" href="#" target="_blank" class="dir-ltr" style="color: var(--blue); text-decoration: none; flex: 1; word-break: break-all;"></a>
+                                <span onclick="copySiteUrl()" style="color: var(--blue); font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+                                    <i class="far fa-copy"></i>
+                                    نسخ
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 16px;">
+                            <button class="btn btn-outline" onclick="openSiteInNewTab()">
+                                <i class="fas fa-external-link-alt"></i>
+                                فتح الموقع
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- الشاشة الرئيسية - بطاقات رئيسية -->
+        <div id="mainScreen" class="hidden">
+            <div class="nav-bar">
+                <div></div>
+                <div style="font-size: 18px; font-weight: 600; color: var(--text-primary);">elgoharyX</div>
+                <div style="display: flex; gap: 16px;">
+                    <div onclick="openConversationsDrawer()" style="color: var(--blue); font-size: 20px; cursor: pointer; position: relative;">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div onclick="openMessagesDrawer()" style="color: var(--blue); font-size: 20px; cursor: pointer; position: relative;">
+                        <i class="fas fa-envelope"></i>
+                        <span id="unreadBadge" style="position: absolute; top: -8px; right: -8px; background: var(--red); color: white; font-size: 10px; border-radius: 10px; padding: 2px 6px; display: none;"></span>
+                    </div>
+                    <div onclick="toggleSidebar()" style="color: var(--blue); font-size: 20px; cursor: pointer;">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- الملف الشخصي المصغر -->
+            <div class="profile-section">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiH5Tji4WfG5r2d_T0XAd2LBBNB28t2dhFqJAcbR5JSpyMqqNB6IbugiC2Vos-2smWIa3tMpA7kEHf3iMcHSsbmkZUw9I1AwP-ocTRnlzLDJWjCb8eH5m2cRXiWpIa-O6a1bOSdyB9hUg-FepVa9QPjTs8Co6nX0_GDnednjERDFmN1quZbkIbW5wQjh2I/s1024/103777.png" class="avatar" id="profileAvatar" style="width: 70px; height: 70px;">
+                <div class="profile-name" id="displayName"></div>
+                <div class="profile-email" id="displayEmail"></div>
+            </div>
+
+            <!-- شبكة البطاقات الرئيسية - كل صف بطاقتان -->
+            <div class="cards-grid">
+                <!-- بطاقة إنشاء رابط مختصر -->
+                <div class="main-card shorten-card" onclick="scrollToShortener()">
+                    <div class="main-card-icon"><i class="fas fa-link"></i></div>
+                    <div class="main-card-title">روابط مختصرة</div>
+                    <div class="main-card-desc">إنشاء رابط قصير</div>
+                </div>
+                
+                <!-- بطاقة المتصفح -->
+                <div class="main-card" onclick="showBrowser()">
+                    <div class="main-card-icon"><i class="fas fa-compass"></i></div>
+                    <div class="main-card-title">المتصفح</div>
+                    <div class="main-card-desc">استكشف المواقع</div>
+                </div>
+                
+                <!-- بطاقة المنتدى -->
+                <div class="main-card" onclick="showForum()">
+                    <div class="main-card-icon"><i class="fas fa-comments"></i></div>
+                    <div class="main-card-title">المنتدى</div>
+                    <div class="main-card-desc">ناقش وشارك</div>
+                </div>
+                
+                <!-- بطاقة مولد QR -->
+                <div class="main-card" onclick="showQRGenerator()">
+                    <div class="main-card-icon"><i class="fas fa-qrcode"></i></div>
+                    <div class="main-card-title">مولد QR</div>
+                    <div class="main-card-desc">إنشاء ومسح</div>
+                </div>
+                
+                <!-- بطاقة رفع موقع -->
+                <div class="main-card" onclick="showCodeHosting()">
+                    <div class="main-card-icon"><i class="fas fa-code"></i></div>
+                    <div class="main-card-title">رفع موقع</div>
+                    <div class="main-card-desc">انشر موقعك</div>
+                </div>
+                
+                <!-- بطاقة جهات الاتصال -->
+                <div class="main-card" onclick="loadContactsFromDevice()">
+                    <div class="main-card-icon"><i class="fas fa-address-book"></i></div>
+                    <div class="main-card-title">جهات الاتصال</div>
+                    <div class="main-card-desc">تواصل مع أصدقائك</div>
+                </div>
+            </div>
+            
+            <!-- أداة إنشاء الرابط المختصر (منبثقة عند النقر على البطاقة الأولى) -->
+            <div id="shortenerSection" style="padding: 0 16px 16px; display: none;">
+                <div class="card">
+                    <div class="input-group">
+                        <div class="input-label">
+                            <i class="fas fa-link" style="margin-left: 4px;"></i>
+                            الرابط الأصلي
+                        </div>
+                        <input type="url" id="longUrl" class="input-field dir-ltr" placeholder="https://example.com">
+                    </div>
+                    <div class="input-group">
+                        <div class="input-label">
+                            <i class="fas fa-tag" style="margin-left: 4px;"></i>
+                            معرف مخصص (اختياري)
+                        </div>
+                        <input type="text" id="customSlug" class="input-field dir-ltr" placeholder="my-link">
+                    </div>
+                    <button class="btn" onclick="createLink()" id="shortenBtn">
+                        <i class="fas fa-scissors"></i>
+                        إنشاء رابط مختصر
+                    </button>
+                    <div id="resultArea" class="hidden" style="margin-top: 16px;">
+                        <div style="background: var(--bg-tertiary); border-radius: 12px; padding: 16px; display: flex; align-items: center; justify-content: space-between;">
+                            <a id="shortLink" href="#" target="_blank" class="dir-ltr" style="color: var(--blue); text-decoration: none; flex: 1; word-break: break-all;"></a>
+                            <span onclick="copyLink()" style="color: var(--blue); font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 4px;">
+                                <i class="far fa-copy"></i>
+                                نسخ
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- شاشة التوجيه -->
+    <div id="redirectScreen" class="hidden">
+        <div class="redirect-container">
+            <div class="redirect-content">
+                <div class="loader"></div>
+                <div style="font-size: 22px; font-weight: 600; margin-top: 24px; color: var(--text-primary);">جاري التوجيه</div>
+                <div id="redirectStatus" style="color: var(--text-secondary); margin-top: 8px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- قائمة المحادثات الجانبية -->
+    <div class="drawer" id="conversationsDrawer">
+        <div class="nav-bar" style="position: sticky; top: 0;">
+            <div onclick="closeConversationsDrawer()" style="color: var(--blue); font-size: 20px; cursor: pointer;">
+                <i class="fas fa-times"></i>
+            </div>
+            <div style="font-size: 18px; font-weight: 600; color: var(--text-primary);">المحادثات</div>
+            <div></div>
+        </div>
+        <div id="conversationsList" style="flex: 1; overflow-y: auto;"></div>
+        <div id="conversationsEmpty" class="empty-state hidden">
+            <i class="fas fa-comments"></i>
+            <p>لا توجد محادثات بعد</p>
+        </div>
+    </div>
+
+    <!-- قائمة الرسائل الجانبية -->
+    <div class="drawer" id="messagesDrawer">
+        <div class="nav-bar" style="position: sticky; top: 0;">
+            <div onclick="closeMessagesDrawer()" style="color: var(--blue); font-size: 20px; cursor: pointer;">
+                <i class="fas fa-times"></i>
+            </div>
+            <div style="font-size: 18px; font-weight: 600; color: var(--text-primary);">الرسائل الخاصة</div>
+            <div></div>
+        </div>
+        <div id="messagesList" style="flex: 1; overflow-y: auto;"></div>
+        <div id="messagesEmpty" class="empty-state hidden">
+            <i class="fas fa-envelope"></i>
+            <p>لا توجد رسائل خاصة</p>
+        </div>
+    </div>
+
+    <!-- القائمة الجانبية الرئيسية -->
+    <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+    <div class="sidebar" id="sidebar">
+        <div style="padding: 60px 20px 20px; border-bottom: 0.5px solid var(--border-color); position: relative;">
+            <div onclick="toggleSidebar()" style="position: absolute; top: 20px; left: 20px; width: 40px; height: 40px; background: var(--bg-tertiary); border-radius: 20px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-primary);">
+                <i class="fas fa-times"></i>
+            </div>
+            <div style="font-size: 30px; font-weight: 700; color: var(--text-primary);">القائمة</div>
+        </div>
+        
+        <div style="padding: 16px;">
+            <div style="display: flex; align-items: center; gap: 12px; padding: 16px; background: var(--bg-tertiary); border-radius: 14px; margin-bottom: 16px;">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiH5Tji4WfG5r2d_T0XAd2LBBNB28t2dhFqJAcbR5JSpyMqqNB6IbugiC2Vos-2smWIa3tMpA7kEHf3iMcHSsbmkZUw9I1AwP-ocTRnlzLDJWjCb8eH5m2cRXiWpIa-O6a1bOSdyB9hUg-FepVa9QPjTs8Co6nX0_GDnednjERDFmN1quZbkIbW5wQjh2I/s1024/103777.png" class="user-avatar-img" id="sidebarAvatar" alt="Logo">
+                <div style="flex: 1;">
+                    <div style="font-weight: 600; color: var(--text-primary);" id="sidebarName"></div>
+                    <div style="font-size: 13px; color: var(--text-secondary);" id="sidebarEmail"></div>
+                </div>
+            </div>
+
+            <div class="sidebar-menu-item" onclick="showFriendRequests()">
+                <span class="icon"><i class="fas fa-user-plus"></i></span>
+                <span class="label">طلبات الصداقة</span>
+                <span class="arrow"><i class="fas fa-chevron-left"></i></span>
+            </div>
+
+            <div class="sidebar-menu-item" onclick="showLinkDeviceFromSidebar()" id="linkDeviceMenuItem">
+                <span class="icon"><i class="fas fa-desktop"></i></span>
+                <span class="label">ربط جهاز كمبيوتر</span>
+                <span class="arrow"><i class="fas fa-chevron-left"></i></span>
+            </div>
+            
+            <div class="sidebar-menu-item" onclick="toggleTheme()">
+                <span class="icon" id="themeIcon"><i class="fas fa-moon"></i></span>
+                <span class="label" id="themeLabel">الوضع الليلي</span>
+                <span class="arrow"><i class="fas fa-chevron-left"></i></span>
+            </div>
+            
+            <div class="sidebar-menu-item" onclick="logout()">
+                <span class="icon"><i class="fas fa-sign-out-alt"></i></span>
+                <span class="label">تسجيل الخروج</span>
+                <span class="arrow" style="color: var(--red);"><i class="fas fa-chevron-left"></i></span>
+            </div>
+
+            <div class="section-divider"></div>
+            
+            <!-- قسم الأجهزة المرتبطة -->
+            <div class="section-title">
+                <i class="fas fa-laptop" style="color: var(--blue);"></i>
+                الأجهزة المرتبطة
+            </div>
+            
+            <div id="devicesLoading"><div class="loader"></div></div>
+            <div id="devicesList"></div>
+            <div id="devicesEmptyState" class="hidden" style="text-align: center; padding: 20px; color: var(--text-secondary);">
+                <i class="fas fa-laptop" style="font-size: 32px; margin-bottom: 8px; opacity: 0.3;"></i>
+                <p style="font-size: 14px;">لا توجد أجهزة مرتبطة</p>
+            </div>
+            
+            <div class="section-divider"></div>
+            
+            <!-- قسم الأصدقاء -->
+            <div class="section-title">
+                <i class="fas fa-user-friends" style="color: var(--blue);"></i>
+                الأصدقاء
+            </div>
+            
+            <div id="friendsLoading"><div class="loader"></div></div>
+            <div id="friendsList"></div>
+            <div id="friendsEmptyState" class="hidden" style="text-align: center; padding: 20px; color: var(--text-secondary);">
+                <i class="fas fa-user-friends" style="font-size: 32px; margin-bottom: 8px; opacity: 0.3;"></i>
+                <p style="font-size: 14px;">لا يوجد أصدقاء بعد</p>
+            </div>
+
+            <div class="section-divider"></div>
+            
+            <!-- قسم المواقع -->
+            <div class="section-title">
+                <i class="fas fa-globe" style="color: var(--blue);"></i>
+                مواقعي
+            </div>
+            
+            <div id="sitesLoading"><div class="loader"></div></div>
+            <div id="sitesList"></div>
+            <div id="sitesEmptyState" class="hidden" style="text-align: center; padding: 20px; color: var(--text-secondary);">
+                <i class="fas fa-globe" style="font-size: 32px; margin-bottom: 8px; opacity: 0.3;"></i>
+                <p style="font-size: 14px;">لا توجد مواقع مرفوعة</p>
+            </div>
+            
+            <div class="section-divider"></div>
+            
+            <!-- قسم الروابط -->
+            <div class="section-title">
+                <i class="fas fa-link" style="color: var(--blue);"></i>
+                روابطي
+            </div>
+            
+            <div id="sidebarLoading"><div class="loader"></div></div>
+            <div id="linksList"></div>
+            <div id="emptyState" class="hidden" style="text-align: center; padding: 40px 20px; color: var(--text-secondary);">
+                <i class="fas fa-link" style="font-size: 48px; margin-bottom: 16px; opacity: 0.3;"></i>
+                <p style="font-size: 16px;">لا توجد روابط</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal تعديل اسم الجهاز -->
+    <div id="editDeviceModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-title">تعديل اسم الجهاز</div>
+            <div class="input-group">
+                <div class="input-label">اسم الجهاز</div>
+                <input type="text" id="editDeviceNameInput" class="input-field" placeholder="جهازي">
+            </div>
+            <div class="modal-actions">
+                <button class="btn btn-outline" onclick="closeEditDeviceModal()">إلغاء</button>
+                <button class="btn" onclick="saveDeviceName()">حفظ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- مودال جهات الاتصال -->
+    <div id="contactsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-title">جهات الاتصال</div>
+            <div id="contactsList"></div>
+            <div id="contactsEmpty" class="empty-state hidden">
+                <i class="fas fa-address-book"></i>
+                <p>لا توجد جهات اتصال</p>
+                <p style="font-size: 14px;">لم يتم العثور على أرقام في هاتفك</p>
+            </div>
+            <div style="margin-top: 12px;">
+                <button class="btn btn-outline" onclick="closeContactsModal()">إغلاق</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- كاميرا QR Scanner -->
+    <div id="qrScanner">
+        <div class="close-scanner" onclick="stopQRScanner()">
+            <i class="fas fa-times"></i>
+        </div>
+        <video id="qrVideo" playsinline></video>
+        <div class="scanner-overlay">
+            <div class="scanner-frame"></div>
+        </div>
+        <div class="scan-status" id="scanStatus">
+            <i class="fas fa-qrcode"></i>
+            جاري البحث عن QR Code...
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getDatabase, ref, set, get, onValue, remove, update, onDisconnect, push, query, orderByChild, limitToLast } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDGhCAU7DLleD1KkCR6SQmvl8bpDncHJ8g",
+            authDomain: "planning-with-ai-797ec.firebaseapp.com",
+            projectId: "planning-with-ai-797ec",
+            databaseURL: "https://planning-with-ai-797ec-default-rtdb.firebaseio.com",
+            storageBucket: "planning-with-ai-797ec.firebasestorage.app",
+            messagingSenderId: "283439580292",
+            appId: "1:283439580292:web:b566dc267bdb8861ca2ed1"
+        };
+
+        const LOGO_URL = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiH5Tji4WfG5r2d_T0XAd2LBBNB28t2dhFqJAcbR5JSpyMqqNB6IbugiC2Vos-2smWIa3tMpA7kEHf3iMcHSsbmkZUw9I1AwP-ocTRnlzLDJWjCb8eH5m2cRXiWpIa-O6a1bOSdyB9hUg-FepVa9QPjTs8Co6nX0_GDnednjERDFmN1quZbkIbW5wQjh2I/s1024/103777.png";
+
+        let app, db, currentUser = null;
+        let isPC = false;
+        let sessionCheckInterval = null;
+        let currentSessionRef = null;
+        let currentDeviceId = null;
+        let editingDeviceId = null;
+        let currentSiteUrl = '';
+        let currentQRText = '';
+        let currentPostId = null;
+        let allSites = [];
+        let currentFilter = 'all';
+        let searchTimeout = null;
+        
+        // Chat variables
+        let currentChatUserId = null;
+        let currentChatUserName = '';
+        let chatMessagesListener = null;
+        let conversationsListener = null;
+        let messagesListener = null;
+
+        // Dashboard variables
+        let currentDashboardSiteId = null;
+        let currentDashboardSiteData = null;
+        
+        // User action modal
+        let selectedUserId = null;
+        let selectedUserName = '';
+
+        try {
+            app = initializeApp(firebaseConfig);
+            db = getDatabase(app);
+            console.log('✅ Firebase connected');
+        } catch (e) {
+            console.error('Firebase error:', e);
+            showToast('خطأ في الاتصال بقاعدة البيانات');
+        }
+
+        function getDeviceId() {
+            let deviceId = localStorage.getItem('device_id');
+            if (!deviceId) {
+                deviceId = 'dev_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+                localStorage.setItem('device_id', deviceId);
+            }
+            currentDeviceId = deviceId;
+            return deviceId;
+        }
+
+        function detectPC() {
+            return !(/Android|iPhone|iPad|iPod/i.test(navigator.userAgent));
+        }
+
+        function getDeviceType() {
+            const ua = navigator.userAgent;
+            if (/Android/i.test(ua)) return 'android';
+            if (/iPhone|iPad|iPod/i.test(ua)) return 'ios';
+            if (/Windows/i.test(ua)) return 'windows';
+            if (/Mac/i.test(ua)) return 'mac';
+            if (/Linux/i.test(ua)) return 'linux';
+            return 'unknown';
+        }
+
+        function getDeviceIcon(deviceType) {
+            const icons = {
+                'android': 'fab fa-android',
+                'ios': 'fab fa-apple',
+                'windows': 'fab fa-windows',
+                'mac': 'fab fa-apple',
+                'linux': 'fab fa-linux',
+                'unknown': 'fas fa-laptop'
+            };
+            return icons[deviceType] || 'fas fa-laptop';
+        }
+
+        function getDeviceTypeName(deviceType) {
+            const names = {
+                'android': 'أندرويد',
+                'ios': 'آيفون',
+                'windows': 'ويندوز',
+                'mac': 'ماك',
+                'linux': 'لينكس',
+                'unknown': 'جهاز'
+            };
+            return names[deviceType] || 'جهاز';
+        }
+
+        async function getLocationFromIP() {
+            return new Promise((resolve) => {
+                fetch('https://ipapi.co/json/')
+                    .then(res => res.json())
+                    .then(data => {
+                        resolve(`${data.city || ''}, ${data.country_name || ''}`.trim() || 'غير معروف');
+                    })
+                    .catch(() => resolve('غير معروف'));
+            });
+        }
+
+        async function registerDevice() {
+            if (!currentUser) return;
+            
+            const deviceId = getDeviceId();
+            const deviceType = getDeviceType();
+            const location = await getLocationFromIP();
+            
+            const deviceRef = ref(db, `users/${currentUser.id}/devices/${deviceId}`);
+            const snap = await get(deviceRef);
+            
+            const deviceData = {
+                deviceId,
+                deviceType,
+                deviceName: snap.exists() ? snap.val().deviceName : `${getDeviceTypeName(deviceType)} ${new Date().toLocaleDateString('ar-EG')}`,
+                location,
+                lastActive: Date.now(),
+                userAgent: navigator.userAgent.substring(0, 100),
+                isCurrent: true
+            };
+            
+            await set(deviceRef, deviceData);
+            
+            setInterval(async () => {
+                if (currentUser) {
+                    await update(ref(db, `users/${currentUser.id}/devices/${deviceId}`), {
+                        lastActive: Date.now()
+                    });
+                }
+            }, 60000);
+            
+            onDisconnect(deviceRef).update({ isCurrent: false });
+        }
+
+        window.showToast = function(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        };
+
+        window.toggleTheme = function() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            
+            const themeIcon = document.getElementById('themeIcon');
+            const themeLabel = document.getElementById('themeLabel');
+            const themeToggleIcon = document.getElementById('themeToggleIcon');
+            const themeToggleLabel = document.getElementById('themeToggleLabel');
+            
+            if (isDark) {
+                if (themeIcon) themeIcon.innerHTML = '<i class="fas fa-sun"></i>';
+                if (themeLabel) themeLabel.textContent = 'الوضع النهاري';
+                if (themeToggleIcon) themeToggleIcon.innerHTML = '<i class="fas fa-sun"></i>';
+                if (themeToggleLabel) themeToggleLabel.textContent = 'الوضع النهاري';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                if (themeIcon) themeIcon.innerHTML = '<i class="fas fa-moon"></i>';
+                if (themeLabel) themeLabel.textContent = 'الوضع الليلي';
+                if (themeToggleIcon) themeToggleIcon.innerHTML = '<i class="fas fa-moon"></i>';
+                if (themeToggleLabel) themeToggleLabel.textContent = 'الوضع الليلي';
+                localStorage.setItem('theme', 'light');
+            }
+        };
+
+        window.switchTab = function(tab) {
+            document.getElementById('loginTab').style.cssText = tab === 'login' ? 
+                'color: var(--blue); border-bottom: 2px solid var(--blue);' : 
+                'color: var(--text-secondary); border-bottom: 2px solid transparent;';
+            document.getElementById('signupTab').style.cssText = tab === 'signup' ? 
+                'color: var(--blue); border-bottom: 2px solid var(--blue);' : 
+                'color: var(--text-secondary); border-bottom: 2px solid transparent;';
+            document.getElementById('loginForm').classList.toggle('hidden', tab !== 'login');
+            document.getElementById('signupForm').classList.toggle('hidden', tab !== 'signup');
+            document.getElementById('authError').textContent = '';
+        };
+
+        window.signup = async function() {
+            const name = document.getElementById('signupName').value.trim();
+            const email = document.getElementById('signupEmail').value.trim().toLowerCase();
+            const password = document.getElementById('signupPassword').value;
+            const phone = document.getElementById('signupPhone').value.trim();
+
+            if (!name || !email || !password) { showToast('جميع الحقول مطلوبة'); return; }
+            if (password.length < 6) { showToast('كلمة المرور 6 أحرف على الأقل'); return; }
+
+            const btn = document.getElementById('signupBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإنشاء...';
+
+            try {
+                const emailKey = email.replace(/\./g, '_').replace(/\@/g, '_at_');
+                const userSnap = await get(ref(db, 'users/' + emailKey));
+                
+                if (userSnap.exists()) {
+                    showToast('البريد مستخدم بالفعل');
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-user-plus"></i> إنشاء حساب';
+                    return;
+                }
+
+                const deviceId = getDeviceId();
+                const userData = {
+                    id: emailKey,
+                    name, email, phone: phone || null,
+                    password: btoa(password),
+                    createdAt: new Date().toISOString(),
+                    avatar: LOGO_URL,
+                    deviceId
+                };
+
+                await set(ref(db, 'users/' + emailKey), userData);
+                currentUser = { id: emailKey, name, email, phone: phone || null, avatar: LOGO_URL, deviceId };
+                localStorage.setItem('user', JSON.stringify(currentUser));
+                
+                await registerDevice();
+                
+                showToast('🎉 تم إنشاء الحساب بنجاح');
+                showMainScreen();
+            } catch (e) {
+                showToast('خطأ: ' + e.message);
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-user-plus"></i> إنشاء حساب';
+            }
+        };
+
+        window.login = async function() {
+            const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+            const password = document.getElementById('loginPassword').value;
+
+            if (!email || !password) { showToast('أدخل البريد وكلمة المرور'); return; }
+
+            const btn = document.getElementById('loginBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الدخول...';
+
+            try {
+                const emailKey = email.replace(/\./g, '_').replace(/\@/g, '_at_');
+                const userSnap = await get(ref(db, 'users/' + emailKey));
+                
+                if (!userSnap.exists()) {
+                    showToast('البريد غير مسجل');
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-arrow-right-to-bracket"></i> تسجيل الدخول';
+                    return;
+                }
+
+                const userData = userSnap.val();
+                if (btoa(password) !== userData.password) {
+                    showToast('كلمة المرور غير صحيحة');
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-arrow-right-to-bracket"></i> تسجيل الدخول';
+                    return;
+                }
+
+                const currentDeviceId = getDeviceId();
+                if (userData.deviceId && userData.deviceId !== currentDeviceId) {
+                    showToast('❌ هذا الحساب مرتبط بهاتف آخر');
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-arrow-right-to-bracket"></i> تسجيل الدخول';
+                    return;
+                }
+
+                currentUser = { 
+                    id: userData.id, 
+                    name: userData.name, 
+                    email: userData.email,
+                    phone: userData.phone || null,
+                    avatar: userData.avatar || LOGO_URL,
+                    deviceId: userData.deviceId
+                };
+                localStorage.setItem('user', JSON.stringify(currentUser));
+                
+                await registerDevice();
+                
+                showToast('👋 مرحباً ' + userData.name);
+                showMainScreen();
+            } catch (e) {
+                showToast('خطأ: ' + e.message);
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-arrow-right-to-bracket"></i> تسجيل الدخول';
+            }
+        };
+
+        window.showLinkDeviceFromSidebar = function() {
+            toggleSidebar();
+            document.getElementById('mainScreen').classList.add('hidden');
+            document.getElementById('linkDeviceScreen').classList.remove('hidden');
+        };
+
+        window.hideLinkDevice = function() {
+            document.getElementById('linkDeviceScreen').classList.add('hidden');
+            document.getElementById('mainScreen').classList.remove('hidden');
+        };
+        
+        window.scrollToShortener = function() {
+            const section = document.getElementById('shortenerSection');
+            if (section.style.display === 'none' || section.style.display === '') {
+                section.style.display = 'block';
+                section.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                section.style.display = 'none';
+            }
+        };
+
+        // جهات الاتصال - الوصول إلى أرقام هاتف المستخدم
+        window.loadContactsFromDevice = async function() {
+            if (!('contacts' in navigator)) {
+                showToast('عذراً، متصفحك لا يدعم الوصول إلى جهات الاتصال');
+                return;
+            }
+            
+            try {
+                const contacts = await navigator.contacts.select(['name', 'tel'], { multiple: true });
+                
+                if (!contacts || contacts.length === 0) {
+                    document.getElementById('contactsEmpty').classList.remove('hidden');
+                    document.getElementById('contactsList').innerHTML = '';
+                    document.getElementById('contactsModal').classList.add('active');
+                    return;
+                }
+                
+                const contactsList = document.getElementById('contactsList');
+                contactsList.innerHTML = '';
+                document.getElementById('contactsEmpty').classList.add('hidden');
+                
+                for (const contact of contacts) {
+                    const name = contact.name?.[0] || 'بدون اسم';
+                    const phoneNumbers = contact.tel || [];
+                    
+                    for (const phone of phoneNumbers) {
+                        const usersRef = ref(db, 'users');
+                        const snapshot = await get(usersRef);
+                        let foundUser = null;
+                        
+                        if (snapshot.exists()) {
+                            const users = snapshot.val();
+                            for (const key in users) {
+                                if (users[key].phone && users[key].phone.replace(/\s/g, '') === phone.replace(/\s/g, '')) {
+                                    foundUser = users[key];
+                                    foundUser.userId = key;
+                                    break;
+                                }
+                            }
+                        }
+                        
+                        const div = document.createElement('div');
+                        div.className = 'contact-item';
+                        div.innerHTML = `
+                            <div class="contact-icon">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="contact-info">
+                                <div class="contact-name">${escapeHtml(name)}</div>
+                                <div class="contact-phone">${phone}</div>
+                            </div>
+                            ${foundUser ? 
+                                `<button class="btn" style="width: auto; padding: 8px 16px; background: var(--green);" onclick="startChatWithContact('${foundUser.userId}', '${escapeHtml(foundUser.name)}')">
+                                    <i class="fas fa-comment"></i> مراسلة
+                                </button>` :
+                                `<button class="btn btn-outline" style="width: auto; padding: 8px 16px;" onclick="copyPhoneNumber('${phone}')">
+                                    <i class="far fa-copy"></i> نسخ الرقم
+                                </button>`
+                            }
+                        `;
+                        contactsList.appendChild(div);
+                    }
+                }
+                
+                document.getElementById('contactsModal').classList.add('active');
+                
+            } catch (error) {
+                console.error('Error accessing contacts:', error);
+                showToast('حدث خطأ أثناء الوصول إلى جهات الاتصال');
+            }
+        };
+        
+        window.startChatWithContact = function(userId, userName) {
+            closeContactsModal();
+            openChat(userId, userName);
+        };
+        
+        window.copyPhoneNumber = function(phone) {
+            navigator.clipboard?.writeText(phone).then(() => showToast('📋 تم نسخ الرقم: ' + phone));
+        };
+        
+        window.closeContactsModal = function() {
+            document.getElementById('contactsModal').classList.remove('active');
+        };
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // وظائف المتصفح
+        window.showBrowser = function() {
+            document.getElementById('mainScreen').classList.add('hidden');
+            document.getElementById('browserScreen').classList.remove('hidden');
+            loadAllSites();
+        };
+
+        window.hideBrowser = function() {
+            document.getElementById('browserScreen').classList.add('hidden');
+            document.getElementById('mainScreen').classList.remove('hidden');
+        };
+
+        window.refreshBrowser = function() {
+            loadAllSites();
+        };
+
+        function loadAllSites() {
+            const sitesRef = ref(db, 'hosted_sites');
+            
+            onValue(sitesRef, (snapshot) => {
+                document.getElementById('browserLoading').style.display = 'none';
+                
+                if (snapshot.exists()) {
+                    const sites = snapshot.val();
+                    allSites = Object.values(sites);
+                    
+                    if (allSites.length === 0) {
+                        document.getElementById('browserEmptyState').classList.remove('hidden');
+                        document.getElementById('browserResults').innerHTML = '';
+                        return;
+                    }
+                    
+                    document.getElementById('browserEmptyState').classList.add('hidden');
+                    displaySites(allSites);
+                } else {
+                    document.getElementById('browserEmptyState').classList.remove('hidden');
+                    document.getElementById('browserResults').innerHTML = '';
+                }
+            });
+        }
+
+        function displaySites(sites) {
+            const resultsDiv = document.getElementById('browserResults');
+            resultsDiv.innerHTML = '';
+            
+            let filteredSites = [...sites];
+            
+            if (currentFilter === 'trending') {
+                filteredSites.sort((a, b) => (b.views || 0) - (a.views || 0));
+            } else if (currentFilter === 'recent') {
+                filteredSites.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+            } else if (currentFilter === 'popular') {
+                filteredSites.sort((a, b) => {
+                    const ratingA = a.avgRating || 0;
+                    const ratingB = b.avgRating || 0;
+                    if (ratingB !== ratingA) return ratingB - ratingA;
+                    return (b.views || 0) - (a.views || 0);
+                });
+            }
+            
+            if (currentFilter === 'all' && filteredSites.length > 0) {
+                const trendingSites = [...filteredSites].sort((a, b) => (b.views || 0) - (a.views || 0)).slice(0, 4);
+                
+                const trendingSection = document.createElement('div');
+                trendingSection.className = 'trending-section';
+                trendingSection.innerHTML = `
+                    <div class="section-header">
+                        <h3><i class="fas fa-fire" style="color: var(--orange);"></i> الأكثر زيارة</h3>
+                        <span class="view-all" onclick="setBrowserFilter('trending')">عرض الكل <i class="fas fa-chevron-left"></i></span>
+                    </div>
+                    <div class="trending-grid" id="trendingGrid"></div>
+                `;
+                resultsDiv.appendChild(trendingSection);
+                
+                const trendingGrid = trendingSection.querySelector('#trendingGrid');
+                trendingSites.forEach(site => {
+                    const card = createTrendingCard(site);
+                    trendingGrid.appendChild(card);
+                });
+            }
+            
+            const recentSites = [...filteredSites].sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+            
+            const recentSection = document.createElement('div');
+            recentSection.className = 'recent-section';
+            recentSection.innerHTML = `
+                <div class="section-header">
+                    <h3><i class="fas fa-clock" style="color: var(--blue);"></i> ${currentFilter === 'all' ? 'جميع المواقع' : 'نتائج البحث'}</h3>
+                </div>
+                <div id="recentSitesList"></div>
+            `;
+            resultsDiv.appendChild(recentSection);
+            
+            const recentList = recentSection.querySelector('#recentSitesList');
+            
+            if (recentSites.length === 0) {
+                recentList.innerHTML = '<div class="empty-state"><i class="fas fa-search"></i><p>لا توجد نتائج</p></div>';
+            } else {
+                recentSites.forEach((site, index) => {
+                    const item = createBrowserItem(site, index);
+                    recentList.appendChild(item);
+                });
+            }
+        }
+
+        function createTrendingCard(site) {
+            const div = document.createElement('div');
+            div.className = 'trending-card';
+            div.onclick = () => visitSite(site.slug);
+            
+            const firstLetter = site.name ? site.name.charAt(0).toUpperCase() : 'W';
+            
+            div.innerHTML = `
+                <div class="trending-icon">
+                    <span>${firstLetter}</span>
+                </div>
+                <div class="trending-title">${site.name || 'موقع بدون اسم'}</div>
+                <div class="trending-url">${site.slug}</div>
+            `;
+            
+            return div;
+        }
+
+        function createBrowserItem(site, index) {
+            const div = document.createElement('div');
+            div.className = 'browser-item';
+            div.style.animationDelay = (index * 0.05) + 's';
+            
+            const createdAt = new Date(site.created_at).toLocaleDateString('ar-EG');
+            const firstLetter = site.name ? site.name.charAt(0).toUpperCase() : 'W';
+            const views = site.views || 0;
+            const avgRating = site.avgRating || 0;
+            const thumbnailStyle = site.thumbnail ? `background-image: url('${site.thumbnail}'); background-size: cover;` : '';
+            
+            div.innerHTML = `
+                <div class="browser-thumbnail" style="${thumbnailStyle}">
+                    ${!site.thumbnail ? `<span>${firstLetter}</span>` : ''}
+                </div>
+                <div class="browser-info">
+                    <div class="browser-title">
+                        ${site.name || 'موقع بدون اسم'}
+                        ${site.featured ? '<i class="fas fa-star" style="color: var(--orange); font-size: 12px;"></i>' : ''}
+                        <div class="rating-stars" style="margin-right: auto;" onclick="event.stopPropagation()">
+                            ${renderRatingStars(site.slug, avgRating)}
+                        </div>
+                    </div>
+                    <div class="browser-url">/${site.slug}</div>
+                    <div class="browser-description">${site.description || 'موقع مميز على منصة elgoharyX'}</div>
+                    <div class="browser-meta">
+                        <span><i class="fas fa-user"></i> ${site.created_by_name || 'مستخدم'}</span>
+                        <span><i class="fas fa-calendar"></i> ${createdAt}</span>
+                        <span><i class="fas fa-eye"></i> ${views}</span>
+                        <span><i class="fas fa-star"></i> ${avgRating.toFixed(1)}</span>
+                    </div>
+                    <div class="browser-actions">
+                        <div class="browser-btn visit" onclick="visitSite('${site.slug}')">
+                            <i class="fas fa-external-link-alt"></i>
+                            زيارة
+                        </div>
+                        <div class="browser-btn" onclick="copyBrowserSiteUrl('${site.slug}')">
+                            <i class="far fa-copy"></i>
+                            نسخ
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            return div;
+        }
+
+        function renderRatingStars(siteSlug, currentRating) {
+            let starsHtml = '';
+            for (let i = 1; i <= 5; i++) {
+                starsHtml += `<i class="fas fa-star rating-star ${i <= currentRating ? 'active' : ''}" data-value="${i}" onclick="rateSite('${siteSlug}', ${i})"></i>`;
+            }
+            return starsHtml;
+        }
+
+        window.rateSite = async function(slug, rating) {
+            if (!currentUser) {
+                showToast('سجل الدخول لتقييم الموقع');
+                return;
+            }
+            try {
+                const slugSnap = await get(ref(db, 'hosted_sites_slugs/' + slug));
+                if (!slugSnap.exists()) return;
+                const projectId = slugSnap.val();
+                const ratingRef = ref(db, `hosted_sites/${projectId}/ratings/${currentUser.id}`);
+                await set(ratingRef, rating);
+                
+                const ratingsSnap = await get(ref(db, `hosted_sites/${projectId}/ratings`));
+                let total = 0, count = 0;
+                if (ratingsSnap.exists()) {
+                    const ratings = ratingsSnap.val();
+                    for (let key in ratings) {
+                        total += ratings[key];
+                        count++;
+                    }
+                }
+                const avg = count > 0 ? total / count : 0;
+                await update(ref(db, `hosted_sites/${projectId}`), { avgRating: avg });
+                showToast(`تم التقييم ${rating} نجوم`);
+                loadAllSites();
+            } catch(e) { showToast('فشل التقييم'); }
+        };
+
+        window.visitSite = async function(slug) {
+            try {
+                const slugSnap = await get(ref(db, 'hosted_sites_slugs/' + slug));
+                if (slugSnap.exists()) {
+                    const projectId = slugSnap.val();
+                    const siteRef = ref(db, 'hosted_sites/' + projectId);
+                    const snap = await get(siteRef);
+                    if (snap.exists()) {
+                        const currentViews = snap.val().views || 0;
+                        await update(siteRef, { views: currentViews + 1 });
+                    }
+                }
+            } catch (e) {}
+            
+            window.open(`${location.origin}${location.pathname}?site=${slug}`, '_blank');
+        };
+
+        window.copyBrowserSiteUrl = function(slug) {
+            const url = `${location.origin}${location.pathname}?site=${slug}`;
+            navigator.clipboard?.writeText(url).then(() => showToast('📋 تم نسخ الرابط'));
+        };
+
+        window.setBrowserFilter = function(filter) {
+            currentFilter = filter;
+            document.querySelectorAll('.filter-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            if (event && event.target) {
+                event.target.closest('.filter-tab').classList.add('active');
+            }
+            displaySites(allSites);
+        };
+
+        window.handleBrowserSearch = function(event) {
+            const searchTerm = document.getElementById('browserSearchInput').value.trim().toLowerCase();
+            
+            if (searchTimeout) clearTimeout(searchTimeout);
+            
+            searchTimeout = setTimeout(() => {
+                if (searchTerm === '') {
+                    displaySites(allSites);
+                    document.getElementById('clearSearchBtn').style.opacity = '0.5';
+                } else {
+                    document.getElementById('clearSearchBtn').style.opacity = '1';
+                    const filtered = allSites.filter(site => 
+                        (site.name && site.name.toLowerCase().includes(searchTerm)) ||
+                        (site.slug && site.slug.toLowerCase().includes(searchTerm)) ||
+                        (site.description && site.description.toLowerCase().includes(searchTerm)) ||
+                        (site.created_by_name && site.created_by_name.toLowerCase().includes(searchTerm))
+                    );
+                    displaySites(filtered);
+                }
+            }, 300);
+        };
+
+        window.clearBrowserSearch = function() {
+            document.getElementById('browserSearchInput').value = '';
+            document.getElementById('clearSearchBtn').style.opacity = '0.5';
+            displaySites(allSites);
+        };
+
+        // وظائف المنتدى والمحادثة
+        window.showForum = function() {
+            document.getElementById('mainScreen').classList.add('hidden');
+            document.getElementById('forumScreen').classList.remove('hidden');
+            loadPosts();
+        };
+
+        window.hideForum = function() {
+            document.getElementById('forumScreen').classList.add('hidden');
+            document.getElementById('mainScreen').classList.remove('hidden');
+        };
+
+        window.showCreatePostModal = function() {
+            document.getElementById('createPostModal').classList.add('active');
+            document.getElementById('postContent').value = '';
+            document.getElementById('postImageUrl').value = '';
+        };
+
+        window.closeCreatePostModal = function() {
+            document.getElementById('createPostModal').classList.remove('active');
+        };
+
+        window.createPost = async function() {
+            const content = document.getElementById('postContent').value.trim();
+            const imageUrl = document.getElementById('postImageUrl').value.trim();
+
+            if (!content) {
+                showToast('اكتب محتوى المنشور');
+                return;
+            }
+
+            try {
+                const postsRef = ref(db, 'forum_posts');
+                const newPostRef = push(postsRef);
+                
+                const postData = {
+                    id: newPostRef.key,
+                    content: content,
+                    imageUrl: imageUrl || null,
+                    authorId: currentUser.id,
+                    authorName: currentUser.name,
+                    authorAvatar: currentUser.avatar || LOGO_URL,
+                    createdAt: Date.now(),
+                    likes: {},
+                    comments: {}
+                };
+
+                await set(newPostRef, postData);
+                
+                closeCreatePostModal();
+                showToast('✅ تم نشر المنشور');
+                loadPosts();
+            } catch (e) {
+                showToast('خطأ في النشر');
+            }
+        };
+
+        function loadPosts() {
+            const postsRef = ref(db, 'forum_posts');
+            const postsQuery = query(postsRef, orderByChild('createdAt'), limitToLast(50));
+            
+            onValue(postsQuery, (snapshot) => {
+                document.getElementById('forumLoading').style.display = 'none';
+                const listDiv = document.getElementById('postsList');
+                listDiv.innerHTML = '';
+
+                if (snapshot.exists()) {
+                    const posts = snapshot.val();
+                    const postIds = Object.keys(posts).reverse();
+                    
+                    if (postIds.length === 0) {
+                        document.getElementById('forumEmptyState').classList.remove('hidden');
+                        return;
+                    }
+                    
+                    document.getElementById('forumEmptyState').classList.add('hidden');
+                    
+                    postIds.forEach((postId, index) => {
+                        const post = posts[postId];
+                        const likesCount = post.likes ? Object.keys(post.likes).length : 0;
+                        const commentsCount = post.comments ? Object.keys(post.comments).length : 0;
+                        const isLiked = post.likes && post.likes[currentUser.id];
+                        const postDate = new Date(post.createdAt).toLocaleString('ar-EG');
+                        
+                        const div = document.createElement('div');
+                        div.className = 'post-item';
+                        div.style.animationDelay = (index * 0.05) + 's';
+                        div.innerHTML = `
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div class="profile-header" onclick="showUserActions('${post.authorId}', '${post.authorName}')">
+                                    <img src="${post.authorAvatar}" class="post-avatar" alt="${post.authorName}">
+                                    <div>
+                                        <div class="post-author">${post.authorName}</div>
+                                        <div class="post-time">${postDate}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post-content">${post.content.replace(/\n/g, '<br>')}</div>
+                            ${post.imageUrl ? `<img src="${post.imageUrl}" class="post-image" alt="صورة المنشور" onerror="this.style.display='none'">` : ''}
+                            <div class="post-actions">
+                                <div class="post-action-btn ${isLiked ? 'liked' : ''}" onclick="toggleLike('${postId}')">
+                                    <i class="${isLiked ? 'fas' : 'far'} fa-heart"></i>
+                                    <span>${likesCount}</span>
+                                </div>
+                                <div class="post-action-btn" onclick="showComments('${postId}')">
+                                    <i class="far fa-comment"></i>
+                                    <span>${commentsCount}</span>
+                                </div>
+                                ${post.authorId === currentUser.id ? `
+                                <div class="post-action-btn" onclick="deletePost('${postId}')">
+                                    <i class="far fa-trash-alt"></i>
+                                </div>
+                                ` : ''}
+                            </div>
+                        `;
+                        listDiv.appendChild(div);
+                    });
+                } else {
+                    document.getElementById('forumEmptyState').classList.remove('hidden');
+                }
+            });
+        }
+
+        window.toggleLike = async function(postId) {
+            const likeRef = ref(db, `forum_posts/${postId}/likes/${currentUser.id}`);
+            const snap = await get(likeRef);
+            
+            if (snap.exists()) {
+                await remove(likeRef);
+            } else {
+                await set(likeRef, true);
+            }
+        };
+
+        window.deletePost = async function(postId) {
+            if (!confirm('هل أنت متأكد من حذف المنشور؟')) return;
+            
+            try {
+                await remove(ref(db, 'forum_posts/' + postId));
+                showToast('🗑️ تم حذف المنشور');
+            } catch (e) {
+                showToast('فشل الحذف');
+            }
+        };
+
+        window.showComments = function(postId) {
+            currentPostId = postId;
+            document.getElementById('commentsModal').classList.add('active');
+            document.getElementById('commentInput').value = '';
+            loadComments(postId);
+        };
+
+        window.closeCommentsModal = function() {
+            document.getElementById('commentsModal').classList.remove('active');
+            currentPostId = null;
+        };
+
+        function loadComments(postId) {
+            const commentsRef = ref(db, `forum_posts/${postId}/comments`);
+            
+            onValue(commentsRef, (snapshot) => {
+                document.getElementById('commentsLoading').style.display = 'none';
+                const listDiv = document.getElementById('commentsList');
+                listDiv.innerHTML = '';
+
+                if (snapshot.exists()) {
+                    const comments = snapshot.val();
+                    const commentIds = Object.keys(comments).reverse();
+                    
+                    commentIds.forEach(commentId => {
+                        const comment = comments[commentId];
+                        const commentDate = new Date(comment.createdAt).toLocaleString('ar-EG');
+                        
+                        const div = document.createElement('div');
+                        div.className = 'comment-item';
+                        div.innerHTML = `
+                            <img src="${comment.authorAvatar}" class="comment-avatar" alt="${comment.authorName}">
+                            <div class="comment-content">
+                                <div class="comment-author">${comment.authorName}</div>
+                                <div class="comment-text">${comment.content}</div>
+                                <div class="comment-time">${commentDate}</div>
+                            </div>
+                        `;
+                        listDiv.appendChild(div);
+                    });
+                } else {
+                    listDiv.innerHTML = '<p style="text-align: center; color: var(--text-secondary); padding: 20px;">لا توجد تعليقات بعد</p>';
+                }
+            });
+        }
+
+        window.addComment = async function() {
+            const content = document.getElementById('commentInput').value.trim();
+            
+            if (!content) {
+                showToast('اكتب تعليقاً');
+                return;
+            }
+            
+            if (!currentPostId) return;
+            
+            try {
+                const commentsRef = ref(db, `forum_posts/${currentPostId}/comments`);
+                const newCommentRef = push(commentsRef);
+                
+                await set(newCommentRef, {
+                    id: newCommentRef.key,
+                    content: content,
+                    authorId: currentUser.id,
+                    authorName: currentUser.name,
+                    authorAvatar: currentUser.avatar || LOGO_URL,
+                    createdAt: Date.now()
+                });
+                
+                document.getElementById('commentInput').value = '';
+                showToast('✅ تم إضافة التعليق');
+            } catch (e) {
+                showToast('خطأ في إضافة التعليق');
+            }
+        };
+
+        // Friend System Functions
+        async function checkFriendship(userId) {
+            if (!currentUser) return false;
+            const friendRef = ref(db, `friends/${currentUser.id}/${userId}`);
+            const snap = await get(friendRef);
+            return snap.exists();
+        }
+
+        window.showUserActions = async function(userId, userName) {
+            if (userId === currentUser.id) {
+                showToast('هذا أنت');
+                return;
+            }
+            
+            selectedUserId = userId;
+            selectedUserName = userName;
+            
+            const isFriend = await checkFriendship(userId);
+            const isRequestSent = await checkFriendRequestSent(userId);
+            
+            document.getElementById('userActionTitle').textContent = `${userName}`;
+            const buttonsDiv = document.getElementById('userActionButtons');
+            buttonsDiv.innerHTML = '';
+            
+            if (isFriend) {
+                buttonsDiv.innerHTML = `
+                    <div class="user-action-btn" style="background: var(--blue); color: white;" onclick="startChatWithUser()">
+                        <i class="fas fa-comment"></i> مراسلة
+                    </div>
+                    <div class="user-action-btn" style="background: var(--orange); color: white;" onclick="viewFriendPostsFromModal()">
+                        <i class="fas fa-newspaper"></i> المنشورات
+                    </div>
+                `;
+            } else if (isRequestSent) {
+                buttonsDiv.innerHTML = `
+                    <div class="user-action-btn" style="background: var(--text-secondary); color: white;">
+                        <i class="fas fa-clock"></i> طلب مرسل
+                    </div>
+                `;
+            } else {
+                buttonsDiv.innerHTML = `
+                    <div class="user-action-btn" style="background: var(--green); color: white;" onclick="sendFriendRequestFromModal()">
+                        <i class="fas fa-user-plus"></i> إرسال طلب صداقة
+                    </div>
+                `;
+            }
+            
+            document.getElementById('userActionModal').classList.add('active');
+        };
+        
+        async function checkFriendRequestSent(toUserId) {
+            const requestId = `${currentUser.id}_${toUserId}`;
+            const requestRef = ref(db, `friend_requests/${toUserId}/${requestId}`);
+            const snap = await get(requestRef);
+            return snap.exists() && snap.val().status === 'pending';
+        }
+        
+        window.sendFriendRequestFromModal = async function() {
+            await sendFriendRequest(selectedUserId, selectedUserName);
+            closeUserActionModal();
+        };
+        
+        window.startChatWithUser = async function() {
+            const isFriend = await checkFriendship(selectedUserId);
+            if (!isFriend) {
+                showToast('لا يمكنك المراسلة إلا بعد قبول طلب الصداقة');
+                return;
+            }
+            closeUserActionModal();
+            openChat(selectedUserId, selectedUserName);
+        };
+        
+        window.viewFriendPostsFromModal = async function() {
+            closeUserActionModal();
+            await viewFriendPosts(selectedUserId, selectedUserName);
+        };
+        
+        window.closeUserActionModal = function() {
+            document.getElementById('userActionModal').classList.remove('active');
+            selectedUserId = null;
+        };
+
+        async function sendFriendRequest(toUserId, toUserName) {
+            try {
+                const requestId = `${currentUser.id}_${toUserId}`;
+                const requestRef = ref(db, `friend_requests/${toUserId}/${requestId}`);
+                const existing = await get(requestRef);
+                if (existing.exists()) {
+                    showToast('تم إرسال طلب سابقاً');
+                    return;
+                }
+                
+                await set(requestRef, {
+                    from: currentUser.id,
+                    fromName: currentUser.name,
+                    fromAvatar: currentUser.avatar,
+                    to: toUserId,
+                    toName: toUserName,
+                    status: 'pending',
+                    timestamp: Date.now()
+                });
+                showToast(`✅ تم إرسال طلب صداقة إلى ${toUserName}`);
+            } catch(e) {
+                showToast('فشل إرسال الطلب');
+            }
+        }
+
+        window.showFriendRequests = async function() {
+            toggleSidebar();
+            const requestsRef = ref(db, `friend_requests/${currentUser.id}`);
+            const snap = await get(requestsRef);
+            const container = document.getElementById('friendRequestsList');
+            const emptyDiv = document.getElementById('friendRequestsEmpty');
+            container.innerHTML = '';
+            
+            if (snap.exists()) {
+                emptyDiv.classList.add('hidden');
+                const requests = snap.val();
+                for (const [key, req] of Object.entries(requests)) {
+                    if (req.status === 'pending') {
+                        const div = document.createElement('div');
+                        div.className = 'friend-request-item';
+                        div.style.cssText = 'display: flex; align-items: center; gap: 12px; padding: 12px; border-bottom: 0.5px solid var(--border-color);';
+                        div.innerHTML = `
+                            <img src="${req.fromAvatar || LOGO_URL}" style="width: 50px; height: 50px; border-radius: 25px; object-fit: cover;">
+                            <div style="flex: 1;">
+                                <div style="font-weight: 600;">${req.fromName}</div>
+                                <div style="font-size: 12px; color: var(--text-secondary);">طلب صداقة</div>
+                            </div>
+                            <button class="btn" style="width: auto; padding: 8px 16px; background: var(--green);" onclick="acceptFriendRequest('${req.from}')">قبول</button>
+                            <button class="btn btn-outline" style="width: auto; padding: 8px 16px;" onclick="rejectFriendRequest('${req.from}')">رفض</button>
+                        `;
+                        container.appendChild(div);
+                    }
+                }
+            } else {
+                emptyDiv.classList.remove('hidden');
+            }
+            document.getElementById('friendRequestsModal').classList.add('active');
+        };
+
+        window.acceptFriendRequest = async function(fromUserId) {
+            try {
+                await update(ref(db, `friend_requests/${currentUser.id}/${fromUserId}_${currentUser.id}`), { status: 'accepted' });
+                await set(ref(db, `friends/${currentUser.id}/${fromUserId}`), true);
+                await set(ref(db, `friends/${fromUserId}/${currentUser.id}`), true);
+                showToast('✅ تم قبول الصديق');
+                showFriendRequests();
+                loadFriends();
+            } catch(e) { showToast('فشل القبول'); }
+        };
+
+        window.rejectFriendRequest = async function(fromUserId) {
+            try {
+                await remove(ref(db, `friend_requests/${currentUser.id}/${fromUserId}_${currentUser.id}`));
+                showToast('تم رفض الطلب');
+                showFriendRequests();
+            } catch(e) { showToast('فشل الرفض'); }
+        };
+
+        window.closeFriendRequestsModal = function() {
+            document.getElementById('friendRequestsModal').classList.remove('active');
+        };
+
+        function loadFriends() {
+            if (!currentUser) return;
+            const friendsRef = ref(db, `friends/${currentUser.id}`);
+            onValue(friendsRef, async (snapshot) => {
+                document.getElementById('friendsLoading').style.display = 'none';
+                const listDiv = document.getElementById('friendsList');
+                listDiv.innerHTML = '';
+                if (snapshot.exists()) {
+                    const friends = snapshot.val();
+                    const friendIds = Object.keys(friends);
+                    if (friendIds.length === 0) {
+                        document.getElementById('friendsEmptyState').classList.remove('hidden');
+                        return;
+                    }
+                    document.getElementById('friendsEmptyState').classList.add('hidden');
+                    for (const friendId of friendIds) {
+                        const userSnap = await get(ref(db, 'users/' + friendId));
+                        if (userSnap.exists()) {
+                            const friendData = userSnap.val();
+                            const div = document.createElement('div');
+                            div.className = 'friend-item';
+                            div.style.cssText = 'display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--bg-tertiary); border-radius: 14px; margin-bottom: 10px;';
+                            div.innerHTML = `
+                                <img src="${friendData.avatar || LOGO_URL}" style="width: 48px; height: 48px; border-radius: 24px; object-fit: cover;">
+                                <div style="flex: 1;">
+                                    <div style="font-weight: 600;">${friendData.name}</div>
+                                    <div style="font-size: 12px; color: var(--text-secondary);">${friendData.email}</div>
+                                </div>
+                                <div class="site-actions">
+                                    <div class="site-action-btn" onclick="openChat('${friendId}', '${friendData.name}')" title="مراسلة">
+                                        <i class="fas fa-comment"></i>
+                                    </div>
+                                    <div class="site-action-btn" onclick="viewFriendPosts('${friendId}', '${friendData.name}')" title="آخر المنشورات">
+                                        <i class="fas fa-newspaper"></i>
+                                    </div>
+                                </div>
+                            `;
+                            listDiv.appendChild(div);
+                        }
+                    }
+                } else {
+                    document.getElementById('friendsEmptyState').classList.remove('hidden');
+                }
+            });
+        }
+
+        window.viewFriendPosts = async function(userId, userName) {
+            const postsRef = ref(db, 'forum_posts');
+            const postsQuery = query(postsRef, orderByChild('createdAt'), limitToLast(20));
+            const snapshot = await get(postsQuery);
+            const container = document.getElementById('friendPostsList');
+            const emptyDiv = document.getElementById('friendPostsEmpty');
+            container.innerHTML = '';
+            document.getElementById('friendPostsTitle').textContent = `أحدث منشورات ${userName}`;
+            
+            if (snapshot.exists()) {
+                let found = false;
+                const posts = snapshot.val();
+                const postIds = Object.keys(posts).reverse();
+                for (const postId of postIds) {
+                    const post = posts[postId];
+                    if (post.authorId === userId) {
+                        found = true;
+                        const postDate = new Date(post.createdAt).toLocaleString('ar-EG');
+                        const div = document.createElement('div');
+                        div.className = 'post-item';
+                        div.innerHTML = `
+                            <div class="post-author">${post.authorName}</div>
+                            <div class="post-time">${postDate}</div>
+                            <div class="post-content">${post.content.substring(0, 150)}${post.content.length > 150 ? '...' : ''}</div>
+                            ${post.imageUrl ? `<img src="${post.imageUrl}" class="post-image" style="max-height: 150px;">` : ''}
+                        `;
+                        container.appendChild(div);
+                    }
+                }
+                if (!found) emptyDiv.classList.remove('hidden');
+                else emptyDiv.classList.add('hidden');
+            } else {
+                emptyDiv.classList.remove('hidden');
+            }
+            document.getElementById('friendPostsModal').classList.add('active');
+        };
+
+        window.closeFriendPostsModal = function() {
+            document.getElementById('friendPostsModal').classList.remove('active');
+        };
+
+        // Chat Functions
+        window.openChat = async function(userId, userName) {
+            const isFriend = await checkFriendship(userId);
+            if (!isFriend) {
+                showToast('لا يمكنك المراسلة إلا بعد قبول طلب الصداقة');
+                return;
+            }
+            if (userId === currentUser.id) {
+                showToast('لا يمكنك مراسلة نفسك');
+                return;
+            }
+            currentChatUserId = userId;
+            currentChatUserName = userName;
+            document.getElementById('chatUserName').textContent = userName;
+            document.getElementById('mainScreen').classList.add('hidden');
+            document.getElementById('forumScreen').classList.add('hidden');
+            document.getElementById('chatScreen').classList.remove('hidden');
+            loadChatMessages();
+        };
+
+        window.hideChatScreen = function() {
+            if (chatMessagesListener) {
+                chatMessagesListener();
+                chatMessagesListener = null;
+            }
+            document.getElementById('chatScreen').classList.add('hidden');
+            document.getElementById('mainScreen').classList.remove('hidden');
+            currentChatUserId = null;
+        };
+
+        function loadChatMessages() {
+            if (!currentChatUserId) return;
+            const chatId = [currentUser.id, currentChatUserId].sort().join('_');
+            const messagesRef = ref(db, `private_messages/${chatId}`);
+            
+            if (chatMessagesListener) chatMessagesListener();
+            
+            chatMessagesListener = onValue(messagesRef, (snapshot) => {
+                const container = document.getElementById('chatMessages');
+                container.innerHTML = '';
+                
+                if (snapshot.exists()) {
+                    const messages = snapshot.val();
+                    const messageList = Object.values(messages).sort((a, b) => a.timestamp - b.timestamp);
+                    
+                    messageList.forEach(msg => {
+                        const div = document.createElement('div');
+                        div.className = `message-bubble ${msg.from === currentUser.id ? 'message-sent' : 'message-received'}`;
+                        div.innerHTML = `
+                            <div>${escapeHtml(msg.content)}</div>
+                            <div class="message-time">${new Date(msg.timestamp).toLocaleTimeString()}</div>
+                        `;
+                        container.appendChild(div);
+                    });
+                    container.scrollTop = container.scrollHeight;
+                } else {
+                    container.innerHTML = '<div class="empty-state"><i class="fas fa-comments"></i><p>لا توجد رسائل بعد، ابدأ المحادثة!</p></div>';
+                }
+            });
+        }
+
+        window.sendChatMessage = async function() {
+            const content = document.getElementById('chatMessageInput').value.trim();
+            if (!content || !currentChatUserId) return;
+            
+            const isFriend = await checkFriendship(currentChatUserId);
+            if (!isFriend) {
+                showToast('لا يمكنك إرسال رسائل لهذا المستخدم');
+                hideChatScreen();
+                return;
+            }
+            
+            try {
+                const chatId = [currentUser.id, currentChatUserId].sort().join('_');
+                const msgData = {
+                    from: currentUser.id,
+                    fromName: currentUser.name,
+                    to: currentChatUserId,
+                    toName: currentChatUserName,
+                    content: content,
+                    timestamp: Date.now(),
+                    read: false
+                };
+                
+                await push(ref(db, `private_messages/${chatId}`), msgData);
+                document.getElementById('chatMessageInput').value = '';
+            } catch(e) {
+                showToast('فشل الإرسال');
+                console.error(e);
+            }
+        };
+        
+        // Delete conversation
+        window.deleteCurrentConversation = async function() {
+            if (!currentChatUserId) return;
+            if (!confirm(`هل أنت متأكد من حذف كل الرسائل مع ${currentChatUserName}؟`)) return;
+            
+            try {
+                const chatId = [currentUser.id, currentChatUserId].sort().join('_');
+                await remove(ref(db, `private_messages/${chatId}`));
+                showToast('🗑️ تم حذف المحادثة');
+                hideChatScreen();
+            } catch(e) {
+                showToast('فشل حذف المحادثة');
+            }
+        };
+        
+        window.deleteConversation = async function(userId, userName) {
+            if (!confirm(`هل أنت متأكد من حذف كل الرسائل مع ${userName}؟`)) return;
+            
+            try {
+                const chatId = [currentUser.id, userId].sort().join('_');
+                await remove(ref(db, `private_messages/${chatId}`));
+                showToast('🗑️ تم حذف المحادثة');
+                loadConversations();
+                loadMessages();
+            } catch(e) {
+                showToast('فشل حذف المحادثة');
+            }
+        };
+
+        // Conversations Drawer (المحادثات)
+        window.openConversationsDrawer = function() {
+            loadConversations();
+            document.getElementById('conversationsDrawer').classList.add('open');
+            document.getElementById('overlay').classList.add('active');
+        };
+
+        window.closeConversationsDrawer = function() {
+            document.getElementById('conversationsDrawer').classList.remove('open');
+            document.getElementById('overlay').classList.remove('active');
+        };
+
+        function loadConversations() {
+            if (!currentUser) return;
+            const messagesRef = ref(db, `private_messages`);
+            
+            if (conversationsListener) conversationsListener();
+            
+            conversationsListener = onValue(messagesRef, async (snapshot) => {
+                const container = document.getElementById('conversationsList');
+                const emptyDiv = document.getElementById('conversationsEmpty');
+                container.innerHTML = '';
+                const conversations = new Map();
+                
+                if (snapshot.exists()) {
+                    const allChats = snapshot.val();
+                    for (const [chatId, messages] of Object.entries(allChats)) {
+                        if (chatId.includes(currentUser.id)) {
+                            const ids = chatId.split('_');
+                            const otherId = ids[0] === currentUser.id ? ids[1] : ids[0];
+                            if (otherId && !conversations.has(otherId)) {
+                                const msgList = Object.values(messages);
+                                const lastMsg = msgList.sort((a,b) => b.timestamp - a.timestamp)[0];
+                                if (lastMsg) {
+                                    const isFriend = await checkFriendship(otherId);
+                                    if (isFriend) {
+                                        const userSnap = await get(ref(db, 'users/' + otherId));
+                                        if (userSnap.exists()) {
+                                            const user = userSnap.val();
+                                            conversations.set(otherId, { lastMsg, user });
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    if (conversations.size === 0) {
+                        emptyDiv.classList.remove('hidden');
+                        return;
+                    }
+                    emptyDiv.classList.add('hidden');
+                    
+                    const sorted = Array.from(conversations.entries()).sort((a,b) => b[1].lastMsg.timestamp - a[1].lastMsg.timestamp);
+                    
+                    for (const [otherId, data] of sorted) {
+                        const div = document.createElement('div');
+                        div.className = 'conversation-item';
+                        div.onclick = () => {
+                            closeConversationsDrawer();
+                            openChat(otherId, data.user.name);
+                        };
+                        div.innerHTML = `
+                            <img src="${data.user.avatar || LOGO_URL}" class="conversation-avatar">
+                            <div class="conversation-info">
+                                <div class="conversation-name">${data.user.name}</div>
+                                <div class="conversation-last-msg">${escapeHtml(data.lastMsg.content.substring(0, 50))}</div>
+                            </div>
+                            <div class="conversation-time">${new Date(data.lastMsg.timestamp).toLocaleTimeString()}</div>
+                            <div class="conversation-delete" onclick="event.stopPropagation(); deleteConversation('${otherId}', '${data.user.name}')">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        `;
+                        container.appendChild(div);
+                    }
+                } else {
+                    emptyDiv.classList.remove('hidden');
+                }
+            });
+        }
+
+        // Messages Drawer (الرسائل الخاصة)
+        window.openMessagesDrawer = function() {
+            loadMessages();
+            document.getElementById('messagesDrawer').classList.add('open');
+            document.getElementById('overlay').classList.add('active');
+        };
+
+        window.closeMessagesDrawer = function() {
+            document.getElementById('messagesDrawer').classList.remove('open');
+            document.getElementById('overlay').classList.remove('active');
+        };
+
+        function loadMessages() {
+            if (!currentUser) return;
+            const messagesRef = ref(db, `private_messages`);
+            
+            if (messagesListener) messagesListener();
+            
+            messagesListener = onValue(messagesRef, async (snapshot) => {
+                const container = document.getElementById('messagesList');
+                const emptyDiv = document.getElementById('messagesEmpty');
+                container.innerHTML = '';
+                const conversations = new Map();
+                
+                if (snapshot.exists()) {
+                    const allChats = snapshot.val();
+                    for (const [chatId, messages] of Object.entries(allChats)) {
+                        if (chatId.includes(currentUser.id)) {
+                            const ids = chatId.split('_');
+                            const otherId = ids[0] === currentUser.id ? ids[1] : ids[0];
+                            if (otherId && !conversations.has(otherId)) {
+                                const msgList = Object.values(messages);
+                                const lastMsg = msgList.sort((a,b) => b.timestamp - a.timestamp)[0];
+                                if (lastMsg) {
+                                    const isFriend = await checkFriendship(otherId);
+                                    if (isFriend) {
+                                        const userSnap = await get(ref(db, 'users/' + otherId));
+                                        if (userSnap.exists()) {
+                                            const user = userSnap.val();
+                                            const unreadCount = msgList.filter(m => m.to === currentUser.id && !m.read).length;
+                                            conversations.set(otherId, { lastMsg, user, unreadCount });
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    if (conversations.size === 0) {
+                        emptyDiv.classList.remove('hidden');
+                        return;
+                    }
+                    emptyDiv.classList.add('hidden');
+                    
+                    const sorted = Array.from(conversations.entries()).sort((a,b) => b[1].lastMsg.timestamp - a[1].lastMsg.timestamp);
+                    
+                    for (const [otherId, data] of sorted) {
+                        const div = document.createElement('div');
+                        div.className = 'conversation-item';
+                        div.onclick = async () => {
+                            // Mark as read
+                            const chatId = [currentUser.id, otherId].sort().join('_');
+                            const msgsRef = ref(db, `private_messages/${chatId}`);
+                            const snap = await get(msgsRef);
+                            if (snap.exists()) {
+                                const msgs = snap.val();
+                                for (const [msgId, msg] of Object.entries(msgs)) {
+                                    if (msg.to === currentUser.id && !msg.read) {
+                                        await update(ref(db, `private_messages/${chatId}/${msgId}`), { read: true });
+                                    }
+                                }
+                            }
+                            closeMessagesDrawer();
+                            openChat(otherId, data.user.name);
+                        };
+                        div.innerHTML = `
+                            <img src="${data.user.avatar || LOGO_URL}" class="conversation-avatar">
+                            <div class="conversation-info">
+                                <div class="conversation-name">${data.user.name}</div>
+                                <div class="conversation-last-msg">${escapeHtml(data.lastMsg.content.substring(0, 50))}</div>
+                            </div>
+                            <div class="conversation-time">${new Date(data.lastMsg.timestamp).toLocaleTimeString()}</div>
+                            ${data.unreadCount > 0 ? `<div class="conversation-unread"></div>` : ''}
+                            <div class="conversation-delete" onclick="event.stopPropagation(); deleteConversation('${otherId}', '${data.user.name}')">
+                                <i class="fas fa-trash-alt"></i>
+                            </div>
+                        `;
+                        container.appendChild(div);
+                    }
+                } else {
+                    emptyDiv.classList.remove('hidden');
+                }
+            });
+        }
+
+        // Dashboard Functions
+        window.showSiteDashboard = async function(siteId) {
+            currentDashboardSiteId = siteId;
+            const snap = await get(ref(db, 'hosted_sites/' + siteId));
+            if (snap.exists()) {
+                currentDashboardSiteData = snap.val();
+                document.getElementById('dashboardSiteName').textContent = currentDashboardSiteData.name;
+                document.getElementById('dashboardViews').textContent = currentDashboardSiteData.views || 0;
+                const avgRating = currentDashboardSiteData.avgRating || 0;
+                document.getElementById('dashboardRating').textContent = avgRating.toFixed(1);
+                document.getElementById('dashboardDate').textContent = new Date(currentDashboardSiteData.created_at).toLocaleDateString('ar-EG');
+                const url = `${location.origin}${location.pathname}?site=${currentDashboardSiteData.slug}`;
+                document.getElementById('dashboardSiteUrl').value = url;
+                document.getElementById('dashboardHtmlCode').value = currentDashboardSiteData.code;
+                
+                toggleSidebar();
+                document.getElementById('mainScreen').classList.add('hidden');
+                document.getElementById('siteDashboardScreen').classList.remove('hidden');
+            } else {
+                showToast('الموقع غير موجود');
+            }
+        };
+
+        window.hideSiteDashboard = function() {
+            document.getElementById('siteDashboardScreen').classList.add('hidden');
+            document.getElementById('mainScreen').classList.remove('hidden');
+            currentDashboardSiteId = null;
+            currentDashboardSiteData = null;
+        };
+
+        window.saveSiteEdits = async function() {
+            if (!currentDashboardSiteId || !currentDashboardSiteData) return;
+            const newCode = document.getElementById('dashboardHtmlCode').value;
+            try {
+                await update(ref(db, 'hosted_sites/' + currentDashboardSiteId), { code: newCode });
+                showToast('✅ تم حفظ التغييرات');
+            } catch(e) {
+                showToast('فشل الحفظ');
+            }
+        };
+
+        window.copyDashboardUrl = function() {
+            const url = document.getElementById('dashboardSiteUrl').value;
+            navigator.clipboard?.writeText(url).then(() => showToast('📋 تم نسخ الرابط'));
+        };
+
+        window.deleteSiteFromDashboard = async function() {
+            if (!confirm('هل أنت متأكد من حذف هذا الموقع نهائياً؟')) return;
+            if (!currentDashboardSiteId || !currentDashboardSiteData) return;
+            try {
+                await remove(ref(db, 'hosted_sites/' + currentDashboardSiteId));
+                await remove(ref(db, 'hosted_sites_slugs/' + currentDashboardSiteData.slug));
+                await remove(ref(db, 'user_sites/' + currentUser.id + '/' + currentDashboardSiteId));
+                showToast('🗑️ تم حذف الموقع');
+                hideSiteDashboard();
+                loadSites();
+                loadAllSites();
+            } catch(e) {
+                showToast('فشل الحذف');
+            }
+        };
+
+        // Profile Edit
+        window.showEditProfileModal = function() {
+            document.getElementById('editProfileName').value = currentUser.name;
+            document.getElementById('editProfileAvatar').value = currentUser.avatar || '';
+            document.getElementById('editProfileModal').classList.add('active');
+        };
+
+        window.closeEditProfileModal = function() {
+            document.getElementById('editProfileModal').classList.remove('active');
+        };
+
+        window.saveProfileChanges = async function() {
+            const newName = document.getElementById('editProfileName').value.trim();
+            const newAvatar = document.getElementById('editProfileAvatar').value.trim();
+            if (!newName) {
+                showToast('الاسم مطلوب');
+                return;
+            }
+            try {
+                const updates = { name: newName };
+                if (newAvatar) updates.avatar = newAvatar;
+                await update(ref(db, 'users/' + currentUser.id), updates);
+                currentUser.name = newName;
+                if (newAvatar) currentUser.avatar = newAvatar;
+                localStorage.setItem('user', JSON.stringify(currentUser));
+                showMainScreen();
+                closeEditProfileModal();
+                showToast('✅ تم تحديث الملف الشخصي');
+            } catch(e) {
+                showToast('فشل التحديث');
+            }
+        };
+
+        // وظائف مولد QR
+        window.showQRGenerator = function() {
+            document.getElementById('mainScreen').classList.add('hidden');
+            document.getElementById('qrGeneratorScreen').classList.remove('hidden');
+            document.getElementById('qrResult').classList.add('hidden');
+            document.getElementById('qrText').value = '';
+            document.getElementById('qrScanResult').style.display = 'none';
+        };
+
+        window.hideQRGenerator = function() {
+            document.getElementById('qrGeneratorScreen').classList.add('hidden');
+            document.getElementById('mainScreen').classList.remove('hidden');
+        };
+
+        window.generateQRCode = function() {
+            const text = document.getElementById('qrText').value.trim();
+            if (!text) { showToast('أدخل نصاً أو رابطاً'); return; }
+            currentQRText = text;
+            const qrDisplay = document.getElementById('qrCodeDisplay');
+            qrDisplay.innerHTML = '';
+            const isDark = document.body.classList.contains('dark-mode');
+            new QRCode(qrDisplay, {
+                text: text, width: 250, height: 250,
+                colorDark: isDark ? "#FFFFFF" : "#000000",
+                colorLight: isDark ? "#1C1C1E" : "#FFFFFF",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+            document.getElementById('qrResult').classList.remove('hidden');
+        };
+
+        window.downloadGeneratedQR = function() {
+            const canvas = document.querySelector('#qrCodeDisplay canvas');
+            if (canvas) {
+                const a = document.createElement('a');
+                a.download = 'elgoharyX-qr.png';
+                a.href = canvas.toDataURL('image/png');
+                a.click();
+                showToast('📸 تم حفظ QR Code');
+            }
+        };
+
+        window.copyQRText = function() {
+            if (currentQRText) {
+                navigator.clipboard?.writeText(currentQRText).then(() => showToast('📋 تم نسخ النص'));
+            }
+        };
+
+        window.scanQRFromImage = function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    const ctx = canvas.getContext('2d');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    ctx.drawImage(img, 0, 0);
+                    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                    if (window.jsQR) {
+                        const code = window.jsQR(imageData.data, canvas.width, canvas.height);
+                        if (code) {
+                            document.getElementById('scannedText').textContent = code.data;
+                            document.getElementById('qrScanResult').style.display = 'block';
+                            showToast('✅ تم قراءة QR Code بنجاح');
+                        } else { showToast('❌ لم يتم العثور على QR Code في الصورة'); }
+                    } else {
+                        loadJsQR().then(() => {
+                            const code = window.jsQR(imageData.data, canvas.width, canvas.height);
+                            if (code) {
+                                document.getElementById('scannedText').textContent = code.data;
+                                document.getElementById('qrScanResult').style.display = 'block';
+                                showToast('✅ تم قراءة QR Code بنجاح');
+                            } else { showToast('❌ لم يتم العثور على QR Code في الصورة'); }
+                        });
+                    }
+                };
+                img.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+            event.target.value = '';
+        };
+
+        // وظائف رفع الكود
+        window.showCodeHosting = function() {
+            document.getElementById('mainScreen').classList.add('hidden');
+            document.getElementById('codeHostingScreen').classList.remove('hidden');
+            document.getElementById('deployResult').classList.add('hidden');
+        };
+
+        window.hideCodeHosting = function() {
+            document.getElementById('codeHostingScreen').classList.add('hidden');
+            document.getElementById('mainScreen').classList.remove('hidden');
+        };
+
+        window.deploySite = async function() {
+            if (!currentUser) { showToast('يجب تسجيل الدخول أولاً'); return; }
+            const projectName = document.getElementById('projectName').value.trim();
+            const siteDescription = document.getElementById('siteDescription').value.trim();
+            const siteThumbnail = document.getElementById('siteThumbnail').value.trim();
+            let customSlug = document.getElementById('customSiteSlug').value.trim().toLowerCase();
+            const htmlCode = document.getElementById('htmlCode').value;
+            if (!projectName) { showToast('أدخل اسم المشروع'); return; }
+            if (!htmlCode) { showToast('أدخل كود HTML'); return; }
+            const btn = document.getElementById('deployBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الرفع...';
+            try {
+                if (customSlug) {
+                    customSlug = customSlug.replace(/[^a-z0-9-_]/g, '');
+                    if (customSlug.length < 3) { showToast('الرابط المخصص يجب أن يكون 3 أحرف على الأقل'); btn.disabled = false; btn.innerHTML = '<i class="fas fa-rocket"></i> رفع ونشر'; return; }
+                    const slugSnap = await get(ref(db, 'hosted_sites_slugs/' + customSlug));
+                    if (slugSnap.exists()) { showToast('الرابط المخصص مستخدم، اختر رابطاً آخر'); btn.disabled = false; btn.innerHTML = '<i class="fas fa-rocket"></i> رفع ونشر'; return; }
+                } else { customSlug = 'site_' + Date.now().toString(36) + '_' + Math.random().toString(36).substr(2, 4); }
+                const projectId = 'site_' + Date.now() + '_' + Math.random().toString(36).substr(2, 6);
+                const siteData = {
+                    id: projectId, name: projectName, description: siteDescription || 'موقع مميز على منصة elgoharyX',
+                    thumbnail: siteThumbnail || null, slug: customSlug, code: htmlCode,
+                    created_at: new Date().toISOString(), created_by: currentUser.id, created_by_name: currentUser.name,
+                    views: 0, likes: 0, featured: false, avgRating: 0, ratings: {}
+                };
+                await set(ref(db, 'hosted_sites/' + projectId), siteData);
+                await set(ref(db, 'hosted_sites_slugs/' + customSlug), projectId);
+                await set(ref(db, 'user_sites/' + currentUser.id + '/' + projectId), { name: projectName, slug: customSlug, created_at: new Date().toISOString() });
+                const siteUrl = `${location.origin}${location.pathname}?site=${customSlug}`;
+                currentSiteUrl = siteUrl;
+                document.getElementById('siteUrl').textContent = siteUrl;
+                document.getElementById('siteUrl').href = siteUrl;
+                document.getElementById('deployResult').classList.remove('hidden');
+                document.getElementById('projectName').value = '';
+                document.getElementById('siteDescription').value = '';
+                document.getElementById('siteThumbnail').value = '';
+                document.getElementById('customSiteSlug').value = '';
+                showToast('✅ تم رفع الموقع بنجاح!');
+                loadSites();
+                loadAllSites();
+            } catch (e) { showToast('خطأ في الرفع: ' + e.message); }
+            finally { btn.disabled = false; btn.innerHTML = '<i class="fas fa-rocket"></i> رفع ونشر'; }
+        };
+
+        window.copySiteUrl = function() { navigator.clipboard?.writeText(document.getElementById('siteUrl').textContent).then(() => showToast('📋 تم نسخ الرابط')); };
+        window.openSiteInNewTab = function() { window.open(currentSiteUrl, '_blank'); };
+
+        function loadSites() {
+            if (!currentUser) return;
+            const sitesRef = ref(db, 'user_sites/' + currentUser.id);
+            onValue(sitesRef, (snapshot) => {
+                document.getElementById('sitesLoading').style.display = 'none';
+                const listDiv = document.getElementById('sitesList');
+                listDiv.innerHTML = '';
+                if (snapshot.exists()) {
+                    const sites = snapshot.val();
+                    const siteIds = Object.keys(sites);
+                    if (siteIds.length === 0) { document.getElementById('sitesEmptyState').classList.remove('hidden'); return; }
+                    document.getElementById('sitesEmptyState').classList.add('hidden');
+                    siteIds.forEach((siteId, index) => {
+                        const site = sites[siteId];
+                        const createdAt = new Date(site.created_at).toLocaleDateString('ar-EG');
+                        const div = document.createElement('div');
+                        div.className = 'site-item';
+                        div.style.animationDelay = (index * 0.05) + 's';
+                        div.innerHTML = `
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <div class="site-icon"><i class="fas fa-globe"></i></div>
+                                <div class="site-info">
+                                    <div class="site-name">${site.name}</div>
+                                    <div class="site-details"><span class="dir-ltr" style="font-family: monospace;">/${site.slug}</span><span><i class="far fa-calendar"></i> ${createdAt}</span></div>
+                                </div>
+                            </div>
+                            <div class="site-actions" style="margin-top: 12px; justify-content: flex-end;">
+                                <div class="site-action-btn copy" onclick="copySiteUrlFromList('${site.slug}')" title="نسخ الرابط"><i class="far fa-copy"></i></div>
+                                <div class="site-action-btn open" onclick="openSiteFromList('${site.slug}')" title="فتح الموقع"><i class="fas fa-external-link-alt"></i></div>
+                                <div class="site-action-btn" onclick="showSiteDashboard('${siteId}')" title="لوحة التحكم" style="color: var(--blue);"><i class="fas fa-chart-line"></i></div>
+                                <div class="site-action-btn delete" onclick="deleteSite('${siteId}', '${site.slug}')" title="حذف"><i class="far fa-trash-alt"></i></div>
+                            </div>
+                        `;
+                        listDiv.appendChild(div);
+                    });
+                } else { document.getElementById('sitesEmptyState').classList.remove('hidden'); }
+            });
+        }
+
+        window.copySiteUrlFromList = function(slug) { navigator.clipboard?.writeText(`${location.origin}${location.pathname}?site=${slug}`).then(() => showToast('📋 تم نسخ الرابط')); };
+        window.openSiteFromList = function(slug) { window.open(`${location.origin}${location.pathname}?site=${slug}`, '_blank'); };
+        window.deleteSite = async function(siteId, slug) {
+            if (!confirm('هل أنت متأكد من حذف هذا الموقع؟')) return;
+            try {
+                await remove(ref(db, 'hosted_sites/' + siteId));
+                await remove(ref(db, 'hosted_sites_slugs/' + slug));
+                await remove(ref(db, 'user_sites/' + currentUser.id + '/' + siteId));
+                showToast('🗑️ تم حذف الموقع');
+                loadSites();
+                loadAllSites();
+            } catch(e) { showToast('فشل الحذف'); }
+        };
+
+        async function viewSite(slug) {
+            document.getElementById('authScreen')?.classList.add('hidden');
+            document.getElementById('mainScreen')?.classList.add('hidden');
+            document.getElementById('codeHostingScreen')?.classList.add('hidden');
+            document.getElementById('forumScreen')?.classList.add('hidden');
+            document.getElementById('browserScreen')?.classList.add('hidden');
+            document.getElementById('redirectScreen')?.classList.remove('hidden');
+            try {
+                const slugSnap = await get(ref(db, 'hosted_sites_slugs/' + slug));
+                if (!slugSnap.exists()) { document.getElementById('redirectStatus').textContent = 'الموقع غير موجود'; setTimeout(() => location.href = location.origin + location.pathname, 2000); return; }
+                const projectId = slugSnap.val();
+                const snap = await get(ref(db, 'hosted_sites/' + projectId));
+                if (snap.exists()) { const siteData = snap.val(); document.write(siteData.code); document.close(); }
+                else { document.getElementById('redirectStatus').textContent = 'الموقع غير موجود'; setTimeout(() => location.href = location.origin + location.pathname, 2000); }
+            } catch(e) { document.getElementById('redirectStatus').textContent = 'خطأ في تحميل الموقع'; setTimeout(() => location.href = location.origin + location.pathname, 2000); }
+        }
+
+        function loadDevices() {
+            if (!currentUser) return;
+            const devicesRef = ref(db, `users/${currentUser.id}/devices`);
+            onValue(devicesRef, (snapshot) => {
+                document.getElementById('devicesLoading').style.display = 'none';
+                const listDiv = document.getElementById('devicesList');
+                listDiv.innerHTML = '';
+                if (snapshot.exists()) {
+                    const devices = snapshot.val();
+                    const deviceIds = Object.keys(devices);
+                    if (deviceIds.length === 0) { document.getElementById('devicesEmptyState').classList.remove('hidden'); return; }
+                    document.getElementById('devicesEmptyState').classList.add('hidden');
+                    deviceIds.forEach((deviceId, index) => {
+                        const device = devices[deviceId];
+                        const isCurrent = deviceId === currentDeviceId;
+                        const lastActive = new Date(device.lastActive).toLocaleString('ar-EG', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit' });
+                        const div = document.createElement('div');
+                        div.className = 'device-item';
+                        div.style.animationDelay = (index * 0.05) + 's';
+                        div.innerHTML = `
+                            <div class="device-icon"><i class="${getDeviceIcon(device.deviceType)}"></i></div>
+                            <div class="device-info">
+                                <div class="device-name">${device.deviceName || getDeviceTypeName(device.deviceType)}${isCurrent ? '<span class="device-badge current" style="margin-right: 8px;">الحالي</span>' : ''}</div>
+                                <div class="device-details"><span><i class="fas fa-map-marker-alt"></i> ${device.location || 'غير معروف'}</span><span><i class="fas fa-clock"></i> ${lastActive}</span></div>
+                            </div>
+                            <div class="device-actions">
+                                <div class="device-action-btn edit" onclick="editDeviceName('${deviceId}', '${device.deviceName || ''}')"><i class="fas fa-pen"></i></div>
+                                ${!isCurrent ? `<div class="device-action-btn delete" onclick="deleteDevice('${deviceId}')"><i class="fas fa-trash-alt"></i></div>` : ''}
+                            </div>
+                        `;
+                        listDiv.appendChild(div);
+                    });
+                } else { document.getElementById('devicesEmptyState').classList.remove('hidden'); }
+            });
+        }
+
+        window.editDeviceName = function(deviceId, currentName) { editingDeviceId = deviceId; document.getElementById('editDeviceNameInput').value = currentName; document.getElementById('editDeviceModal').classList.add('active'); };
+        window.closeEditDeviceModal = function() { document.getElementById('editDeviceModal').classList.remove('active'); editingDeviceId = null; };
+        window.saveDeviceName = async function() {
+            const newName = document.getElementById('editDeviceNameInput').value.trim();
+            if (!newName) { showToast('أدخل اسم الجهاز'); return; }
+            try { await update(ref(db, `users/${currentUser.id}/devices/${editingDeviceId}`), { deviceName: newName }); showToast('✅ تم تحديث اسم الجهاز'); closeEditDeviceModal(); }
+            catch(e) { showToast('فشل التحديث'); }
+        };
+        window.deleteDevice = async function(deviceId) {
+            if (!confirm('هل أنت متأكد من حذف هذا الجهاز؟ لن يتمكن من الوصول للحساب.')) return;
+            try { await remove(ref(db, `users/${currentUser.id}/devices/${deviceId}`)); showToast('🗑️ تم حذف الجهاز'); }
+            catch(e) { showToast('فشل الحذف'); }
+        };
+
+        window.startQRScanner = async function() {
+            const scannerDiv = document.getElementById('qrScanner');
+            const video = document.getElementById('qrVideo');
+            const status = document.getElementById('scanStatus');
+            scannerDiv.style.display = 'block';
+            status.innerHTML = '<i class="fas fa-camera"></i> جاري تشغيل الكاميرا...';
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+                video.srcObject = stream;
+                await video.play();
+                status.innerHTML = '<i class="fas fa-qrcode"></i> جاري البحث عن QR Code...';
+                if ('BarcodeDetector' in window) {
+                    const detector = new BarcodeDetector({ formats: ['qr_code'] });
+                    const scan = async () => {
+                        if (scannerDiv.style.display === 'none') return;
+                        try { const barcodes = await detector.detect(video); if (barcodes.length > 0) { const data = barcodes[0].rawValue; if (data && data.includes('session:')) { const sessionId = data.split('session:')[1]; stopQRScanner(); linkDeviceBySession(sessionId); return; } } } catch(e) {}
+                        requestAnimationFrame(scan);
+                    };
+                    scan();
+                } else { await loadJsQR(); scanWithJsQR(video); }
+            } catch(e) { status.innerHTML = '<i class="fas fa-exclamation-triangle"></i> تعذر الوصول للكاميرا'; console.error(e); }
+        };
+
+        function loadJsQR() { return new Promise((resolve) => { if (window.jsQR) { resolve(); return; } const script = document.createElement('script'); script.src = 'https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js'; script.onload = resolve; document.head.appendChild(script); }); }
+        function scanWithJsQR(video) {
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const status = document.getElementById('scanStatus');
+            const scannerDiv = document.getElementById('qrScanner');
+            const scan = () => {
+                if (scannerDiv.style.display === 'none') return;
+                if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                    canvas.width = video.videoWidth;
+                    canvas.height = video.videoHeight;
+                    if (canvas.width > 0) {
+                        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+                        if (window.jsQR) {
+                            const code = window.jsQR(imageData.data, canvas.width, canvas.height);
+                            if (code && code.data) {
+                                const data = code.data;
+                                status.innerHTML = '<i class="fas fa-check-circle"></i> تم العثور على كود!';
+                                if (data.includes('session:')) { const sessionId = data.split('session:')[1]; stopQRScanner(); linkDeviceBySession(sessionId); return; }
+                            }
+                        }
+                    }
+                }
+                requestAnimationFrame(scan);
+            };
+            requestAnimationFrame(scan);
+        }
+
+        window.stopQRScanner = function() { const video = document.getElementById('qrVideo'); if (video.srcObject) { video.srcObject.getTracks().forEach(t => t.stop()); video.srcObject = null; } document.getElementById('qrScanner').style.display = 'none'; };
+        window.linkBySessionCode = function() { const code = document.getElementById('sessionCodeInput').value.trim().toUpperCase(); if (!code) { showToast('أدخل كود الجلسة'); return; } linkDeviceBySession(code); };
+        async function linkDeviceBySession(sessionId) {
+            if (!currentUser) { showToast('يجب تسجيل الدخول أولاً'); return; }
+            try {
+                const sessionRef = ref(db, 'pc_sessions/' + sessionId);
+                const snap = await get(sessionRef);
+                if (!snap.exists()) { document.getElementById('linkError').textContent = 'كود الجلسة غير صالح'; return; }
+                const session = snap.val();
+                if (session.status !== 'waiting') { document.getElementById('linkError').textContent = 'هذا الكود مستخدم بالفعل'; return; }
+                await update(sessionRef, { status: 'approved', userId: currentUser.id, userName: currentUser.name, approvedAt: Date.now() });
+                showToast('✅ تم ربط الجهاز بنجاح!'); hideLinkDevice(); document.getElementById('sessionCodeInput').value = ''; document.getElementById('linkError').textContent = '';
+            } catch(e) { document.getElementById('linkError').textContent = 'خطأ في الربط'; }
+        }
+
+        function generateSessionCode() { return Math.random().toString(36).substring(2, 8).toUpperCase(); }
+        function startPCSession() {
+            const sessionId = generateSessionCode();
+            document.getElementById('pcSessionId').textContent = 'الكود: ' + sessionId;
+            const qrDiv = document.getElementById('pcQrcode');
+            qrDiv.innerHTML = '';
+            new QRCode(qrDiv, { text: 'elgoharyX_session:' + sessionId, width: 220, height: 220, colorDark: "#000000", colorLight: "#ffffff" });
+            currentSessionRef = ref(db, 'pc_sessions/' + sessionId);
+            set(currentSessionRef, { sessionId, status: 'waiting', createdAt: Date.now() });
+            onDisconnect(currentSessionRef).remove();
+            if (sessionCheckInterval) clearInterval(sessionCheckInterval);
+            sessionCheckInterval = setInterval(async () => {
+                try {
+                    const snap = await get(currentSessionRef);
+                    if (!snap.exists()) { clearInterval(sessionCheckInterval); document.getElementById('pcWaitingStatus').innerHTML = '<i class="fas fa-times-circle"></i> انتهت الجلسة'; return; }
+                    const data = snap.val();
+                    if (data.status === 'approved' && data.userId) {
+                        clearInterval(sessionCheckInterval);
+                        document.getElementById('pcWaitingStatus').innerHTML = '<i class="fas fa-check-circle"></i> تم الربط!';
+                        const userSnap = await get(ref(db, 'users/' + data.userId));
+                        if (userSnap.exists()) {
+                            const userData = userSnap.val();
+                            currentUser = { id: userData.id, name: userData.name, email: userData.email, phone: userData.phone || null, avatar: userData.avatar || LOGO_URL };
+                            localStorage.setItem('user', JSON.stringify(currentUser));
+                            await remove(currentSessionRef);
+                            showMainScreen();
+                        }
+                    }
+                } catch(e) {}
+            }, 2000);
+        }
+
+        window.refreshPCSession = function() { if (currentSessionRef) { remove(currentSessionRef); } if (sessionCheckInterval) { clearInterval(sessionCheckInterval); } startPCSession(); };
+        window.logout = function() {
+            currentUser = null; localStorage.removeItem('user'); toggleSidebar();
+            document.getElementById('authScreen').classList.add('hidden'); document.getElementById('mainScreen').classList.add('hidden'); document.getElementById('linkDeviceScreen').classList.add('hidden'); document.getElementById('codeHostingScreen').classList.add('hidden'); document.getElementById('qrGeneratorScreen').classList.add('hidden'); document.getElementById('forumScreen').classList.add('hidden'); document.getElementById('browserScreen').classList.add('hidden'); document.getElementById('redirectScreen').classList.add('hidden'); document.getElementById('chatScreen').classList.add('hidden'); document.getElementById('siteDashboardScreen').classList.add('hidden'); closeConversationsDrawer(); closeMessagesDrawer();
+            if (conversationsListener) conversationsListener();
+            if (messagesListener) messagesListener();
+            if (chatMessagesListener) chatMessagesListener();
+            if (isPC) { document.getElementById('pcAuthContent').classList.remove('hidden'); document.getElementById('mobileAuthContent').classList.add('hidden'); document.getElementById('authScreen').classList.remove('hidden'); refreshPCSession(); }
+            else { document.getElementById('authScreen').classList.remove('hidden'); }
+            showToast('👋 تم تسجيل الخروج');
+        };
+
+        function showMainScreen() {
+            document.getElementById('authScreen').classList.add('hidden');
+            document.getElementById('linkDeviceScreen').classList.add('hidden');
+            document.getElementById('codeHostingScreen').classList.add('hidden');
+            document.getElementById('qrGeneratorScreen').classList.add('hidden');
+            document.getElementById('forumScreen').classList.add('hidden');
+            document.getElementById('browserScreen').classList.add('hidden');
+            document.getElementById('redirectScreen').classList.add('hidden');
+            document.getElementById('chatScreen').classList.add('hidden');
+            document.getElementById('siteDashboardScreen').classList.add('hidden');
+            document.getElementById('mainScreen').classList.remove('hidden');
+            document.getElementById('displayName').textContent = currentUser.name;
+            document.getElementById('displayEmail').textContent = currentUser.email;
+            document.getElementById('sidebarName').textContent = currentUser.name;
+            document.getElementById('sidebarEmail').textContent = currentUser.email;
+            document.getElementById('sidebarAvatar').src = currentUser.avatar || LOGO_URL;
+            document.getElementById('profileAvatar').src = currentUser.avatar || LOGO_URL;
+            loadDevices(); loadSites(); loadLinks(); loadFriends();
+        }
+
+        function loadLinks() {
+            if (!currentUser) return;
+            const linksRef = ref(db, 'user_links/' + currentUser.id);
+            onValue(linksRef, (snapshot) => {
+                document.getElementById('sidebarLoading').style.display = 'none';
+                const listDiv = document.getElementById('linksList');
+                listDiv.innerHTML = '';
+                if (snapshot.exists()) {
+                    const data = snapshot.val();
+                    const slugs = Object.keys(data);
+                    if (slugs.length === 0) { document.getElementById('emptyState').classList.remove('hidden'); return; }
+                    document.getElementById('emptyState').classList.add('hidden');
+                    slugs.forEach((slug, index) => {
+                        const item = data[slug];
+                        const div = document.createElement('div');
+                        div.className = 'link-item';
+                        div.style.animationDelay = (index * 0.05) + 's';
+                        div.innerHTML = `<div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;"><div class="link-icon"><i class="fas fa-link"></i></div><span class="dir-ltr" style="font-weight: 600;">${slug}</span></div><div class="dir-ltr" style="font-size: 13px; color: var(--text-secondary); margin-bottom: 12px;">${item.target}</div><div class="link-actions"><div class="link-btn btn-copy" onclick="copySidebarLink('${slug}')"><i class="far fa-copy"></i> نسخ</div><div class="link-btn btn-edit" onclick="editLink('${slug}', '${item.target}')"><i class="far fa-edit"></i> تعديل</div><div class="link-btn btn-delete" onclick="deleteLink('${slug}')"><i class="far fa-trash-alt"></i> حذف</div></div>`;
+                        listDiv.appendChild(div);
+                    });
+                } else { document.getElementById('emptyState').classList.remove('hidden'); }
+            });
+        }
+
+        window.copySidebarLink = function(slug) { navigator.clipboard?.writeText(`${location.origin}${location.pathname}?${slug}`).then(() => showToast('📋 تم النسخ')); };
+        window.deleteLink = async function(slug) { if (!confirm('هل أنت متأكد من حذف الرابط؟')) return; try { await remove(ref(db, 'links/' + slug)); await remove(ref(db, 'user_links/' + currentUser.id + '/' + slug)); showToast('🗑️ تم الحذف'); } catch(e) { showToast('فشل الحذف'); } };
+        window.editLink = async function(slug, oldUrl) { const newUrl = prompt('الرابط الجديد:', oldUrl); if (!newUrl || newUrl === oldUrl) return; try { await update(ref(db, 'links/' + slug), { target: newUrl }); await update(ref(db, 'user_links/' + currentUser.id + '/' + slug), { target: newUrl }); showToast('✏️ تم التحديث'); } catch(e) { showToast('فشل التحديث'); } };
+        window.toggleSidebar = function() { document.getElementById('sidebar').classList.toggle('open'); document.getElementById('overlay').classList.toggle('active'); };
+        window.copyLink = function() { navigator.clipboard?.writeText(document.getElementById('shortLink').innerText).then(() => showToast('📋 تم النسخ')); };
+        window.createLink = async function() {
+            if (!currentUser) { showToast('سجل الدخول أولاً'); return; }
+            const longUrl = document.getElementById('longUrl').value.trim();
+            let customSlug = document.getElementById('customSlug').value.trim();
+            if (!longUrl) { showToast('أدخل الرابط'); return; }
+            const btn = document.getElementById('shortenBtn');
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري الإنشاء...';
+            try {
+                if (!customSlug) customSlug = Math.random().toString(36).substring(2, 8);
+                const slugSnap = await get(ref(db, 'links/' + customSlug));
+                if (slugSnap.exists() && customSlug) { showToast('المعرف مستخدم، اختر معرفاً آخر'); btn.disabled = false; btn.innerHTML = '<i class="fas fa-scissors"></i> إنشاء رابط مختصر'; return; }
+                await set(ref(db, 'links/' + customSlug), { target: longUrl, created_at: new Date().toISOString(), created_by: currentUser.id });
+                await set(ref(db, 'user_links/' + currentUser.id + '/' + customSlug), { target: longUrl, created_at: new Date().toISOString() });
+                const shortUrl = `${location.origin}${location.pathname}?${customSlug}`;
+                document.getElementById('shortLink').innerText = shortUrl;
+                document.getElementById('shortLink').href = shortUrl;
+                document.getElementById('resultArea').classList.remove('hidden');
+                document.getElementById('longUrl').value = '';
+                document.getElementById('customSlug').value = '';
+                showToast('✅ تم إنشاء الرابط');
+            } catch(e) { showToast('خطأ: ' + e.message); }
+            finally { btn.disabled = false; btn.innerHTML = '<i class="fas fa-scissors"></i> إنشاء رابط مختصر'; }
+        };
+
+        async function redirect() {
+            const params = new URLSearchParams(location.search);
+            const slug = Array.from(params.keys())[0];
+            const siteSlug = params.get('site');
+            if (location.search.includes('?site=') || siteSlug) { const actualSiteSlug = siteSlug || location.search.substring(6); await viewSite(actualSiteSlug); return; }
+            if (!slug) return;
+            document.getElementById('authScreen')?.classList.add('hidden'); document.getElementById('mainScreen')?.classList.add('hidden'); document.getElementById('linkDeviceScreen')?.classList.add('hidden'); document.getElementById('codeHostingScreen')?.classList.add('hidden'); document.getElementById('qrGeneratorScreen')?.classList.add('hidden'); document.getElementById('forumScreen')?.classList.add('hidden'); document.getElementById('browserScreen')?.classList.add('hidden'); document.getElementById('redirectScreen')?.classList.remove('hidden');
+            try {
+                const snap = await get(ref(db, 'links/' + slug));
+                if (snap.exists()) { document.getElementById('redirectStatus').textContent = 'جاري التوجيه...'; setTimeout(() => location.replace(snap.val().target), 500); }
+                else { document.getElementById('redirectStatus').textContent = 'الرابط غير موجود'; setTimeout(() => location.href = location.origin + location.pathname, 2000); }
+            } catch(e) { document.getElementById('redirectStatus').textContent = 'خطأ'; setTimeout(() => location.href = location.origin + location.pathname, 2000); }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') { document.body.classList.add('dark-mode'); document.getElementById('themeIcon').innerHTML = '<i class="fas fa-sun"></i>'; document.getElementById('themeLabel').textContent = 'الوضع النهاري'; document.getElementById('themeToggleIcon').innerHTML = '<i class="fas fa-sun"></i>'; document.getElementById('themeToggleLabel').textContent = 'الوضع النهاري'; }
+            if (location.search.length > 1) { redirect(); return; }
+            isPC = detectPC();
+            if (isPC) { document.getElementById('mainContainer').classList.add('container-pc'); document.getElementById('pcAuthContent').classList.remove('hidden'); document.getElementById('mobileAuthContent').classList.add('hidden'); document.getElementById('linkDeviceMenuItem').classList.add('hidden'); startPCSession(); }
+            else { document.getElementById('pcAuthContent').classList.add('hidden'); document.getElementById('mobileAuthContent').classList.remove('hidden'); document.getElementById('linkDeviceMenuItem').classList.remove('hidden'); }
+            const saved = localStorage.getItem('user');
+            if (saved) { try { currentUser = JSON.parse(saved); if (!currentUser.avatar) currentUser.avatar = LOGO_URL; showMainScreen(); } catch(e) { localStorage.removeItem('user'); } }
+            document.getElementById('redirectScreen').classList.add('hidden');
+        });
+
+        window.addEventListener('beforeunload', () => { if (sessionCheckInterval) clearInterval(sessionCheckInterval); const video = document.getElementById('qrVideo'); if (video?.srcObject) { video.srcObject.getTracks().forEach(t => t.stop()); } });
+    </script>
+</body>
+</html>
