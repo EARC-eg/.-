@@ -5,12 +5,14 @@
     <meta name="google-site-verification" content="FmGxlIE4bkTWdShVHA58jE23YHh7Ma_JQz25bGNdDVY" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>EACR Conference</title>
-    <meta name="description" content="الجمعيه المصريه لأبحاث السرطان هى جمعيه علميه اهليه غير ربحيه تم انشاءها لتكون كيانا مجتمعيا يضم كل الباحثين والمهتمين بمجال ابحاث السرطان فى مصر بـهدف تقديم الدعم العلمي والفني للباحثين في هذا المجال المهم علي وجه العموم ولشباب الباحثين علي وجه الخصوص عن طريق عقد ورش عمل وندوات ومؤتمرات. كما تقوم الجمعية بمساعدة شباب الباحثين في كتابه الأبحاث العلمية والتقدم الى المنح والمشروعات  البحثية. كما تهدف الجمعية الى توعيه المجتمع المدنى والاجيال الصغيره بأهميه البحث العلمى فى مجال أبحاث السرطان من خلال نشرات وكتيبات دوريه مبسطه بالجديد فى مجال أبحاث السرطان. كما تقوم الجمعية بإصدار دورية علمية محكمة لنشر الابحاث المصرية العربية والدولية فى مجال ابحاث السرطان. لذا لتكون الجمعية بمثابه حلقه وصل لهم بالعالم من أجل رفع مستوى مصر علمياً و ضمها للحركة العلمية العالمية في هذا المجال المهم. تم اشهار الجمعية المصرية لأبحاث السرطان فى 19/11/2014 من وزاره التضامن الاجتماعي ومديرية الشئون الاجتماعية بطنطا اول وتم تحديد مقر للجمعية الجمعية المصرية لأبحاث السرطان - تحت رعاية أ.د. محمد لبيب سالم">
+    <meta name="description" content=" الجمعيه المصريه لأبحاث السرطان هى جمعيه علميه اهليه غير ربحيه تم انشاءها لتكون كيانا مجتمعيا يضم كل الباحثين والمهتمين بمجال ابحاث السرطان فى مصر بـهدف تقديم الدعم العلمي والفني للباحثين في هذا المجال المهم علي وجه العموم ولشباب الباحثين علي وجه الخصوص عن طريق عقد ورش عمل وندوات ومؤتمرات. كما تقوم الجمعية بمساعدة شباب الباحثين في كتابه الأبحاث العلمية والتقدم الى المنح والمشروعات  البحثية. كما تهدف الجمعية الى توعيه المجتمع المدنى والاجيال الصغيره بأهميه البحث العلمى فى مجال أبحاث السرطان من خلال نشرات وكتيبات دوريه مبسطه بالجديد فى مجال أبحاث السرطان. كما تقوم الجمعية بإصدار دورية علمية محكمة لنشر الابحاث المصرية العربية والدولية فى مجال ابحاث السرطان. لذا لتكون الجمعية بمثابه حلقه وصل لهم بالعالم من أجل رفع مستوى مصر علمياً و ضمها للحركة العلمية العالمية في هذا المجال المهم.
+تم اشهار الجمعية المصرية لأبحاث السرطان فى 19/11/2014 من وزاره التضامن الاجتماعي ومديرية الشئون الاجتماعية بطنطا اول وتم تحديد مقر للجمعية الجمعية المصرية لأبحاث السرطان - تحت رعاية أ.د. محمد لبيب سالم">
     <meta name="theme-color" content="#0a2b3e">
     <link rel="icon" type="image/png" href="https://img.icons8.com/ios-filled/100/0a2b3e/cancer-ribbon.png">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Firebase -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
         import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-database.js";
@@ -51,7 +53,11 @@
     </script>
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         :root {
             --primary-dark: #0a2b3e;
@@ -75,6 +81,7 @@
             overflow-x: hidden;
         }
 
+        /* شريط الأدوات */
         .top-toolbar {
             position: fixed;
             top: 20px;
@@ -95,17 +102,40 @@
             transition: all 0.3s ease;
         }
 
-        .top-toolbar.scrolled { top: 10px; padding: 0.4rem 1.5rem; }
+        .top-toolbar.scrolled {
+            top: 10px;
+            padding: 0.4rem 1.5rem;
+        }
 
-        .logo-area { display: flex; align-items: center; gap: 0.8rem; cursor: pointer; }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            cursor: pointer;
+        }
 
-        .logo-img { width: 45px; height: 45px; object-fit: cover; border-radius: 12px; }
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
 
-        .logo-text h1 { font-size: 1rem; font-weight: 800; color: white; }
+        .logo-text h1 {
+            font-size: 1rem;
+            font-weight: 800;
+            color: white;
+        }
 
-        .logo-text p { font-size: 0.6rem; color: rgba(255, 255, 255, 0.8); }
+        .logo-text p {
+            font-size: 0.6rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
 
-        .nav-menu { display: flex; gap: 1.5rem; }
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;
+        }
 
         .nav-link {
             color: rgba(255, 255, 255, 0.9);
@@ -127,10 +157,21 @@
             transition: width 0.3s;
         }
 
-        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
 
-        .menu-btn { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: white; }
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
 
+        /* القائمة الجانبية */
         .mobile-menu {
             position: fixed;
             top: 0;
@@ -144,7 +185,9 @@
             box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
         }
 
-        .mobile-menu.open { right: 0; }
+        .mobile-menu.open {
+            right: 0;
+        }
 
         .mobile-nav-link {
             display: block;
@@ -156,7 +199,10 @@
             margin-bottom: 8px;
         }
 
-        .mobile-nav-link:hover { background: var(--primary); color: white; }
+        .mobile-nav-link:hover {
+            background: var(--primary);
+            color: white;
+        }
 
         .overlay {
             position: fixed;
@@ -169,8 +215,11 @@
             display: none;
         }
 
-        .overlay.active { display: block; }
+        .overlay.active {
+            display: block;
+        }
 
+        /* السلايدر */
         .hero-slider {
             position: relative;
             height: 85vh;
@@ -179,7 +228,11 @@
             border-radius: 0 0 40px 40px;
         }
 
-        .slider-container { position: relative; width: 100%; height: 100%; }
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
 
         .slide {
             position: absolute;
@@ -192,7 +245,10 @@
             transition: opacity 1s ease, transform 1s ease;
         }
 
-        .slide.active { opacity: 1; visibility: visible; }
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
         .slide-img {
             width: 100%;
@@ -202,8 +258,11 @@
             transition: transform 8s ease;
         }
 
-        .slide.active .slide-img { transform: scale(1.1); }
+        .slide.active .slide-img {
+            transform: scale(1.1);
+        }
 
+        /* أنيميشن النص في السلايدر */
         .slide-overlay {
             position: absolute;
             bottom: 25%;
@@ -233,15 +292,27 @@
             transition: all 0.6s ease 0.2s;
         }
 
-        .slide.active .slide-overlay h2 { opacity: 1; transform: translateY(0); animation: textGlow 2s ease-in-out infinite; }
-
-        .slide.active .slide-overlay p { opacity: 1; transform: translateY(0); }
-
-        @keyframes textGlow {
-            0%, 100% { text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); }
-            50% { text-shadow: 0 0 20px rgba(201, 160, 61, 0.8), 2px 2px 8px rgba(0, 0, 0, 0.5); }
+        .slide.active .slide-overlay h2 {
+            opacity: 1;
+            transform: translateY(0);
+            animation: textGlow 2s ease-in-out infinite;
         }
 
+        .slide.active .slide-overlay p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes textGlow {
+            0%, 100% {
+                text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(201, 160, 61, 0.8), 2px 2px 8px rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        /* شريط البحث - تم رفعه للأعلى وإضافة أنيميشن */
         .search-container {
             position: absolute;
             top: 35%;
@@ -255,14 +326,27 @@
         }
 
         @keyframes searchFloat {
-            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8) translateY(50px); }
-            50% { opacity: 0.5; transform: translate(-50%, -50%) scale(1.02) translateY(-10px); }
-            100% { opacity: 1; transform: translate(-50%, -50%) scale(1) translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8) translateY(50px);
+            }
+            50% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1.02) translateY(-10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) translateY(0);
+            }
         }
 
         @keyframes searchGlow {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(26, 90, 122, 0); }
-            50% { box-shadow: 0 0 20px 5px rgba(26, 90, 122, 0.3); }
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(26, 90, 122, 0);
+            }
+            50% {
+                box-shadow: 0 0 20px 5px rgba(26, 90, 122, 0.3);
+            }
         }
 
         .search-form {
@@ -275,9 +359,15 @@
             border: 2px solid transparent;
         }
 
-        .search-form:hover { transform: translateY(-2px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25); }
+        .search-form:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        }
 
-        .search-form:focus-within { border-color: var(--gold); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25); }
+        .search-form:focus-within {
+            border-color: var(--gold);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        }
 
         .search-input {
             flex: 1;
@@ -289,7 +379,10 @@
             background: transparent;
         }
 
-        .search-input::placeholder { color: #aaa; font-weight: 500; }
+        .search-input::placeholder {
+            color: #aaa;
+            font-weight: 500;
+        }
 
         .search-button {
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
@@ -303,7 +396,10 @@
             font-size: 1rem;
         }
 
-        .search-button:hover { background: linear-gradient(135deg, var(--primary-dark), var(--primary)); transform: scale(0.98); }
+        .search-button:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            transform: scale(0.98);
+        }
 
         .search-stats {
             position: absolute;
@@ -323,11 +419,19 @@
         }
 
         @keyframes statsSlideUp {
-            from { opacity: 0; transform: translateX(-50%) translateY(20px); }
-            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
         }
 
-        .search-stats.show { display: flex; }
+        .search-stats.show {
+            display: flex;
+        }
 
         .clear-search {
             background: rgba(255, 255, 255, 0.2);
@@ -339,8 +443,13 @@
             transition: all 0.3s ease;
         }
 
-        .clear-search:hover { background: var(--gold); color: var(--primary-dark); transform: scale(0.95); }
+        .clear-search:hover {
+            background: var(--gold);
+            color: var(--primary-dark);
+            transform: scale(0.95);
+        }
 
+        /* نقاط السلايدر */
         .slider-dots {
             position: absolute;
             bottom: 30px;
@@ -364,10 +473,17 @@
             transition: all 0.3s ease;
         }
 
-        .dot:hover { background: var(--gold); transform: scaleX(1.2); }
+        .dot:hover {
+            background: var(--gold);
+            transform: scaleX(1.2);
+        }
 
-        .dot.active { width: 60px; background: var(--gold); }
+        .dot.active {
+            width: 60px;
+            background: var(--gold);
+        }
 
+        /* المحتوى الرئيسي */
         .main-content {
             max-width: 1300px;
             margin: -50px auto 0;
@@ -378,7 +494,11 @@
             border-radius: 40px 40px 0 0;
         }
 
-        .section-block { margin-bottom: 4rem; opacity: 0; transition: all 0.8s ease; }
+        .section-block {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
 
         .section-block:nth-child(1).animate-in { animation: slideFromRight 0.8s ease forwards; }
         .section-block:nth-child(2).animate-in { animation: slideFromLeft 0.8s ease forwards; }
@@ -420,7 +540,10 @@
             100% { opacity: 1; transform: scale(1); }
         }
 
-        .section-title { text-align: center; margin-bottom: 2rem; }
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
 
         .section-title h2 {
             font-size: 1.8rem;
@@ -443,7 +566,11 @@
             border-radius: 3px;
         }
 
-        .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
 
         .card {
             background: white;
@@ -456,23 +583,51 @@
             transform: translateY(30px);
         }
 
-        .card.animate-card { animation: cardSlideUp 0.6s ease forwards; }
-
-        @keyframes cardSlideUp {
-            to { opacity: 1; transform: translateY(0); }
+        .card.animate-card {
+            animation: cardSlideUp 0.6s ease forwards;
         }
 
-        .card:hover { transform: translateY(-8px) scale(1.02); box-shadow: var(--shadow-lg); }
+        @keyframes cardSlideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-        .card-img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.5s ease; }
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
 
-        .card:hover .card-img { transform: scale(1.05); }
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
 
-        .video-thumbnail { position: relative; width: 100%; height: 200px; overflow: hidden; cursor: pointer; }
+        .card:hover .card-img {
+            transform: scale(1.05);
+        }
 
-        .video-thumbnail img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            cursor: pointer;
+        }
 
-        .video-thumbnail:hover img { transform: scale(1.05); }
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .video-thumbnail:hover img {
+            transform: scale(1.05);
+        }
 
         .play-overlay {
             position: absolute;
@@ -492,11 +647,21 @@
             backdrop-filter: blur(5px);
         }
 
-        .video-thumbnail:hover .play-overlay { background: var(--primary); transform: translate(-50%, -50%) scale(1.1); }
+        .video-thumbnail:hover .play-overlay {
+            background: var(--primary);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
 
-        .card-content { padding: 1.5rem; }
+        .card-content {
+            padding: 1.5rem;
+        }
 
-        .card-title { font-size: 1.2rem; font-weight: 700; color: var(--primary-dark); margin-bottom: 0.5rem; }
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
 
         .card-desc {
             color: var(--text-muted);
@@ -516,7 +681,10 @@
             border-top: 1px solid #eee;
         }
 
-        .card-date { font-size: 0.7rem; color: var(--text-muted); }
+        .card-date {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
 
         .share-btn {
             background: none;
@@ -529,7 +697,10 @@
             transition: 0.3s;
         }
 
-        .share-btn:hover { transform: rotate(360deg); color: var(--gold); }
+        .share-btn:hover {
+            transform: rotate(360deg);
+            color: var(--gold);
+        }
 
         .location-wrapper {
             display: grid;
@@ -541,7 +712,9 @@
             box-shadow: var(--shadow-md);
         }
 
-        .location-info { padding: 1.5rem; }
+        .location-info {
+            padding: 1.5rem;
+        }
 
         .info-row {
             display: flex;
@@ -551,7 +724,9 @@
             border-bottom: 1px solid #eee;
         }
 
-        .info-row:last-child { border-bottom: none; }
+        .info-row:last-child {
+            border-bottom: none;
+        }
 
         .info-row i {
             width: 35px;
@@ -564,9 +739,17 @@
             color: var(--primary);
         }
 
-        .map-container { width: 100%; min-height: 350px; }
+        .map-container {
+            width: 100%;
+            min-height: 350px;
+        }
 
-        .map-container iframe { width: 100%; height: 100%; min-height: 350px; border: none; }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 350px;
+            border: none;
+        }
 
         .search-highlight {
             background: rgba(201, 160, 61, 0.4);
@@ -595,9 +778,15 @@
             z-index: 999;
         }
 
-        .scroll-top.show { opacity: 1; visibility: visible; }
+        .scroll-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
 
-        .scroll-top:hover { background: var(--gold); transform: translateY(-5px); }
+        .scroll-top:hover {
+            background: var(--gold);
+            transform: translateY(-5px);
+        }
 
         .lightbox {
             position: fixed;
@@ -615,9 +804,16 @@
             transition: 0.3s;
         }
 
-        .lightbox.active { opacity: 1; visibility: visible; }
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
 
-        .lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
 
         .lightbox-close {
             position: absolute;
@@ -635,6 +831,7 @@
             color: white;
         }
 
+        /* قسم الاشتراك في الإشعارات */
         .subscribe-section {
             background: linear-gradient(135deg, var(--primary-dark), var(--primary));
             border: 2px solid var(--gold);
@@ -652,7 +849,12 @@
             50% { box-shadow: 0 10px 40px rgba(201, 160, 61, 0.4); }
         }
 
-        .subscribe-icon { font-size: 3rem; color: var(--gold); margin-bottom: 1rem; animation: bellShake 2s ease-in-out infinite; }
+        .subscribe-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            animation: bellShake 2s ease-in-out infinite;
+        }
 
         @keyframes bellShake {
             0%, 100% { transform: rotate(0); }
@@ -660,7 +862,12 @@
             20%, 40%, 60%, 80% { transform: rotate(5deg); }
         }
 
-        .subscribe-text { color: white; font-size: 1.2rem; margin-bottom: 1.5rem; font-weight: 600; }
+        .subscribe-text {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
 
         .subscribe-btn {
             background: linear-gradient(135deg, var(--gold), #e0b84d);
@@ -682,9 +889,19 @@
             background: linear-gradient(135deg, #e0b84d, #f0c860);
         }
 
-        .subscribe-btn:disabled { background: #4a6a7a; color: #8aa0b0; cursor: not-allowed; box-shadow: none; transform: none; }
+        .subscribe-btn:disabled {
+            background: #4a6a7a;
+            color: #8aa0b0;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
 
-        .subscribe-btn.subscribed { background: #28a745; color: white; box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3); }
+        .subscribe-btn.subscribed {
+            background: #28a745;
+            color: white;
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
 
         .permission-denied-message {
             color: #ff6b6b;
@@ -696,10 +913,17 @@
             display: none;
         }
 
-        .permission-denied-message.show { display: block; }
+        .permission-denied-message.show {
+            display: block;
+        }
 
-        .permission-denied-message a { color: var(--gold); text-decoration: underline; cursor: pointer; }
+        .permission-denied-message a {
+            color: var(--gold);
+            text-decoration: underline;
+            cursor: pointer;
+        }
 
+        /* الفوتر */
         .footer {
             background: var(--primary-dark);
             color: white;
@@ -708,9 +932,21 @@
             margin-top: 3rem;
         }
 
-        .footer-content { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
 
-        .footer-bottom { text-align: center; padding-top: 2rem; margin-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 0.8rem; }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.8rem;
+        }
 
         .toast {
             position: fixed;
@@ -726,9 +962,15 @@
             opacity: 0;
         }
 
-        .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
 
-        .loading { text-align: center; padding: 2rem; }
+        .loading {
+            text-align: center;
+            padding: 2rem;
+        }
 
         .spinner {
             width: 40px;
@@ -824,6 +1066,7 @@
             </div>
         </div>
         
+        <!-- ✅ قسم الاشتراك في الإشعارات - الإضافة الوحيدة -->
         <div class="subscribe-section" id="subscribeSection">
             <div class="subscribe-icon">
                 <i class="fas fa-bell"></i>
@@ -1056,7 +1299,7 @@
                 }
                 if (!thumbnail) thumbnail = 'https://placehold.co/600x400/1a5a7a/white?text=فيديو';
                 mediaHtml = `
-                    <div class="video-thumbnail" onclick="event.stopPropagation(); window.open('/2026/?s=${sectionId}&c=${itemId}', '_blank')">
+                    <div class="video-thumbnail" onclick="event.stopPropagation(); window.open('?s=${sectionId}&c=${itemId}', '_blank')">
                         <img src="${escapeHtml(thumbnail)}" alt="${escapeHtml(item.title)}">
                         <div class="play-overlay"><i class="fas fa-play"></i></div>
                     </div>
@@ -1077,12 +1320,12 @@
                     </div>
                 </div>
             `;
-            card.onclick = () => { window.open(`/2026/?s=${sectionId}&c=${itemId}`, '_blank'); };
+            card.onclick = () => { window.open(`?s=${sectionId}&c=${itemId}`, '_blank'); };
             return card;
         }
 
         window.shareContent = function(sectionId, itemId) {
-            const url = `${window.location.origin}/2026/?s=${sectionId}&c=${itemId}`;
+            const url = `${window.location.origin}${window.location.pathname}?s=${sectionId}&c=${itemId}`;
             navigator.clipboard.writeText(url);
             showToast('تم نسخ الرابط');
         };
@@ -1094,7 +1337,7 @@
                 });
                 const item = snapshot.val();
                 if (!item) {
-                    document.body.innerHTML = '<div style="text-align: center; padding: 50px;"><h2>المحتوى غير موجود</h2><a href="/2026/" style="background: #1a5a7a; color: white; padding: 10px 20px; border-radius: 40px; text-decoration: none;">العودة للرئيسية</a></div>';
+                    document.body.innerHTML = '<div style="text-align: center; padding: 50px;"><h2>المحتوى غير موجود</h2><a href="https://earc-eg.github.io/2026/ex-eg.html" style="background: #1a5a7a; color: white; padding: 10px 20px; border-radius: 40px; text-decoration: none;">العودة للرئيسية</a></div>';
                     return;
                 }
                 let mediaHtml = '';
@@ -1108,7 +1351,7 @@
                 }
                 document.body.innerHTML = `
                     <div style="max-width: 900px; margin: 50px auto; background: white; border-radius: 30px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                        <a href="/2026/" style="display: inline-block; background: var(--primary); color: white; padding: 10px 25px; border-radius: 40px; text-decoration: none; margin-bottom: 20px;">← العودة</a>
+                        <a href="https://earc-eg.github.io/2026/ex-eg.html" style="display: inline-block; background: var(--primary); color: white; padding: 10px 25px; border-radius: 40px; text-decoration: none; margin-bottom: 20px;">← العودة</a>
                         <h1 style="color: var(--primary-dark); margin-bottom: 20px;">${escapeHtml(item.title)}</h1>
                         ${mediaHtml}
                         <div style="line-height: 1.8;">${item.text || ''}</div>
@@ -1256,200 +1499,73 @@
             });
         }
 
-        // ============ دوال الإشعارات ============
-        
-        async function registerServiceWorker() {
-            if (!('serviceWorker' in navigator)) {
-                console.warn('Service Workers غير مدعومة');
-                return null;
-            }
-            
-            try {
-                const registration = await navigator.serviceWorker.register('/2026/firebase-messaging-sw.js', {
-                    scope: '/2026/'
-                });
-                console.log('✅ Service Worker registered:', registration.scope);
-                return registration;
-            } catch (error) {
-                console.error('❌ Service Worker registration failed:', error);
-                showToast('خطأ في تسجيل Service Worker: ' + error.message);
-                return null;
-            }
-        }
-
+        // ✅ دوال الإشعارات (الإضافة الوحيدة)
         async function requestNotificationPermission() {
-            if (!('Notification' in window)) {
-                showToast('متصفحك لا يدعم الإشعارات');
-                return;
-            }
-
-            if (Notification.permission === 'granted') {
-                await subscribeToPush();
-                return;
-            }
-
-            if (Notification.permission === 'denied') {
-                showPermissionDeniedMessage();
-                return;
-            }
-
+            if (!('Notification' in window)) { showToast('متصفحك لا يدعم الإشعارات'); return; }
+            if (Notification.permission === 'granted') { await subscribeToPush(); return; }
+            if (Notification.permission === 'denied') { showPermissionDeniedMessage(); return; }
             try {
                 const permission = await Notification.requestPermission();
-                if (permission === 'granted') {
-                    await subscribeToPush();
-                } else if (permission === 'denied') {
-                    showPermissionDeniedMessage();
-                } else {
-                    showToast('تم إلغاء طلب الإشعارات');
-                }
-            } catch (error) {
-                console.error('خطأ في طلب الإذن:', error);
-                showToast('حدث خطأ في طلب الإذن: ' + error.message);
-            }
+                if (permission === 'granted') await subscribeToPush();
+                else if (permission === 'denied') showPermissionDeniedMessage();
+                else showToast('تم إلغاء طلب الإشعارات');
+            } catch (error) { showToast('حدث خطأ في طلب الإذن'); }
         }
 
         async function subscribeToPush() {
             try {
-                const registration = await registerServiceWorker();
-                if (!registration) {
-                    showToast('فشل تسجيل Service Worker');
-                    return;
-                }
-
-                console.log('🔄 جاري الحصول على token...');
-                
+                const registration = await navigator.serviceWorker.register('/2026/firebase-messaging-sw.js');
                 const currentToken = await window.getToken(window.messaging, {
                     vapidKey: window.VAPID_KEY,
                     serviceWorkerRegistration: registration
                 });
-
                 if (currentToken) {
-                    console.log('✅ Token:', currentToken);
-                    await saveTokenToFirestore(currentToken);
-                    updateSubscribeButton(true);
-                    showToast('تم الاشتراك في الإشعارات بنجاح! 🎉');
-                    
-                    window.onMessage(window.messaging, (payload) => {
-                        console.log('📨 إشعار أمامي:', payload);
-                        showToast(payload.notification?.title || 'إشعار جديد');
+                    await window.setDoc(window.doc(window.firestore, 'push_tokens', currentToken), {
+                        token: currentToken,
+                        user_uid: null,
+                        email: null,
+                        device_type: /Mobile|Android|iPhone/i.test(navigator.userAgent) ? 'mobile' : 'desktop',
+                        timestamp: new Date().toISOString(),
+                        is_active: true
                     });
+                    const btn = document.getElementById('subscribeBtn');
+                    btn.innerHTML = '<i class="fas fa-check-circle"></i> مشترك حالياً';
+                    btn.classList.add('subscribed');
+                    btn.disabled = true;
+                    document.getElementById('permissionDeniedMessage').classList.remove('show');
+                    showToast('تم الاشتراك في الإشعارات بنجاح! 🎉');
                 } else {
-                    console.warn('⚠️ لم يتم الحصول على token');
                     showToast('لم نتمكن من الحصول على رمز الإشعارات');
                 }
             } catch (error) {
-                console.error('❌ خطأ في الاشتراك:', error);
-                showToast('حدث خطأ في الاشتراك بالإشعارات: ' + error.message);
-            }
-        }
-
-        async function saveTokenToFirestore(token) {
-            try {
-                const tokenDoc = window.doc(window.firestore, 'push_tokens', token);
-                const docSnap = await window.getDoc(tokenDoc);
-                
-                if (!docSnap.exists()) {
-                    const deviceInfo = getDeviceInfo();
-                    await window.setDoc(tokenDoc, {
-                        token: token,
-                        user_uid: null,
-                        email: null,
-                        device_type: deviceInfo.deviceType,
-                        browser: deviceInfo.browser,
-                        os: deviceInfo.os,
-                        language: navigator.language,
-                        timestamp: new Date().toISOString(),
-                        is_active: true
-                    });
-                    console.log('✅ Token saved:', token);
-                } else {
-                    await window.setDoc(tokenDoc, {
-                        timestamp: new Date().toISOString(),
-                        is_active: true
-                    }, { merge: true });
-                    console.log('✅ Token updated:', token);
-                }
-            } catch (error) {
-                console.error('❌ Error saving token:', error);
-                throw error;
-            }
-        }
-
-        function getDeviceInfo() {
-            const ua = navigator.userAgent;
-            let deviceType = 'desktop', browser = 'unknown', os = 'unknown';
-            if (/Mobile|Android|iPhone|iPad|iPod/i.test(ua)) deviceType = 'mobile';
-            else if (/Tablet|iPad/i.test(ua)) deviceType = 'tablet';
-            if (/Firefox/i.test(ua)) browser = 'Firefox';
-            else if (/Chrome/i.test(ua)) browser = 'Chrome';
-            else if (/Safari/i.test(ua)) browser = 'Safari';
-            else if (/Edge/i.test(ua)) browser = 'Edge';
-            else if (/Opera|OPR/i.test(ua)) browser = 'Opera';
-            if (/Windows/i.test(ua)) os = 'Windows';
-            else if (/Macintosh|Mac OS X/i.test(ua)) os = 'macOS';
-            else if (/Linux/i.test(ua)) os = 'Linux';
-            else if (/Android/i.test(ua)) os = 'Android';
-            else if (/iPhone|iPad|iPod/i.test(ua)) os = 'iOS';
-            return { deviceType, browser, os };
-        }
-
-        function updateSubscribeButton(subscribed) {
-            const btn = document.getElementById('subscribeBtn');
-            if (subscribed) {
-                btn.innerHTML = '<i class="fas fa-check-circle"></i> مشترك حالياً';
-                btn.classList.add('subscribed');
-                btn.disabled = true;
-                btn.onclick = null;
-                document.getElementById('permissionDeniedMessage').classList.remove('show');
+                showToast('حدث خطأ في الاشتراك بالإشعارات');
             }
         }
 
         function showPermissionDeniedMessage() {
             document.getElementById('permissionDeniedMessage').classList.add('show');
-            showToast('تم رفع الإشعارات. يرجى تفعيلها من الإعدادات');
+            showToast('تم رفض الإشعارات');
         }
 
         function showPermissionGuide() {
-            const ua = navigator.userAgent;
-            let guide = '';
-            if (/Chrome/i.test(ua)) {
-                guide = 'لتفعيل الإشعارات في Chrome:\n1. اضغط على أيقونة القفل 🔒 في شريط العنوان\n2. ابحث عن "الإشعارات"\n3. اختر "سماح"';
-            } else if (/Firefox/i.test(ua)) {
-                guide = 'لتفعيل الإشعارات في Firefox:\n1. اضغط على أيقونة i في شريط العنوان\n2. ابحث عن "إرسال الإشعارات"\n3. اختر "سماح"';
-            } else if (/Safari/i.test(ua)) {
-                guide = 'لتفعيل الإشعارات في Safari:\n1. اذهب إلى تفضيلات النظام\n2. اختر "الإشعارات"\n3. ابحث عن موقعنا واسمح بالإشعارات';
-            } else {
-                guide = 'يرجى الذهاب إلى إعدادات المتصفح والبحث عن إعدادات الإشعارات للموقع';
-            }
-            alert(guide);
+            alert('لتفعيل الإشعارات:\n1. اضغط على أيقونة القفل 🔒 في شريط العنوان\n2. ابحث عن "الإشعارات"\n3. اختر "سماح"');
         }
 
         async function checkSubscriptionStatus() {
-            if (!('Notification' in window)) return;
-            if (Notification.permission === 'granted') {
-                try {
-                    const registration = await registerServiceWorker();
-                    if (!registration) return;
-                    const currentToken = await window.getToken(window.messaging, {
-                        vapidKey: window.VAPID_KEY,
-                        serviceWorkerRegistration: registration
-                    });
-                    if (currentToken) {
-                        const tokenDoc = window.doc(window.firestore, 'push_tokens', currentToken);
-                        const docSnap = await window.getDoc(tokenDoc);
-                        if (docSnap.exists()) {
-                            updateSubscribeButton(true);
-                        } else {
-                            await saveTokenToFirestore(currentToken);
-                            updateSubscribeButton(true);
-                        }
-                    }
-                } catch (error) {
-                    console.error('خطأ في التحقق:', error);
+            if (!('Notification' in window) || Notification.permission !== 'granted') return;
+            try {
+                const registration = await navigator.serviceWorker.register('/2026/firebase-messaging-sw.js');
+                const currentToken = await window.getToken(window.messaging, {
+                    vapidKey: window.VAPID_KEY,
+                    serviceWorkerRegistration: registration
+                });
+                if (currentToken) {
+                    const btn = document.getElementById('subscribeBtn');
+                    btn.innerHTML = '<i class="fas fa-check-circle"></i> مشترك حالياً';
+                    btn.classList.add('subscribed');
+                    btn.disabled = true;
                 }
-            } else if (Notification.permission === 'denied') {
-                showPermissionDeniedMessage();
-            }
+            } catch (error) {}
         }
 
         function toggleMobileMenu() {
@@ -1471,12 +1587,9 @@
             else toolbar.classList.remove('scrolled');
         }
 
-        document.addEventListener('DOMContentLoaded', async () => {
+        document.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
-            if (params.get('s') && params.get('c')) {
-                showDetailPage(params.get('s'), params.get('c'));
-                return;
-            }
+            if (params.get('s') && params.get('c')) { showDetailPage(params.get('s'), params.get('c')); return; }
             
             loadSettings();
             loadSections();
@@ -1496,20 +1609,8 @@
             window.closeLightbox = closeLightbox;
             window.scrollToTop = scrollToTop;
             
-            setTimeout(async () => {
-                await registerServiceWorker();
-                await checkSubscriptionStatus();
-            }, 1500);
+            setTimeout(checkSubscriptionStatus, 2000);
         });
-
-        if ('permissions' in navigator) {
-            navigator.permissions.query({ name: 'notifications' }).then(permissionStatus => {
-                permissionStatus.addEventListener('change', () => {
-                    if (Notification.permission === 'granted') subscribeToPush();
-                    else if (Notification.permission === 'denied') showPermissionDeniedMessage();
-                });
-            });
-        }
     </script>
 </body>
 </html>
