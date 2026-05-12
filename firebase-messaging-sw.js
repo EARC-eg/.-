@@ -21,12 +21,15 @@ messaging.onBackgroundMessage((payload) => {
     const notificationTitle = payload.notification?.title || payload.data?.title || 'إشعار جديد من EACR';
     const notificationBody = payload.notification?.body || payload.data?.body || '';
     const icon = 'https://img.icons8.com/ios-filled/100/0a2b3e/cancer-ribbon.png';
-    const url = payload.data?.url || payload.data?.click_action || '/2026/';
+    const badge = 'https://img.icons8.com/ios-filled/100/0a2b3e/cancer-ribbon.png';
+    const url = payload.data?.url || payload.data?.click_action || 'https://earc-eg.github.io/2026/';
+    const image = payload.notification?.image || payload.data?.image || '';
 
     const notificationOptions = {
         body: notificationBody,
         icon: icon,
-        badge: icon,
+        badge: badge,
+        image: image || undefined,
         tag: payload.data?.tag || 'eacr-' + Date.now(),
         data: { url: url, ...payload.data },
         dir: 'rtl',
@@ -48,7 +51,7 @@ self.addEventListener('notificationclick', (event) => {
     event.notification.close();
     if (event.action === 'close') return;
     
-    const urlToOpen = event.notification.data?.url || '/2026/';
+    const urlToOpen = event.notification.data?.url || 'https://earc-eg.github.io/2026/';
     
     event.waitUntil(
         clients.matchAll({ type: 'window', includeUncontrolled: true }).then(windowClients => {
@@ -90,11 +93,16 @@ self.addEventListener('push', (event) => {
         body: data.body || '',
         icon: data.icon || 'https://img.icons8.com/ios-filled/100/0a2b3e/cancer-ribbon.png',
         badge: 'https://img.icons8.com/ios-filled/100/0a2b3e/cancer-ribbon.png',
+        image: data.image || undefined,
         vibrate: [200, 100, 200],
         data: data.data || {},
         requireInteraction: true,
         dir: 'rtl',
-        lang: 'ar'
+        lang: 'ar',
+        actions: [
+            { action: 'open', title: '🔍 فتح' },
+            { action: 'close', title: '✕ إغلاق' }
+        ]
     };
     
     event.waitUntil(
