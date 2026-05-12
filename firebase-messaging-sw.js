@@ -21,13 +21,12 @@ messaging.onBackgroundMessage((payload) => {
     const notificationTitle = payload.notification?.title || payload.data?.title || 'إشعار جديد من EACR';
     const notificationBody = payload.notification?.body || payload.data?.body || '';
     const icon = 'https://img.icons8.com/ios-filled/100/0a2b3e/cancer-ribbon.png';
-    const badge = 'https://img.icons8.com/ios-filled/100/0a2b3e/cancer-ribbon.png';
     const url = payload.data?.url || payload.data?.click_action || '/2026/';
 
     const notificationOptions = {
         body: notificationBody,
         icon: icon,
-        badge: badge,
+        badge: icon,
         tag: payload.data?.tag || 'eacr-' + Date.now(),
         data: { url: url, ...payload.data },
         dir: 'rtl',
