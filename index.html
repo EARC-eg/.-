@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Firebase -->
+    <!-- Firebase SDKs -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
         import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-database.js";
@@ -49,8 +49,11 @@
         window.setDoc = setDoc;
         window.getDoc = getDoc;
 
-        // VAPID Key - استبدل هذا بالمفتاح الخاص بك من Firebase Console
+        // ✅ مفتاح VAPID الخاص بك
         window.VAPID_KEY = 'BGSRrKu5Nn9sb_Y4HeBOa775eW7uWUYz3nLrR-_wzqGlXAIHKglD58OJaXnTVUAywEVegrU74y7TWsWlurZL5ZQ';
+        
+        // ✅ المسار الأساسي للموقع
+        window.BASE_PATH = '/2026';
     </script>
 
     <style>
@@ -1201,7 +1204,7 @@
             </div>
         </div>
         
-        <!-- قسم الاشتراك في الإشعارات -->
+        <!-- ✅ قسم الاشتراك في الإشعارات -->
         <div class="subscribe-section" id="subscribeSection">
             <div class="subscribe-icon">
                 <i class="fas fa-bell"></i>
@@ -1237,6 +1240,8 @@
         let allCards = [];
         let autoSlide = true;
         let animatedSections = new Set();
+
+        const BASE_PATH = window.BASE_PATH || '/2026';
 
         // دوال مساعدة
         function escapeHtml(text) {
@@ -1476,7 +1481,7 @@
                 if (!thumbnail) thumbnail = 'https://placehold.co/600x400/1a5a7a/white?text=فيديو';
                 
                 mediaHtml = `
-                    <div class="video-thumbnail" onclick="event.stopPropagation(); window.open('?s=${sectionId}&c=${itemId}', '_blank')">
+                    <div class="video-thumbnail" onclick="event.stopPropagation(); window.open('${BASE_PATH}/?s=${sectionId}&c=${itemId}', '_blank')">
                         <img src="${escapeHtml(thumbnail)}" alt="${escapeHtml(item.title)}">
                         <div class="play-overlay">
                             <i class="fas fa-play"></i>
@@ -1504,14 +1509,14 @@
             `;
             
             card.onclick = () => {
-                window.open(`?s=${sectionId}&c=${itemId}`, '_blank');
+                window.open(`${BASE_PATH}/?s=${sectionId}&c=${itemId}`, '_blank');
             };
             
             return card;
         }
 
         window.shareContent = function(sectionId, itemId) {
-            const url = `${window.location.origin}${window.location.pathname}?s=${sectionId}&c=${itemId}`;
+            const url = `${window.location.origin}${BASE_PATH}/?s=${sectionId}&c=${itemId}`;
             navigator.clipboard.writeText(url);
             showToast('تم نسخ الرابط');
         };
@@ -1524,7 +1529,7 @@
                 const item = snapshot.val();
                 
                 if (!item) {
-                    document.body.innerHTML = '<div style="text-align: center; padding: 50px;"><h2>المحتوى غير موجود</h2><a href="https://earc-eg.github.io/2026/ex-eg.html" style="background: #1a5a7a; color: white; padding: 10px 20px; border-radius: 40px; text-decoration: none;">العودة للرئيسية</a></div>';
+                    document.body.innerHTML = `<div style="text-align: center; padding: 50px;"><h2>المحتوى غير موجود</h2><a href="${BASE_PATH}/" style="background: #1a5a7a; color: white; padding: 10px 20px; border-radius: 40px; text-decoration: none;">العودة للرئيسية</a></div>`;
                     return;
                 }
                 
@@ -1545,7 +1550,7 @@
                 
                 document.body.innerHTML = `
                     <div style="max-width: 900px; margin: 50px auto; background: white; border-radius: 30px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-                        <a href="https://earc-eg.github.io/2026/ex-eg.html" style="display: inline-block; background: var(--primary); color: white; padding: 10px 25px; border-radius: 40px; text-decoration: none; margin-bottom: 20px;">← العودة</a>
+                        <a href="${BASE_PATH}/" style="display: inline-block; background: var(--primary); color: white; padding: 10px 25px; border-radius: 40px; text-decoration: none; margin-bottom: 20px;">← العودة</a>
                         <h1 style="color: var(--primary-dark); margin-bottom: 20px;">${escapeHtml(item.title)}</h1>
                         ${mediaHtml}
                         <div style="line-height: 1.8;">${item.text || ''}</div>
@@ -1733,13 +1738,44 @@
             });
         }
 
-        // دوال الاشتراك في الإشعارات
+        // ✅ دوال الاشتراك في الإشعارات
+        async function registerServiceWorker() {
+            if (!('serviceWorker' in navigator)) {
+                console.warn('Service Workers غير مدعومة');
+                return null;
+            }
+            
+            try {
+                const registration = await navigator.serviceWorker.register(`${BASE_PATH}/firebase-messaging-sw.js`, {
+                    scope: `${BASE_PATH}/`
+                });
+                console.log('✅ Service Worker مسجل:', registration.scope);
+                return registration;
+            } catch (error) {
+                console.error('❌ فشل تسجيل Service Worker:', error);
+                return null;
+            }
+        }
+
         async function requestNotificationPermission() {
             if (!('Notification' in window)) {
                 showToast('متصفحك لا يدعم الإشعارات');
                 return;
             }
 
+            // إذا كان الإذن ممنوحًا بالفعل
+            if (Notification.permission === 'granted') {
+                await subscribeToPush();
+                return;
+            }
+
+            // إذا كان الإذن مرفوضًا
+            if (Notification.permission === 'denied') {
+                showPermissionDeniedMessage();
+                return;
+            }
+
+            // طلب الإذن
             try {
                 const permission = await Notification.requestPermission();
                 
@@ -1758,14 +1794,14 @@
 
         async function subscribeToPush() {
             try {
-                // التحقق من وجود Service Worker
-                if (!('serviceWorker' in navigator)) {
-                    showToast('متصفحك لا يدعم Service Workers');
+                // تسجيل Service Worker أولاً
+                const registration = await registerServiceWorker();
+                if (!registration) {
+                    showToast('فشل تسجيل Service Worker');
                     return;
                 }
 
-                // تسجيل Service Worker إذا لم يكن مسجلاً
-                const registration = await navigator.serviceWorker.ready;
+                console.log('🔄 جاري الحصول على token...');
                 
                 // الحصول على token
                 const currentToken = await window.getToken(window.messaging, {
@@ -1774,6 +1810,7 @@
                 });
 
                 if (currentToken) {
+                    console.log('✅ تم الحصول على token:', currentToken);
                     // حفظ token في Firestore
                     await saveTokenToFirestore(currentToken);
                     updateSubscribeButton(true);
@@ -1781,14 +1818,15 @@
                     
                     // الاستماع للإشعارات الأمامية
                     window.onMessage(window.messaging, (payload) => {
-                        console.log('Received foreground message:', payload);
+                        console.log('📨 إشعار أمامي:', payload);
                         showToast(payload.notification?.title || 'إشعار جديد');
                     });
                 } else {
-                    showToast('لم نتمكن من الحصول على رمز الإشعارات');
+                    console.warn('⚠️ لم يتم الحصول على token');
+                    showToast('لم نتمكن من الحصول على رمز الإشعارات. تأكد من السماح بالإشعارات.');
                 }
             } catch (error) {
-                console.error('خطأ في الاشتراك:', error);
+                console.error('❌ خطأ في الاشتراك:', error);
                 showToast('حدث خطأ في الاشتراك بالإشعارات');
             }
         }
@@ -1805,28 +1843,28 @@
                     
                     await window.setDoc(tokenDoc, {
                         token: token,
-                        user_uid: null, // يمكن تحديثه لاحقاً عند تسجيل الدخول
-                        email: null, // يمكن تحديثه لاحقاً عند تسجيل الدخول
+                        user_uid: null,
+                        email: null,
                         device_type: deviceInfo.deviceType,
                         browser: deviceInfo.browser,
                         os: deviceInfo.os,
                         language: navigator.language,
                         timestamp: new Date().toISOString(),
-                        is_active: true
+                        is_active: true,
+                        base_path: BASE_PATH
                     });
                     
-                    console.log('Token saved to Firestore:', token);
+                    console.log('✅ Token محفوظ في Firestore:', token);
                 } else {
-                    // تحديث timestamp للـ token الموجود
                     await window.setDoc(tokenDoc, {
                         timestamp: new Date().toISOString(),
                         is_active: true
                     }, { merge: true });
                     
-                    console.log('Token updated in Firestore:', token);
+                    console.log('✅ Token محدث في Firestore:', token);
                 }
             } catch (error) {
-                console.error('Error saving token to Firestore:', error);
+                console.error('❌ خطأ في حفظ token:', error);
                 throw error;
             }
         }
@@ -1837,14 +1875,12 @@
             let browser = 'unknown';
             let os = 'unknown';
 
-            // تحديد نوع الجهاز
             if (/Mobile|Android|iPhone|iPad|iPod/i.test(ua)) {
                 deviceType = 'mobile';
             } else if (/Tablet|iPad/i.test(ua)) {
                 deviceType = 'tablet';
             }
 
-            // تحديد المتصفح
             if (/Firefox/i.test(ua)) {
                 browser = 'Firefox';
             } else if (/Chrome/i.test(ua)) {
@@ -1857,7 +1893,6 @@
                 browser = 'Opera';
             }
 
-            // تحديد نظام التشغيل
             if (/Windows/i.test(ua)) {
                 os = 'Windows';
             } else if (/Macintosh|Mac OS X/i.test(ua)) {
@@ -1881,7 +1916,6 @@
                 btn.disabled = true;
                 btn.onclick = null;
                 
-                // إخفاء رسالة رفض الإذن
                 document.getElementById('permissionDeniedMessage').classList.remove('show');
             }
         }
@@ -1889,7 +1923,7 @@
         function showPermissionDeniedMessage() {
             const messageDiv = document.getElementById('permissionDeniedMessage');
             messageDiv.classList.add('show');
-            showToast('تم رفع الإشعارات. يرجى تفعيلها من الإعدادات');
+            showToast('. يرجى تفعيل الإشعارات من الإعدادات');
         }
 
         function showPermissionGuide() {
@@ -1915,21 +1949,21 @@
             
             if (Notification.permission === 'granted') {
                 try {
-                    const registration = await navigator.serviceWorker.ready;
+                    const registration = await registerServiceWorker();
+                    if (!registration) return;
+                    
                     const currentToken = await window.getToken(window.messaging, {
                         vapidKey: window.VAPID_KEY,
                         serviceWorkerRegistration: registration
                     });
                     
                     if (currentToken) {
-                        // التحقق من وجود token في Firestore
                         const tokenDoc = window.doc(window.firestore, 'push_tokens', currentToken);
                         const docSnap = await window.getDoc(tokenDoc);
                         
                         if (docSnap.exists()) {
                             updateSubscribeButton(true);
                         } else {
-                            // Token موجود لكن غير مخزن، نقوم بتخزينه
                             await saveTokenToFirestore(currentToken);
                             updateSubscribeButton(true);
                         }
@@ -1970,7 +2004,7 @@
         }
 
         // تهيئة التطبيق
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', async () => {
             const params = new URLSearchParams(window.location.search);
             if (params.get('s') && params.get('c')) {
                 showDetailPage(params.get('s'), params.get('c'));
@@ -1988,7 +2022,7 @@
             document.getElementById('searchInput').addEventListener('input', performSearch);
             window.addEventListener('scroll', handleScroll);
             
-            // جعل دوال الإشعارات متاحة عالمياً
+            // جعل الدوال متاحة عالمياً
             window.requestNotificationPermission = requestNotificationPermission;
             window.showPermissionGuide = showPermissionGuide;
             
@@ -1996,10 +2030,11 @@
             window.closeLightbox = closeLightbox;
             window.scrollToTop = scrollToTop;
             
-            // التحقق من حالة الاشتراك
-            setTimeout(() => {
-                checkSubscriptionStatus();
-            }, 2000);
+            // ✅ تسجيل Service Worker والتحقق من حالة الاشتراك
+            setTimeout(async () => {
+                await registerServiceWorker();
+                await checkSubscriptionStatus();
+            }, 1500);
         });
 
         // معالجة تغيير حالة الإذن
