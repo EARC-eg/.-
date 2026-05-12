@@ -2,125 +2,2018 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-        <meta name="google-site-verification" content="FmGxlIE4bkTWdShVHA58jE23YHh7Ma_JQz25bGNdDVY" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <link rel="icon" type="image/png" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOVUcY7kJKauKUc077dmccnheDmWYgkRQnuQpq3xLwD0uQHycaUmcgo-WuebA0wIoF_zSIpjSF1NuSMSo9cwLCjFfZvRqCAZbdydzTLlgyQw6I4U9ptq-Ex8QzzfRpQj_ORZGtVhFLCTIcBJ7XE9DeBRqD4932ugnRxDfEp815tFg7RWYbbrviUyjmf20/s100/126047.png">
-    <link rel="apple-touch-icon" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOVUcY7kJKauKUc077dmccnheDmWYgkRQnuQpq3xLwD0uQHycaUmcgo-WuebA0wIoF_zSIpjSF1NuSMSo9cwLCjFfZvRqCAZbdydzTLlgyQw6I4U9ptq-Ex8QzzfRpQj_ORZGtVhFLCTIcBJ7XE9DeBRqD4932ugnRxDfEp815tFg7RWYbbrviUyjmf20/s100/126047.png">
-
+    <meta name="google-site-verification" content="FmGxlIE4bkTWdShVHA58jE23YHh7Ma_JQz25bGNdDVY" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>EACR Conference</title>
-    <meta name="description" content="الموقع الرسمي لمؤتمر EACR لدعم أبحاث السرطان. انضم إلينا للمشاركة في أحدث التطورات العلمية والطبية العالمية.">
-    <meta name="keywords" content="EACR, مؤتمر السرطان, أبحاث السرطان, دعم مرضى السرطان, Cancer Research, Conference 2026">
-    <link rel="canonical" href="https://eacr-confrence.github.io/.-/">
+    <meta name="description" content=" الجمعيه المصريه لأبحاث السرطان هى جمعيه علميه اهليه غير ربحيه تم انشاءها لتكون كيانا مجتمعيا يضم كل الباحثين والمهتمين بمجال ابحاث السرطان فى مصر بـهدف تقديم الدعم العلمي والفني للباحثين في هذا المجال المهم علي وجه العموم ولشباب الباحثين علي وجه الخصوص عن طريق عقد ورش عمل وندوات ومؤتمرات. كما تقوم الجمعية بمساعدة شباب الباحثين في كتابه الأبحاث العلمية والتقدم الى المنح والمشروعات  البحثية. كما تهدف الجمعية الى توعيه المجتمع المدنى والاجيال الصغيره بأهميه البحث العلمى فى مجال أبحاث السرطان من خلال نشرات وكتيبات دوريه مبسطه بالجديد فى مجال أبحاث السرطان. كما تقوم الجمعية بإصدار دورية علمية محكمة لنشر الابحاث المصرية العربية والدولية فى مجال ابحاث السرطان. لذا لتكون الجمعية بمثابه حلقه وصل لهم بالعالم من أجل رفع مستوى مصر علمياً و ضمها للحركة العلمية العالمية في هذا المجال المهم.
+تم اشهار الجمعية المصرية لأبحاث السرطان فى 19/11/2014 من وزاره التضامن الاجتماعي ومديرية الشئون الاجتماعية بطنطا اول وتم تحديد مقر للجمعية الجمعية المصرية لأبحاث السرطان - تحت رعاية أ.د. محمد لبيب سالم">
+    <meta name="theme-color" content="#0a2b3e">
+    <link rel="icon" type="image/png" href="https://img.icons8.com/ios-filled/100/0a2b3e/cancer-ribbon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "url": "https://earc-eg.github.io/.-/",
-      "logo": "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOVUcY7kJKauKUc077dmccnheDmWYgkRQnuQpq3xLwD0uQHycaUmcgo-WuebA0wIoF_zSIpjSF1NuSMSo9cwLCjFfZvRqCAZbdydzTLlgyQw6I4U9ptq-Ex8QzzfRpQj_ORZGtVhFLCTIcBJ7XE9DeBRqD4932ugnRxDfEp815tFg7RWYbbrviUyjmf20/s100/126047.png"
-    }
+    <!-- Firebase -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-app.js";
+        import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-database.js";
+        import { getStorage } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-storage.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-analytics.js";
+        import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-messaging.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyD9O_XS5H6Dyxcobatfiynb3yjPgqMPKPg",
+            authDomain: "newservereg.firebaseapp.com",
+            projectId: "newservereg",
+            storageBucket: "newservereg.firebasestorage.app",
+            messagingSenderId: "654100030822",
+            appId: "1:654100030822:web:326da7f89ca132f83d94a7",
+            measurementId: "G-JCYNXK3G8D"
+        };
+        
+        const app = initializeApp(firebaseConfig);
+        const database = getDatabase(app);
+        const storage = getStorage(app);
+        const analytics = getAnalytics(app);
+        const messaging = getMessaging(app);
+        const firestore = getFirestore(app);
+        
+        window.db = database;
+        window.firebaseRef = ref;
+        window.firebaseOnValue = onValue;
+        window.messaging = messaging;
+        window.getToken = getToken;
+        window.onMessage = onMessage;
+        window.firestore = firestore;
+        window.doc = doc;
+        window.setDoc = setDoc;
+        window.getDoc = getDoc;
+
+        // VAPID Key - استبدل هذا بالمفتاح الخاص بك من Firebase Console
+        window.VAPID_KEY = 'BGSRrKu5Nn9sb_Y4HeBOa775eW7uWUYz3nLrR-_wzqGlXAIHKglD58OJaXnTVUAywEVegrU74y7TWsWlurZL5ZQ';
     </script>
 
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; overflow: hidden; }
-
-        /* SEO Hidden Content - للنظام فقط */
-        .seo-text { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
-
-        .splash {
-            position: fixed; inset: 0; background: #ffffff;
-            display: flex; justify-content: center; align-items: center;
-            z-index: 10000; transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .splash.hide { opacity: 0; pointer-events: none; }
-
-        .splash-container { text-align: center; animation: fadeUp 0.7s ease-out; }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        :root {
+            --primary-dark: #0a2b3e;
+            --primary: #1a5a7a;
+            --primary-light: #2c8eb3;
+            --accent: #4aadc6;
+            --gold: #c9a03d;
+            --white: #ffffff;
+            --gray-bg: #f5f7fa;
+            --text-dark: #1e293b;
+            --text-muted: #64748b;
+            --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
         }
 
-        .image-wrapper { position: relative; display: inline-block; }
-        .image-wrapper::before {
-            content: ''; position: absolute; inset: -20%;
-            background: radial-gradient(circle, rgba(0, 51, 102, 0.08) 0%, rgba(255,255,255,0) 70%);
-            border-radius: 50%; animation: pulse 2s infinite;
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: var(--gray-bg);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
         }
 
-        @keyframes pulse { 0%, 100% { transform: scale(0.8); opacity: 0.3; } 50% { transform: scale(1.2); opacity: 0.6; } }
-
-        .ribbon {
-            width: 160px; height: auto; display: block;
-            animation: drawRibbon 1.4s forwards, gentleFloat 3s infinite 1.5s;
-            filter: drop-shadow(0 8px 20px rgba(0, 51, 102, 0.15));
+        /* شريط الأدوات */
+        .top-toolbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 40px);
+            max-width: 1300px;
+            background: rgba(10, 43, 62, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 60px;
+            z-index: 2000;
+            padding: 0.6rem 1.8rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow-lg);
+            transition: all 0.3s ease;
         }
 
-        @keyframes drawRibbon {
-            0% { opacity: 0; transform: scale(0) rotate(-25deg); filter: blur(12px); }
-            100% { opacity: 1; transform: scale(1) rotate(0deg); filter: blur(0); }
+        .top-toolbar.scrolled {
+            top: 10px;
+            padding: 0.4rem 1.5rem;
         }
 
-        @keyframes gentleFloat { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-5px); } }
-
-        .loader { margin: 48px auto 0; position: relative; width: 48px; height: 48px; }
-        .loader-ring {
-            position: absolute; width: 100%; height: 100%;
-            border: 3px solid rgba(0, 51, 102, 0.1); border-top-color: #003366;
-            border-radius: 50%; animation: spin 0.9s linear infinite;
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            cursor: pointer;
         }
 
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        .loading-text {
-            margin-top: 30px; font-size: 13px; color: #003366;
-            font-weight: 500; display: flex; align-items: center; justify-content: center; gap: 6px;
+        .logo-img {
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 12px;
         }
 
-        .dot { width: 4px; height: 4px; background: #003366; border-radius: 50%; animation: bounce 1.2s infinite; }
-        .dot:nth-child(2) { animation-delay: 0.1s; }
-        .dot:nth-child(3) { animation-delay: 0.2s; }
+        .logo-text h1 {
+            font-size: 1rem;
+            font-weight: 800;
+            color: white;
+        }
 
-        @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+        .logo-text p {
+            font-size: 0.6rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* القائمة الجانبية */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            width: 280px;
+            height: 100vh;
+            background: white;
+            z-index: 2100;
+            transition: 0.3s;
+            padding: 80px 20px;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-menu.open {
+            right: 0;
+        }
+
+        .mobile-nav-link {
+            display: block;
+            padding: 12px 20px;
+            font-weight: 600;
+            color: var(--text-dark);
+            text-decoration: none;
+            border-radius: 40px;
+            margin-bottom: 8px;
+        }
+
+        .mobile-nav-link:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 2050;
+            display: none;
+        }
+
+        .overlay.active {
+            display: block;
+        }
+
+        /* السلايدر */
+        .hero-slider {
+            position: relative;
+            height: 85vh;
+            min-height: 550px;
+            overflow: hidden;
+            border-radius: 0 0 40px 40px;
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .slide-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+            transition: transform 8s ease;
+        }
+
+        .slide.active .slide-img {
+            transform: scale(1.1);
+        }
+
+        .slide-overlay {
+            position: absolute;
+            bottom: 25%;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            direction: rtl;
+        }
+
+        .slide-overlay h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .slide-overlay p {
+            font-size: 1.2rem;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease 0.2s;
+        }
+
+        .slide.active .slide-overlay h2 {
+            opacity: 1;
+            transform: translateY(0);
+            animation: textGlow 2s ease-in-out infinite;
+        }
+
+        .slide.active .slide-overlay p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes textGlow {
+            0%, 100% {
+                text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            }
+            50% {
+                text-shadow: 0 0 20px rgba(201, 160, 61, 0.8), 2px 2px 8px rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        .search-container {
+            position: absolute;
+            top: 35%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 20;
+            width: 100%;
+            max-width: 550px;
+            padding: 0 20px;
+            animation: searchFloat 0.8s ease-out, searchGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes searchFloat {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(0.8) translateY(50px);
+            }
+            50% {
+                opacity: 0.5;
+                transform: translate(-50%, -50%) scale(1.02) translateY(-10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1) translateY(0);
+            }
+        }
+
+        @keyframes searchGlow {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(26, 90, 122, 0);
+            }
+            50% {
+                box-shadow: 0 0 20px 5px rgba(26, 90, 122, 0.3);
+            }
+        }
+
+        .search-form {
+            display: flex;
+            background: white;
+            border-radius: 60px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .search-form:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .search-form:focus-within {
+            border-color: var(--gold);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .search-input {
+            flex: 1;
+            border: none;
+            padding: 16px 25px;
+            font-size: 1rem;
+            font-family: 'Cairo', sans-serif;
+            outline: none;
+            background: transparent;
+        }
+
+        .search-input::placeholder {
+            color: #aaa;
+            font-weight: 500;
+        }
+
+        .search-button {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border: none;
+            padding: 0 35px;
+            color: white;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .search-button:hover {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            transform: scale(0.98);
+        }
+
+        .search-stats {
+            position: absolute;
+            bottom: -55px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 43, 62, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 8px 22px;
+            border-radius: 50px;
+            color: white;
+            font-size: 0.85rem;
+            display: none;
+            gap: 18px;
+            white-space: nowrap;
+            animation: statsSlideUp 0.4s ease;
+        }
+
+        @keyframes statsSlideUp {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        .search-stats.show {
+            display: flex;
+        }
+
+        .clear-search {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 5px 14px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .clear-search:hover {
+            background: var(--gold);
+            color: var(--primary-dark);
+            transform: scale(0.95);
+        }
+
+        .slider-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 20;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            padding: 10px 25px;
+            border-radius: 50px;
+        }
+
+        .dot {
+            width: 35px;
+            height: 6px;
+            border-radius: 3px;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot:hover {
+            background: var(--gold);
+            transform: scaleX(1.2);
+        }
+
+        .dot.active {
+            width: 60px;
+            background: var(--gold);
+        }
+
+        /* المحتوى الرئيسي */
+        .main-content {
+            max-width: 1300px;
+            margin: -50px auto 0;
+            padding: 2rem;
+            position: relative;
+            z-index: 20;
+            background: var(--gray-bg);
+            border-radius: 40px 40px 0 0;
+        }
+
+        .section-block {
+            margin-bottom: 4rem;
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+        .section-block:nth-child(1).animate-in {
+            animation: slideFromRight 0.8s ease forwards;
+        }
+        .section-block:nth-child(2).animate-in {
+            animation: slideFromLeft 0.8s ease forwards;
+        }
+        .section-block:nth-child(3).animate-in {
+            animation: zoomIn 0.8s ease forwards;
+        }
+        .section-block:nth-child(4).animate-in {
+            animation: rotateIn 0.8s ease forwards;
+        }
+        .section-block:nth-child(5).animate-in {
+            animation: flipIn 0.8s ease forwards;
+        }
+        .section-block:nth-child(6).animate-in {
+            animation: bounceIn 0.8s ease forwards;
+        }
+        .section-block:nth-child(7).animate-in {
+            animation: slideFromRight 0.8s ease forwards;
+        }
+
+        @keyframes slideFromRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes rotateIn {
+            from {
+                opacity: 0;
+                transform: rotate(-10deg) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(0) scale(1);
+            }
+        }
+
+        @keyframes flipIn {
+            from {
+                opacity: 0;
+                transform: perspective(400px) rotateY(90deg);
+            }
+            to {
+                opacity: 1;
+                transform: perspective(400px) rotateY(0);
+            }
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .section-title h2 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 60px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .card.animate-card {
+            animation: cardSlideUp 0.6s ease forwards;
+        }
+
+        @keyframes cardSlideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-img {
+            transform: scale(1.05);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .video-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .video-thumbnail:hover img {
+            transform: scale(1.05);
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .video-thumbnail:hover .play-overlay {
+            background: var(--primary);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        .card-content {
+            padding: 1.5rem;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .card-date {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .share-btn {
+            background: none;
+            border: none;
+            color: var(--primary);
+            cursor: pointer;
+            font-size: 1rem;
+            padding: 5px;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .share-btn:hover {
+            transform: rotate(360deg);
+            color: var(--gold);
+        }
+
+        .location-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .location-info {
+            padding: 1.5rem;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-row i {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(26, 90, 122, 0.1);
+            border-radius: 50%;
+            color: var(--primary);
+        }
+
+        .map-container {
+            width: 100%;
+            min-height: 350px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 350px;
+            border: none;
+        }
+
+        .search-highlight {
+            background: rgba(201, 160, 61, 0.4);
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-weight: 700;
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 45px;
+            height: 45px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            border: none;
+            z-index: 999;
+        }
+
+        .scroll-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-top:hover {
+            background: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 3000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+        }
+
+        .lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        /* قسم الاشتراك في الإشعارات */
+        .subscribe-section {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(10, 43, 62, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(10, 43, 62, 0.3);
+            }
+            50% {
+                box-shadow: 0 10px 40px rgba(201, 160, 61, 0.4);
+            }
+        }
+
+        .subscribe-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            animation: bellShake 2s ease-in-out infinite;
+        }
+
+        @keyframes bellShake {
+            0%, 100% {
+                transform: rotate(0);
+            }
+            10%, 30%, 50%, 70%, 90% {
+                transform: rotate(-5deg);
+            }
+            20%, 40%, 60%, 80% {
+                transform: rotate(5deg);
+            }
+        }
+
+        .subscribe-text {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .subscribe-btn {
+            background: linear-gradient(135deg, var(--gold), #e0b84d);
+            color: var(--primary-dark);
+            border: none;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Cairo', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(201, 160, 61, 0.3);
+        }
+
+        .subscribe-btn:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(201, 160, 61, 0.5);
+            background: linear-gradient(135deg, #e0b84d, #f0c860);
+        }
+
+        .subscribe-btn:disabled {
+            background: #4a6a7a;
+            color: #8aa0b0;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .subscribe-btn.subscribed {
+            background: #28a745;
+            color: white;
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .permission-denied-message {
+            color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid #ff6b6b;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .permission-denied-message.show {
+            display: block;
+        }
+
+        .permission-denied-message a {
+            color: var(--gold);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /* الفوتر */
+        .footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+            border-radius: 40px 40px 0 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.8rem;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--primary-dark);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            z-index: 3000;
+            transition: 0.3s;
+            opacity: 0;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #e0e0e0;
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-toolbar {
+                width: calc(100% - 20px);
+                padding: 0.5rem 1rem;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+
+            .menu-btn {
+                display: block;
+            }
+
+            .hero-slider {
+                height: 60vh;
+                min-height: 450px;
+            }
+
+            .slide-overlay h2 {
+                font-size: 1.5rem;
+            }
+
+            .slide-overlay p {
+                font-size: 0.9rem;
+            }
+
+            .search-container {
+                top: 30%;
+                max-width: 90%;
+            }
+
+            .search-input {
+                padding: 12px 18px;
+            }
+
+            .search-button {
+                padding: 0 20px;
+            }
+
+            .search-stats {
+                white-space: normal;
+                font-size: 0.7rem;
+                bottom: -65px;
+                gap: 10px;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .location-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .slider-dots {
+                padding: 5px 15px;
+                bottom: 20px;
+            }
+
+            .dot {
+                width: 20px;
+            }
+
+            .dot.active {
+                width: 35px;
+            }
+
+            .scroll-top {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .subscribe-section {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="seo-text">
-        <h1>EACR Conference</h1>
-        <p>مرحباً بكم في الموقع الرسمي لمؤتمر EACR. نحن نهتم بأبحاث السرطان وتقديم أحدث الحلول الطبية.</p>
+    <!-- نافذة عرض الصور -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-close" onclick="closeLightbox()">✕</div>
+        <img id="lightbox-img" src="">
     </div>
 
-    <div class="splash" id="splashScreen">
-        <div class="splash-container">
-            <div class="image-wrapper">
-                <img class="ribbon" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgOVUcY7kJKauKUc077dmccnheDmWYgkRQnuQpq3xLwD0uQHycaUmcgo-WuebA0wIoF_zSIpjSF1NuSMSo9cwLCjFfZvRqCAZbdydzTLlgyQw6I4U9ptq-Ex8QzzfRpQj_ORZGtVhFLCTIcBJ7XE9DeBRqD4932ugnRxDfEp815tFg7RWYbbrviUyjmf20/s100/126047.png" alt="EACR Logo">
-            </div>
-            
-            <div class="loader">
-                <div class="loader-ring"></div>
-            </div>
-            
-            <div class="loading-text">
-                <span>loing</span>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
+    <!-- شريط الأدوات -->
+    <div class="top-toolbar" id="topToolbar">
+        <div class="logo-area" onclick="scrollToTop()">
+            <img id="logoImage" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgX9rhgPtuooaGs_nb76bjyyvT8xkUUuvkwbxG3YjZorCEXP1suduZp7b9Q3pv4qbaa3NwL5vnjVYRYxHGF7im6ABCwP-IL0wAHkyVTHBB2A0xoCMSDsNRDpKjmcmNnTw2DT8d7FQ0zvzXNr0XmOaX95M8uvmeKWGrNVtVvP6Z-0fjIxKIlDueLHkJrNB5g/s1150/1021.jpg" class="logo-img" alt="logo">
+            <div class="logo-text">
+                <h1 id="siteTitle">EACR Conference</h1>
+                <p id="siteSubtitle">تحت رعاية أ.د. محمد لبيب سالم</p>
             </div>
         </div>
+        <div class="nav-menu" id="navMenu"></div>
+        <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
     </div>
 
+    <!-- القائمة الجانبية -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div id="mobileNavMenu"></div>
+    </div>
+    <div class="overlay" id="overlay"></div>
+
+    <div class="hero-slider">
+        <div class="slider-container" id="sliderContainer"></div>
+        
+        <div class="search-container">
+            <div class="search-form">
+                <input type="text" class="search-input" id="searchInput" placeholder=" ابحث في الأخبار، الفعاليات، المتحدثون..." autocomplete="off">
+                <button class="search-button" id="searchButton">بحث</button>
+            </div>
+            <div class="search-stats" id="searchStats">
+                <i class="fas fa-chart-line"></i>
+                <span id="resultsCount">0</span> نتيجة
+                <button class="clear-search" id="clearSearch">مسح</button>
+            </div>
+        </div>
+        
+        <div class="slider-dots" id="sliderDots"></div>
+    </div>
+
+    <!-- المحتوى الرئيسي -->
+    <div class="main-content" id="mainContent"></div>
+
+    <!-- زر العودة للأعلى -->
+    <button class="scroll-top" id="scrollTopBtn"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div>
+                <h4><i class="fas fa-building"></i> عن الجمعية</h4>
+                <p>الجمعية المصرية لأبحاث السرطان هي أكبر هيئة علمية متخصصة في مجال الأورام والبحث العلمي.</p>
+            </div>
+            <div>
+                <h4><i class="fas fa-address-card"></i> اتصل بنا</h4>
+                <p><i class="fas fa-phone"></i> <span id="footerPhone">+20 123 456 789</span></p>
+                <p><i class="fas fa-envelope"></i> <span id="footerEmail">info@eacr.org</span></p>
+                <p><i class="fas fa-map-pin"></i> <span id="footerAddress">القاهرة، مصر</span></p>
+            </div>
+        </div>
+        
+        <!-- قسم الاشتراك في الإشعارات -->
+        <div class="subscribe-section" id="subscribeSection">
+            <div class="subscribe-icon">
+                <i class="fas fa-bell"></i>
+            </div>
+            <div class="subscribe-text">
+                اشترك في الأخبار العاجلة
+            </div>
+            <button class="subscribe-btn" id="subscribeBtn" onclick="requestNotificationPermission()">
+                <i class="fas fa-bell"></i> تفعيل الإشعارات
+            </button>
+            <div class="permission-denied-message" id="permissionDeniedMessage">
+                <i class="fas fa-exclamation-triangle"></i>
+                تم رفض الإشعارات. لتفعيلها، يرجى الذهاب إلى إعدادات المتصفح والسماح بالإشعارات.
+                <br>
+                <a onclick="showPermissionGuide()">كيفية تفعيل الإشعارات؟</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2026 الجمعية المصرية لأبحاث السرطان</p>
+        </div>
+    </footer>
+
+    <!-- التنبيه -->
+    <div class="toast" id="toast"></div>
+
     <script>
-        (function() {
-            const redirectUrl = "https://earc-eg.github.io/2026/ex-eg.html";
+        // المتغيرات العامة
+        let currentSlide = 0;
+        let slideInterval;
+        let sectionsData = [];
+        let slidesData = [];
+        let allCards = [];
+        let autoSlide = true;
+        let animatedSections = new Set();
+
+        // دوال مساعدة
+        function escapeHtml(text) {
+            if (!text) return '';
+            return text.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+
+        function stripHtml(html) {
+            if (!html) return '';
+            const div = document.createElement('div');
+            div.innerHTML = html;
+            return div.textContent || div.innerText || '';
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function getYouTubeVideoId(url) {
+            if (!url) return null;
+            const regex = /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/;
+            const match = url.match(regex);
+            return match ? match[1] : null;
+        }
+
+        function getYouTubeThumbnail(url) {
+            const videoId = getYouTubeVideoId(url);
+            if (videoId) {
+                return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+            }
+            return null;
+        }
+
+        function openLightbox(imgSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imgSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // دوال السلايدر
+        function changeSlide(direction) {
+            if (!slidesData.length) return;
+            
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function goToSlide(index) {
+            if (index === currentSlide) return;
+            
+            const slides = document.querySelectorAll('.slide');
+            const dots = document.querySelectorAll('.dot');
+            
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            
+            currentSlide = index;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function startSlider() {
+            if (slideInterval) clearInterval(slideInterval);
+            slideInterval = setInterval(() => {
+                if (autoSlide) changeSlide(1);
+            }, 6000);
+        }
+
+        function renderSlider() {
+            const container = document.getElementById('sliderContainer');
+            const dotsContainer = document.getElementById('sliderDots');
+            
+            if (!slidesData.length) return;
+            
+            container.innerHTML = '';
+            dotsContainer.innerHTML = '';
+            
+            slidesData.forEach((slide, index) => {
+                const slideDiv = document.createElement('div');
+                slideDiv.className = `slide ${index === 0 ? 'active' : ''}`;
+                slideDiv.innerHTML = `
+                    <img src="${escapeHtml(slide.image)}" class="slide-img" alt="${escapeHtml(slide.title)}" onclick="openLightbox('${escapeHtml(slide.image)}')">
+                    <div class="slide-overlay">
+                        <h2>${escapeHtml(slide.title)}</h2>
+                        <p>${escapeHtml(slide.text)}</p>
+                    </div>
+                `;
+                container.appendChild(slideDiv);
+                
+                const dot = document.createElement('div');
+                dot.className = `dot ${index === 0 ? 'active' : ''}`;
+                dot.onclick = () => {
+                    autoSlide = false;
+                    goToSlide(index);
+                    setTimeout(() => { autoSlide = true; }, 10000);
+                };
+                dotsContainer.appendChild(dot);
+            });
+        }
+
+        function highlightText(text, query) {
+            if (!query || query.length < 2) return text;
+            const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+            return text.replace(regex, '<span class="search-highlight">$1</span>');
+        }
+
+        function performSearch() {
+            const query = document.getElementById('searchInput').value.trim().toLowerCase();
+            const statsDiv = document.getElementById('searchStats');
+            const resultsSpan = document.getElementById('resultsCount');
+            
+            if (!query || query.length < 2) {
+                allCards.forEach(card => {
+                    card.style.display = 'block';
+                    const titleEl = card.querySelector('.card-title');
+                    const descEl = card.querySelector('.card-desc');
+                    if (titleEl.dataset.originalTitle) titleEl.innerHTML = titleEl.dataset.originalTitle;
+                    if (descEl.dataset.originalDesc) descEl.innerHTML = descEl.dataset.originalDesc;
+                });
+                statsDiv.classList.remove('show');
+                return;
+            }
+            
+            let found = 0;
+            allCards.forEach(card => {
+                const titleEl = card.querySelector('.card-title');
+                const descEl = card.querySelector('.card-desc');
+                
+                if (!titleEl.dataset.originalTitle) titleEl.dataset.originalTitle = titleEl.innerHTML;
+                if (!descEl.dataset.originalDesc) descEl.dataset.originalDesc = descEl.innerHTML;
+                
+                const title = titleEl.dataset.originalTitle.toLowerCase();
+                const desc = descEl.dataset.originalDesc.toLowerCase();
+                const matches = title.includes(query) || desc.includes(query);
+                
+                if (matches) {
+                    card.style.display = 'block';
+                    found++;
+                    let newTitle = titleEl.dataset.originalTitle;
+                    let newDesc = descEl.dataset.originalDesc;
+                    if (title.includes(query)) newTitle = highlightText(newTitle, query);
+                    if (desc.includes(query)) newDesc = highlightText(newDesc, query);
+                    titleEl.innerHTML = newTitle;
+                    descEl.innerHTML = newDesc;
+                } else {
+                    card.style.display = 'none';
+                    titleEl.innerHTML = titleEl.dataset.originalTitle;
+                    descEl.innerHTML = descEl.dataset.originalDesc;
+                }
+            });
+            
+            resultsSpan.textContent = found;
+            statsDiv.classList.add('show');
+            if (found === 0) showToast('لا توجد نتائج');
+            else showToast(`تم العثور على ${found} نتيجة`);
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('searchStats').classList.remove('show');
+            allCards.forEach(card => {
+                card.style.display = 'block';
+                const titleEl = card.querySelector('.card-title');
+                const descEl = card.querySelector('.card-desc');
+                if (titleEl.dataset.originalTitle) titleEl.innerHTML = titleEl.dataset.originalTitle;
+                if (descEl.dataset.originalDesc) descEl.innerHTML = descEl.dataset.originalDesc;
+            });
+            showToast('تم مسح البحث');
+        }
+
+        function observeSections() {
+            const sections = document.querySelectorAll('.section-block');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !animatedSections.has(entry.target)) {
+                        animatedSections.add(entry.target);
+                        entry.target.classList.add('animate-in');
+                        
+                        const cards = entry.target.querySelectorAll('.card');
+                        cards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('animate-card');
+                            }, index * 100);
+                        });
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            sections.forEach(section => observer.observe(section));
+        }
+
+        function createCard(sectionId, item, itemId) {
+            const card = document.createElement('div');
+            card.className = 'card';
+            
+            let mediaHtml = '';
+            
+            if (item.type === 'image') {
+                mediaHtml = `<img src="${escapeHtml(item.image)}" class="card-img" onclick="event.stopPropagation(); openLightbox('${escapeHtml(item.image)}')">`;
+            } 
+            else if (item.type === 'video') {
+                let thumbnail = item.image;
+                if (item.video && !thumbnail) {
+                    const youtubeThumb = getYouTubeThumbnail(item.video);
+                    if (youtubeThumb) thumbnail = youtubeThumb;
+                }
+                if (!thumbnail) thumbnail = 'https://placehold.co/600x400/1a5a7a/white?text=فيديو';
+                
+                mediaHtml = `
+                    <div class="video-thumbnail" onclick="event.stopPropagation(); window.open('?s=${sectionId}&c=${itemId}', '_blank')">
+                        <img src="${escapeHtml(thumbnail)}" alt="${escapeHtml(item.title)}">
+                        <div class="play-overlay">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                `;
+            } 
+            else {
+                mediaHtml = `<div class="card-img" style="background: linear-gradient(135deg, var(--primary), var(--accent)); display: flex; align-items: center; justify-content: center;"><i class="fas fa-file-alt" style="font-size: 3rem; color: white;"></i></div>`;
+            }
+            
+            const cleanDesc = stripHtml(item.text || '').substring(0, 100);
+            const date = new Date(item.createdAt || Date.now()).toLocaleDateString('ar-EG');
+            
+            card.innerHTML = `
+                ${mediaHtml}
+                <div class="card-content">
+                    <h3 class="card-title">${escapeHtml(item.title || 'بدون عنوان')}</h3>
+                    <div class="card-desc">${escapeHtml(cleanDesc)}${(item.text && item.text.length > 100) ? '...' : ''}</div>
+                    <div class="card-footer">
+                        <span class="card-date"><i class="far fa-calendar-alt"></i> ${date}</span>
+                        <button class="share-btn" onclick="event.stopPropagation(); shareContent('${sectionId}', '${itemId}')"><i class="fas fa-share-alt"></i></button>
+                    </div>
+                </div>
+            `;
+            
+            card.onclick = () => {
+                window.open(`?s=${sectionId}&c=${itemId}`, '_blank');
+            };
+            
+            return card;
+        }
+
+        window.shareContent = function(sectionId, itemId) {
+            const url = `${window.location.origin}${window.location.pathname}?s=${sectionId}&c=${itemId}`;
+            navigator.clipboard.writeText(url);
+            showToast('تم نسخ الرابط');
+        };
+
+        async function showDetailPage(sectionId, itemId) {
+            try {
+                const snapshot = await new Promise((resolve) => {
+                    window.firebaseOnValue(window.firebaseRef(window.db, `contents/${sectionId}/${itemId}`), resolve);
+                });
+                const item = snapshot.val();
+                
+                if (!item) {
+                    document.body.innerHTML = '<div style="text-align: center; padding: 50px;"><h2>المحتوى غير موجود</h2><a href="https://earc-eg.github.io/2026/ex-eg.html" style="background: #1a5a7a; color: white; padding: 10px 20px; border-radius: 40px; text-decoration: none;">العودة للرئيسية</a></div>';
+                    return;
+                }
+                
+                let mediaHtml = '';
+                if (item.type === 'image') {
+                    mediaHtml = `<img src="${escapeHtml(item.image)}" style="width: 100%; margin: 20px 0; border-radius: 20px; cursor: pointer;" onclick="openLightbox('${escapeHtml(item.image)}')">`;
+                } 
+                else if (item.type === 'video' && item.video) {
+                    const videoId = getYouTubeVideoId(item.video);
+                    if (videoId) {
+                        mediaHtml = `
+                            <div style="position: relative; padding-bottom: 56.25%; height: 0; margin: 20px 0; border-radius: 20px; overflow: hidden;">
+                                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
+                            </div>
+                        `;
+                    }
+                }
+                
+                document.body.innerHTML = `
+                    <div style="max-width: 900px; margin: 50px auto; background: white; border-radius: 30px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                        <a href="https://earc-eg.github.io/2026/ex-eg.html" style="display: inline-block; background: var(--primary); color: white; padding: 10px 25px; border-radius: 40px; text-decoration: none; margin-bottom: 20px;">← العودة</a>
+                        <h1 style="color: var(--primary-dark); margin-bottom: 20px;">${escapeHtml(item.title)}</h1>
+                        ${mediaHtml}
+                        <div style="line-height: 1.8;">${item.text || ''}</div>
+                        <button onclick="navigator.clipboard.writeText(window.location.href); alert('تم نسخ الرابط')" style="margin-top: 30px; background: var(--primary); color: white; border: none; padding: 10px 25px; border-radius: 40px; cursor: pointer;">مشاركة</button>
+                    </div>
+                `;
+                
+                window.openLightbox = openLightbox;
+                window.closeLightbox = closeLightbox;
+            } catch(e) {
+                console.error(e);
+            }
+        }
+
+        function loadSettings() {
+            window.firebaseOnValue(window.firebaseRef(window.db, 'settings'), (snap) => {
+                const data = snap.val();
+                if (data) {
+                    if (data.logo) document.getElementById('logoImage').src = data.logo;
+                    if (data.siteTitle) document.getElementById('siteTitle').textContent = data.siteTitle;
+                    if (data.siteSubtitle) document.getElementById('siteSubtitle').textContent = data.siteSubtitle;
+                    if (data.phone) document.getElementById('footerPhone').textContent = data.phone;
+                    if (data.email) document.getElementById('footerEmail').textContent = data.email;
+                    if (data.address) document.getElementById('footerAddress').textContent = data.address;
+                }
+            });
+        }
+
+        function loadSections() {
+            window.firebaseOnValue(window.firebaseRef(window.db, 'sections'), (snap) => {
+                const data = snap.val();
+                if (data) {
+                    sectionsData = Object.entries(data).map(([id, val]) => ({ id, ...val })).sort((a, b) => (a.order || 0) - (b.order || 0));
+                } else {
+                    sectionsData = [
+                        { id: '1', name: 'الرئيسية', icon: 'fas fa-home' },
+                        { id: '2', name: 'أخبار', icon: 'fas fa-newspaper' },
+                        { id: '3', name: 'الفعاليات', icon: 'fas fa-calendar' },
+                        { id: '4', name: 'المتحدثون', icon: 'fas fa-users' },
+                        { id: '5', name: 'فيديوهات', icon: 'fas fa-video' }
+                    ];
+                }
+                renderNavigation();
+                renderContent();
+            });
+        }
+
+        function renderNavigation() {
+            const navMenu = document.getElementById('navMenu');
+            const mobileNav = document.getElementById('mobileNavMenu');
+            
+            navMenu.innerHTML = '';
+            mobileNav.innerHTML = '';
+            
+            sectionsData.forEach(section => {
+                const link = document.createElement('a');
+                link.href = '#';
+                link.className = 'nav-link';
+                link.innerHTML = `<i class="${section.icon}"></i> ${section.name}`;
+                link.onclick = (e) => {
+                    e.preventDefault();
+                    document.getElementById(`section-${section.id}`).scrollIntoView({ behavior: 'smooth' });
+                };
+                navMenu.appendChild(link);
+                
+                const mobileLink = document.createElement('a');
+                mobileLink.href = '#';
+                mobileLink.className = 'mobile-nav-link';
+                mobileLink.innerHTML = `<i class="${section.icon}"></i> ${section.name}`;
+                mobileLink.onclick = (e) => {
+                    e.preventDefault();
+                    document.getElementById(`section-${section.id}`).scrollIntoView({ behavior: 'smooth' });
+                    closeMobileMenu();
+                };
+                mobileNav.appendChild(mobileLink);
+            });
+        }
+
+        function renderContent() {
+            const main = document.getElementById('mainContent');
+            main.innerHTML = '';
+            allCards = [];
+            
+            sectionsData.forEach(section => {
+                const sectionDiv = document.createElement('div');
+                sectionDiv.className = 'section-block';
+                sectionDiv.id = `section-${section.id}`;
+                sectionDiv.innerHTML = `
+                    <div class="section-title">
+                        <h2><i class="${section.icon}"></i> ${section.name}</h2>
+                    </div>
+                    <div class="cards-grid" id="grid-${section.id}">
+                        <div class="loading"><div class="spinner"></div></div>
+                    </div>
+                `;
+                main.appendChild(sectionDiv);
+                
+                window.firebaseOnValue(window.firebaseRef(window.db, `contents/${section.id}`), (snap) => {
+                    const data = snap.val();
+                    const grid = document.getElementById(`grid-${section.id}`);
+                    
+                    if (data && Object.keys(data).length > 0) {
+                        grid.innerHTML = '';
+                        const items = Object.entries(data).map(([id, val]) => ({ id, ...val }));
+                        items.forEach(item => {
+                            const card = createCard(section.id, item, item.id);
+                            grid.appendChild(card);
+                            allCards.push(card);
+                        });
+                    } else {
+                        grid.innerHTML = '<div class="empty-state" style="text-align: center; padding: 40px; color: #999;"><i class="fas fa-folder-open" style="font-size: 3rem; margin-bottom: 10px;"></i><p>لا يوجد محتوى</p></div>';
+                    }
+                });
+            });
+            
+            loadLocation();
+            
             setTimeout(() => {
-                document.getElementById('splashScreen').classList.add('hide');
-                setTimeout(() => { window.location.href = redirectUrl; }, 800);
-            }, 3000);
-        })();
+                observeSections();
+            }, 500);
+        }
+
+        function loadLocation() {
+            window.firebaseOnValue(window.firebaseRef(window.db, 'location'), (snap) => {
+                const data = snap.val() || {};
+                
+                const main = document.getElementById('mainContent');
+                
+                const locationDiv = document.createElement('div');
+                locationDiv.className = 'section-block';
+                locationDiv.id = 'section-location';
+                locationDiv.innerHTML = `
+                    <div class="section-title">
+                        <h2><i class="fas fa-map-marker-alt"></i> مكان المؤتمر</h2>
+                    </div>
+                    <div class="location-wrapper">
+                        <div class="location-info">
+                            <div class="info-row">
+                                <i class="fas fa-location-dot"></i>
+                                <strong>العنوان:</strong> ${escapeHtml(data.address || 'القاهرة، مصر')}
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-calendar-alt"></i>
+                                <strong>التاريخ:</strong> ${escapeHtml(data.date || '٢٣-٢٤سبتمبر 2026')}
+                            </div>
+                            <div class="info-row">
+                                <i class="fas fa-clock"></i>
+                                <strong>الوقت:</strong> ${escapeHtml(data.time || '9:30 ص - 5:00 م')}
+                            </div>
+                        </div>
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110502.6033945867!2d31.18462243125!3d30.0444196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583fa60b21beeb%3A0x79dfb296e8423bba!2z2KfZhNmF2YbZitmE2Kkg2KfZhNiz2YrYp9mG2Iwg2KfZhNiz2YrYp9ix!5e0!3m2!1sar!2seg!4v1700000000000!5m2!1sar!2seg" allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    </div>
+                `;
+                main.appendChild(locationDiv);
+                
+                setTimeout(() => {
+                    const locationObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting && !animatedSections.has(entry.target)) {
+                                animatedSections.add(entry.target);
+                                entry.target.classList.add('animate-in');
+                            }
+                        });
+                    }, { threshold: 0.2 });
+                    locationObserver.observe(locationDiv);
+                }, 100);
+            });
+        }
+
+        function loadSlides() {
+            window.firebaseOnValue(window.firebaseRef(window.db, 'slides'), (snap) => {
+                const data = snap.val();
+                if (data) {
+                    slidesData = Object.values(data);
+                } else {
+                    slidesData = [
+                        { image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1600', title: 'المؤتمر المصري لأبحاث السرطان', text: 'نسعى معاً لمستقبل أفضل' },
+                        { image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1600', title: 'بمشاركة نخبة من العلماء', text: 'أكثر من 100 متحدث عالمي' }
+                    ];
+                }
+                renderSlider();
+                startSlider();
+            });
+        }
+
+        // دوال الاشتراك في الإشعارات
+        async function requestNotificationPermission() {
+            if (!('Notification' in window)) {
+                showToast('متصفحك لا يدعم الإشعارات');
+                return;
+            }
+
+            try {
+                const permission = await Notification.requestPermission();
+                
+                if (permission === 'granted') {
+                    await subscribeToPush();
+                } else if (permission === 'denied') {
+                    showPermissionDeniedMessage();
+                } else {
+                    showToast('تم إلغاء طلب الإشعارات');
+                }
+            } catch (error) {
+                console.error('خطأ في طلب الإذن:', error);
+                showToast('حدث خطأ في طلب الإذن');
+            }
+        }
+
+        async function subscribeToPush() {
+            try {
+                // التحقق من وجود Service Worker
+                if (!('serviceWorker' in navigator)) {
+                    showToast('متصفحك لا يدعم Service Workers');
+                    return;
+                }
+
+                // تسجيل Service Worker إذا لم يكن مسجلاً
+                const registration = await navigator.serviceWorker.ready;
+                
+                // الحصول على token
+                const currentToken = await window.getToken(window.messaging, {
+                    vapidKey: window.VAPID_KEY,
+                    serviceWorkerRegistration: registration
+                });
+
+                if (currentToken) {
+                    // حفظ token في Firestore
+                    await saveTokenToFirestore(currentToken);
+                    updateSubscribeButton(true);
+                    showToast('تم الاشتراك في الإشعارات بنجاح! 🎉');
+                    
+                    // الاستماع للإشعارات الأمامية
+                    window.onMessage(window.messaging, (payload) => {
+                        console.log('Received foreground message:', payload);
+                        showToast(payload.notification?.title || 'إشعار جديد');
+                    });
+                } else {
+                    showToast('لم نتمكن من الحصول على رمز الإشعارات');
+                }
+            } catch (error) {
+                console.error('خطأ في الاشتراك:', error);
+                showToast('حدث خطأ في الاشتراك بالإشعارات');
+            }
+        }
+
+        async function saveTokenToFirestore(token) {
+            try {
+                const tokenDoc = window.doc(window.firestore, 'push_tokens', token);
+                
+                // التحقق من عدم وجود token مسبقاً
+                const docSnap = await window.getDoc(tokenDoc);
+                
+                if (!docSnap.exists()) {
+                    const deviceInfo = getDeviceInfo();
+                    
+                    await window.setDoc(tokenDoc, {
+                        token: token,
+                        user_uid: null, // يمكن تحديثه لاحقاً عند تسجيل الدخول
+                        email: null, // يمكن تحديثه لاحقاً عند تسجيل الدخول
+                        device_type: deviceInfo.deviceType,
+                        browser: deviceInfo.browser,
+                        os: deviceInfo.os,
+                        language: navigator.language,
+                        timestamp: new Date().toISOString(),
+                        is_active: true
+                    });
+                    
+                    console.log('Token saved to Firestore:', token);
+                } else {
+                    // تحديث timestamp للـ token الموجود
+                    await window.setDoc(tokenDoc, {
+                        timestamp: new Date().toISOString(),
+                        is_active: true
+                    }, { merge: true });
+                    
+                    console.log('Token updated in Firestore:', token);
+                }
+            } catch (error) {
+                console.error('Error saving token to Firestore:', error);
+                throw error;
+            }
+        }
+
+        function getDeviceInfo() {
+            const ua = navigator.userAgent;
+            let deviceType = 'desktop';
+            let browser = 'unknown';
+            let os = 'unknown';
+
+            // تحديد نوع الجهاز
+            if (/Mobile|Android|iPhone|iPad|iPod/i.test(ua)) {
+                deviceType = 'mobile';
+            } else if (/Tablet|iPad/i.test(ua)) {
+                deviceType = 'tablet';
+            }
+
+            // تحديد المتصفح
+            if (/Firefox/i.test(ua)) {
+                browser = 'Firefox';
+            } else if (/Chrome/i.test(ua)) {
+                browser = 'Chrome';
+            } else if (/Safari/i.test(ua)) {
+                browser = 'Safari';
+            } else if (/Edge/i.test(ua)) {
+                browser = 'Edge';
+            } else if (/Opera|OPR/i.test(ua)) {
+                browser = 'Opera';
+            }
+
+            // تحديد نظام التشغيل
+            if (/Windows/i.test(ua)) {
+                os = 'Windows';
+            } else if (/Macintosh|Mac OS X/i.test(ua)) {
+                os = 'macOS';
+            } else if (/Linux/i.test(ua)) {
+                os = 'Linux';
+            } else if (/Android/i.test(ua)) {
+                os = 'Android';
+            } else if (/iPhone|iPad|iPod/i.test(ua)) {
+                os = 'iOS';
+            }
+
+            return { deviceType, browser, os };
+        }
+
+        function updateSubscribeButton(subscribed) {
+            const btn = document.getElementById('subscribeBtn');
+            if (subscribed) {
+                btn.innerHTML = '<i class="fas fa-check-circle"></i> مشترك حالياً';
+                btn.classList.add('subscribed');
+                btn.disabled = true;
+                btn.onclick = null;
+                
+                // إخفاء رسالة رفض الإذن
+                document.getElementById('permissionDeniedMessage').classList.remove('show');
+            }
+        }
+
+        function showPermissionDeniedMessage() {
+            const messageDiv = document.getElementById('permissionDeniedMessage');
+            messageDiv.classList.add('show');
+            showToast('تم رفع الإشعارات. يرجى تفعيلها من الإعدادات');
+        }
+
+        function showPermissionGuide() {
+            const ua = navigator.userAgent;
+            let guide = '';
+            
+            if (/Chrome/i.test(ua)) {
+                guide = 'لتفعيل الإشعارات في Chrome:\n1. اضغط على أيقونة القفل 🔒 في شريط العنوان\n2. ابحث عن "الإشعارات"\n3. اختر "سماح"';
+            } else if (/Firefox/i.test(ua)) {
+                guide = 'لتفعيل الإشعارات في Firefox:\n1. اضغط على أيقونة i في شريط العنوان\n2. ابحث عن "إرسال الإشعارات"\n3. اختر "سماح"';
+            } else if (/Safari/i.test(ua)) {
+                guide = 'لتفعيل الإشعارات في Safari:\n1. اذهب إلى تفضيلات النظام\n2. اختر "الإشعارات"\n3. ابحث عن موقعنا واسمح بالإشعارات';
+            } else {
+                guide = 'يرجى الذهاب إلى إعدادات المتصفح والبحث عن إعدادات الإشعارات للموقع';
+            }
+            
+            alert(guide);
+        }
+
+        // التحقق من حالة الاشتراك عند التحميل
+        async function checkSubscriptionStatus() {
+            if (!('Notification' in window)) return;
+            
+            if (Notification.permission === 'granted') {
+                try {
+                    const registration = await navigator.serviceWorker.ready;
+                    const currentToken = await window.getToken(window.messaging, {
+                        vapidKey: window.VAPID_KEY,
+                        serviceWorkerRegistration: registration
+                    });
+                    
+                    if (currentToken) {
+                        // التحقق من وجود token في Firestore
+                        const tokenDoc = window.doc(window.firestore, 'push_tokens', currentToken);
+                        const docSnap = await window.getDoc(tokenDoc);
+                        
+                        if (docSnap.exists()) {
+                            updateSubscribeButton(true);
+                        } else {
+                            // Token موجود لكن غير مخزن، نقوم بتخزينه
+                            await saveTokenToFirestore(currentToken);
+                            updateSubscribeButton(true);
+                        }
+                    }
+                } catch (error) {
+                    console.error('خطأ في التحقق من حالة الاشتراك:', error);
+                }
+            } else if (Notification.permission === 'denied') {
+                showPermissionDeniedMessage();
+            }
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('open');
+            document.getElementById('overlay').classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            document.getElementById('mobileMenu').classList.remove('open');
+            document.getElementById('overlay').classList.remove('active');
+        }
+
+        function handleScroll() {
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            const toolbar = document.getElementById('topToolbar');
+            
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+            
+            if (window.scrollY > 50) {
+                toolbar.classList.add('scrolled');
+            } else {
+                toolbar.classList.remove('scrolled');
+            }
+        }
+
+        // تهيئة التطبيق
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('s') && params.get('c')) {
+                showDetailPage(params.get('s'), params.get('c'));
+                return;
+            }
+            
+            loadSettings();
+            loadSections();
+            loadSlides();
+            
+            document.getElementById('menuBtn').onclick = toggleMobileMenu;
+            document.getElementById('overlay').onclick = closeMobileMenu;
+            document.getElementById('searchButton').onclick = performSearch;
+            document.getElementById('clearSearch').onclick = clearSearch;
+            document.getElementById('searchInput').addEventListener('input', performSearch);
+            window.addEventListener('scroll', handleScroll);
+            
+            // جعل دوال الإشعارات متاحة عالمياً
+            window.requestNotificationPermission = requestNotificationPermission;
+            window.showPermissionGuide = showPermissionGuide;
+            
+            window.openLightbox = openLightbox;
+            window.closeLightbox = closeLightbox;
+            window.scrollToTop = scrollToTop;
+            
+            // التحقق من حالة الاشتراك
+            setTimeout(() => {
+                checkSubscriptionStatus();
+            }, 2000);
+        });
+
+        // معالجة تغيير حالة الإذن
+        if ('permissions' in navigator) {
+            navigator.permissions.query({ name: 'notifications' }).then(permissionStatus => {
+                permissionStatus.addEventListener('change', () => {
+                    if (Notification.permission === 'granted') {
+                        subscribeToPush();
+                    } else if (Notification.permission === 'denied') {
+                        showPermissionDeniedMessage();
+                    }
+                });
+            });
+        }
     </script>
 </body>
 </html>
