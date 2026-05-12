@@ -5,7 +5,7 @@
     <meta name="google-site-verification" content="FmGxlIE4bkTWdShVHA58jE23YHh7Ma_JQz25bGNdDVY" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>EACR Conference</title>
-    <meta name="description" content=" الجمعية المصريه لأبحاث السرطان هى جمعيه علميه اهليه غير ربحيه تم انشاءها لتكون كيانا مجتمعيا يضم كل الباحثين والمهتمين بمجال ابحاث السرطان فى مصر بـهدف تقديم الدعم العلمي والفني للباحثين في هذا المجال المهم علي وجه العموم ولشباب الباحثين علي وجه الخصوص عن طريق عقد ورش عمل وندوات ومؤتمرات. كما تقوم الجمعية بمساعدة شباب الباحثين في كتابه الأبحاث العلمية والتقدم الى المنح والمشروعات  البحثية. كما تهدف الجمعية الى توعيه المجتمع المدنى والاجيال الصغيره بأهميه البحث العلمى فى مجال أبحاث السرطان من خلال نشرات وكتيبات دوريه مبسطه بالجديد فى مجال أبحاث السرطان. كما تقوم الجمعية بإصدار دورية علمية محكمة لنشر الابحاث المصرية العربية والدولية فى مجال ابحاث السرطان. لذا لتكون الجمعية بمثابه حلقه وصل لهم بالعالم من أجل رفع مستوى مصر علمياً و ضمها للحركة العلمية العالمية في هذا المجال المهم.
+    <meta name="description" content=" الجمعيه المصريه لأبحاث السرطان هى جمعيه علميه اهليه غير ربحيه تم انشاءها لتكون كيانا مجتمعيا يضم كل الباحثين والمهتمين بمجال ابحاث السرطان فى مصر بـهدف تقديم الدعم العلمي والفني للباحثين في هذا المجال المهم علي وجه العموم ولشباب الباحثين علي وجه الخصوص عن طريق عقد ورش عمل وندوات ومؤتمرات. كما تقوم الجمعية بمساعدة شباب الباحثين في كتابه الأبحاث العلمية والتقدم الى المنح والمشروعات  البحثية. كما تهدف الجمعية الى توعيه المجتمع المدنى والاجيال الصغيره بأهميه البحث العلمى فى مجال أبحاث السرطان من خلال نشرات وكتيبات دوريه مبسطه بالجديد فى مجال أبحاث السرطان. كما تقوم الجمعية بإصدار دورية علمية محكمة لنشر الابحاث المصرية العربية والدولية فى مجال ابحاث السرطان. لذا لتكون الجمعية بمثابه حلقه وصل لهم بالعالم من أجل رفع مستوى مصر علمياً و ضمها للحركة العلمية العالمية في هذا المجال المهم.
 تم اشهار الجمعية المصرية لأبحاث السرطان فى 19/11/2014 من وزاره التضامن الاجتماعي ومديرية الشئون الاجتماعية بطنطا اول وتم تحديد مقر للجمعية الجمعية المصرية لأبحاث السرطان - تحت رعاية أ.د. محمد لبيب سالم">
     <meta name="theme-color" content="#0a2b3e">
     <link rel="icon" type="image/png" href="https://img.icons8.com/ios-filled/100/0a2b3e/cancer-ribbon.png">
@@ -18,6 +18,8 @@
         import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-database.js";
         import { getStorage } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-storage.js";
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-analytics.js";
+        import { getMessaging, getToken, onMessage } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-messaging.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/12.12.1/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyD9O_XS5H6Dyxcobatfiynb3yjPgqMPKPg",
@@ -33,10 +35,22 @@
         const database = getDatabase(app);
         const storage = getStorage(app);
         const analytics = getAnalytics(app);
+        const messaging = getMessaging(app);
+        const firestore = getFirestore(app);
         
         window.db = database;
         window.firebaseRef = ref;
         window.firebaseOnValue = onValue;
+        window.messaging = messaging;
+        window.getToken = getToken;
+        window.onMessage = onMessage;
+        window.firestore = firestore;
+        window.doc = doc;
+        window.setDoc = setDoc;
+        window.getDoc = getDoc;
+
+        // VAPID Key - استبدل هذا بالمفتاح الخاص بك من Firebase Console
+        window.VAPID_KEY = 'BGSRrKu5Nn9sb_Y4HeBOa775eW7uWUYz3nLrR-_wzqGlXAIHKglD58OJaXnTVUAywEVegrU74y7TWsWlurZL5ZQ';
     </script>
 
     <style>
@@ -249,7 +263,6 @@
             transform: scale(1.1);
         }
 
-        /* أنيميشن النص في السلايدر */
         .slide-overlay {
             position: absolute;
             bottom: 25%;
@@ -299,7 +312,6 @@
             }
         }
 
-        /* شريط البحث - تم رفعه للأعلى وإضافة أنيميشن */
         .search-container {
             position: absolute;
             top: 35%;
@@ -436,7 +448,6 @@
             transform: scale(0.95);
         }
 
-        /* نقاط السلايدر */
         .slider-dots {
             position: absolute;
             bottom: 30px;
@@ -487,7 +498,6 @@
             transition: all 0.8s ease;
         }
 
-        /* أنيميشن مختلفة لكل قسم */
         .section-block:nth-child(1).animate-in {
             animation: slideFromRight 0.8s ease forwards;
         }
@@ -615,7 +625,6 @@
             gap: 1.5rem;
         }
 
-        /* أنيميشن للبطاقات */
         .card {
             background: white;
             border-radius: 20px;
@@ -746,7 +755,6 @@
             color: var(--gold);
         }
 
-        /* الخريطة - موقع المؤتمر */
         .location-wrapper {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -796,7 +804,6 @@
             border: none;
         }
 
-        /* تمييز البحث */
         .search-highlight {
             background: rgba(201, 160, 61, 0.4);
             padding: 2px 4px;
@@ -804,7 +811,6 @@
             font-weight: 700;
         }
 
-        /* زر العودة للأعلى */
         .scroll-top {
             position: fixed;
             bottom: 30px;
@@ -835,7 +841,6 @@
             transform: translateY(-5px);
         }
 
-        /* نافذة عرض الصور */
         .lightbox {
             position: fixed;
             top: 0;
@@ -879,6 +884,108 @@
             color: white;
         }
 
+        /* قسم الاشتراك في الإشعارات */
+        .subscribe-section {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(10, 43, 62, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(10, 43, 62, 0.3);
+            }
+            50% {
+                box-shadow: 0 10px 40px rgba(201, 160, 61, 0.4);
+            }
+        }
+
+        .subscribe-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            animation: bellShake 2s ease-in-out infinite;
+        }
+
+        @keyframes bellShake {
+            0%, 100% {
+                transform: rotate(0);
+            }
+            10%, 30%, 50%, 70%, 90% {
+                transform: rotate(-5deg);
+            }
+            20%, 40%, 60%, 80% {
+                transform: rotate(5deg);
+            }
+        }
+
+        .subscribe-text {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .subscribe-btn {
+            background: linear-gradient(135deg, var(--gold), #e0b84d);
+            color: var(--primary-dark);
+            border: none;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Cairo', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(201, 160, 61, 0.3);
+        }
+
+        .subscribe-btn:hover:not(:disabled) {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(201, 160, 61, 0.5);
+            background: linear-gradient(135deg, #e0b84d, #f0c860);
+        }
+
+        .subscribe-btn:disabled {
+            background: #4a6a7a;
+            color: #8aa0b0;
+            cursor: not-allowed;
+            box-shadow: none;
+            transform: none;
+        }
+
+        .subscribe-btn.subscribed {
+            background: #28a745;
+            color: white;
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+        }
+
+        .permission-denied-message {
+            color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.1);
+            border: 1px solid #ff6b6b;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .permission-denied-message.show {
+            display: block;
+        }
+
+        .permission-denied-message a {
+            color: var(--gold);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
         /* الفوتر */
         .footer {
             background: var(--primary-dark);
@@ -904,7 +1011,6 @@
             font-size: 0.8rem;
         }
 
-        /* التنبيهات */
         .toast {
             position: fixed;
             bottom: 100px;
@@ -945,7 +1051,6 @@
             }
         }
 
-        /* استجابة */
         @media (max-width: 768px) {
             .top-toolbar {
                 width: calc(100% - 20px);
@@ -1022,6 +1127,11 @@
                 bottom: 20px;
                 right: 20px;
             }
+
+            .subscribe-section {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -1055,7 +1165,6 @@
     <div class="hero-slider">
         <div class="slider-container" id="sliderContainer"></div>
         
-      
         <div class="search-container">
             <div class="search-form">
                 <input type="text" class="search-input" id="searchInput" placeholder=" ابحث في الأخبار، الفعاليات، المتحدثون..." autocomplete="off">
@@ -1091,6 +1200,26 @@
                 <p><i class="fas fa-map-pin"></i> <span id="footerAddress">القاهرة، مصر</span></p>
             </div>
         </div>
+        
+        <!-- قسم الاشتراك في الإشعارات -->
+        <div class="subscribe-section" id="subscribeSection">
+            <div class="subscribe-icon">
+                <i class="fas fa-bell"></i>
+            </div>
+            <div class="subscribe-text">
+                اشترك في الأخبار العاجلة
+            </div>
+            <button class="subscribe-btn" id="subscribeBtn" onclick="requestNotificationPermission()">
+                <i class="fas fa-bell"></i> تفعيل الإشعارات
+            </button>
+            <div class="permission-denied-message" id="permissionDeniedMessage">
+                <i class="fas fa-exclamation-triangle"></i>
+                تم رفض الإشعارات. لتفعيلها، يرجى الذهاب إلى إعدادات المتصفح والسماح بالإشعارات.
+                <br>
+                <a onclick="showPermissionGuide()">كيفية تفعيل الإشعارات؟</a>
+            </div>
+        </div>
+        
         <div class="footer-bottom">
             <p>© 2026 الجمعية المصرية لأبحاث السرطان</p>
         </div>
@@ -1138,7 +1267,6 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // استخراج معرف الفيديو من رابط يوتيوب
         function getYouTubeVideoId(url) {
             if (!url) return null;
             const regex = /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/;
@@ -1146,7 +1274,6 @@
             return match ? match[1] : null;
         }
 
-        // الحصول على صورة مصغرة للفيديو
         function getYouTubeThumbnail(url) {
             const videoId = getYouTubeVideoId(url);
             if (videoId) {
@@ -1155,7 +1282,6 @@
             return null;
         }
 
-        // نافذة عرض الصور
         function openLightbox(imgSrc) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
@@ -1208,7 +1334,6 @@
             }, 6000);
         }
 
-        // عرض السلايدر
         function renderSlider() {
             const container = document.getElementById('sliderContainer');
             const dotsContainer = document.getElementById('sliderDots');
@@ -1241,7 +1366,6 @@
             });
         }
 
-        // دوال البحث
         function highlightText(text, query) {
             if (!query || query.length < 2) return text;
             const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
@@ -1312,7 +1436,6 @@
             showToast('تم مسح البحث');
         }
 
-        // مراقبة الأقسام للأنيميشن
         function observeSections() {
             const sections = document.querySelectorAll('.section-block');
             
@@ -1322,7 +1445,6 @@
                         animatedSections.add(entry.target);
                         entry.target.classList.add('animate-in');
                         
-                        // أنيميشن للبطاقات داخل القسم
                         const cards = entry.target.querySelectorAll('.card');
                         cards.forEach((card, index) => {
                             setTimeout(() => {
@@ -1336,7 +1458,6 @@
             sections.forEach(section => observer.observe(section));
         }
 
-        // إنشاء بطاقة المحتوى
         function createCard(sectionId, item, itemId) {
             const card = document.createElement('div');
             card.className = 'card';
@@ -1389,14 +1510,12 @@
             return card;
         }
 
-        // مشاركة المحتوى
         window.shareContent = function(sectionId, itemId) {
             const url = `${window.location.origin}${window.location.pathname}?s=${sectionId}&c=${itemId}`;
             navigator.clipboard.writeText(url);
             showToast('تم نسخ الرابط');
         };
 
-        // عرض صفحة التفاصيل
         async function showDetailPage(sectionId, itemId) {
             try {
                 const snapshot = await new Promise((resolve) => {
@@ -1441,7 +1560,6 @@
             }
         }
 
-        // تحميل الإعدادات
         function loadSettings() {
             window.firebaseOnValue(window.firebaseRef(window.db, 'settings'), (snap) => {
                 const data = snap.val();
@@ -1456,7 +1574,6 @@
             });
         }
 
-        // تحميل الأقسام
         function loadSections() {
             window.firebaseOnValue(window.firebaseRef(window.db, 'sections'), (snap) => {
                 const data = snap.val();
@@ -1476,7 +1593,6 @@
             });
         }
 
-        // عرض القائمة
         function renderNavigation() {
             const navMenu = document.getElementById('navMenu');
             const mobileNav = document.getElementById('mobileNavMenu');
@@ -1508,7 +1624,6 @@
             });
         }
 
-        // عرض المحتوى
         function renderContent() {
             const main = document.getElementById('mainContent');
             main.innerHTML = '';
@@ -1546,16 +1661,13 @@
                 });
             });
             
-            // تحميل موقع المؤتمر
             loadLocation();
             
-            // بدء مراقبة الأقسام للأنيميشن
             setTimeout(() => {
                 observeSections();
             }, 500);
         }
 
-        // تحميل موقع المؤتمر
         function loadLocation() {
             window.firebaseOnValue(window.firebaseRef(window.db, 'location'), (snap) => {
                 const data = snap.val() || {};
@@ -1605,7 +1717,6 @@
             });
         }
 
-        // تحميل شرائح السلايدر
         function loadSlides() {
             window.firebaseOnValue(window.firebaseRef(window.db, 'slides'), (snap) => {
                 const data = snap.val();
@@ -1622,7 +1733,215 @@
             });
         }
 
-        // التحكم في القائمة الجانبية
+        // دوال الاشتراك في الإشعارات
+        async function requestNotificationPermission() {
+            if (!('Notification' in window)) {
+                showToast('متصفحك لا يدعم الإشعارات');
+                return;
+            }
+
+            try {
+                const permission = await Notification.requestPermission();
+                
+                if (permission === 'granted') {
+                    await subscribeToPush();
+                } else if (permission === 'denied') {
+                    showPermissionDeniedMessage();
+                } else {
+                    showToast('تم إلغاء طلب الإشعارات');
+                }
+            } catch (error) {
+                console.error('خطأ في طلب الإذن:', error);
+                showToast('حدث خطأ في طلب الإذن');
+            }
+        }
+
+        async function subscribeToPush() {
+            try {
+                // التحقق من وجود Service Worker
+                if (!('serviceWorker' in navigator)) {
+                    showToast('متصفحك لا يدعم Service Workers');
+                    return;
+                }
+
+                // تسجيل Service Worker إذا لم يكن مسجلاً
+                const registration = await navigator.serviceWorker.ready;
+                
+                // الحصول على token
+                const currentToken = await window.getToken(window.messaging, {
+                    vapidKey: window.VAPID_KEY,
+                    serviceWorkerRegistration: registration
+                });
+
+                if (currentToken) {
+                    // حفظ token في Firestore
+                    await saveTokenToFirestore(currentToken);
+                    updateSubscribeButton(true);
+                    showToast('تم الاشتراك في الإشعارات بنجاح! 🎉');
+                    
+                    // الاستماع للإشعارات الأمامية
+                    window.onMessage(window.messaging, (payload) => {
+                        console.log('Received foreground message:', payload);
+                        showToast(payload.notification?.title || 'إشعار جديد');
+                    });
+                } else {
+                    showToast('لم نتمكن من الحصول على رمز الإشعارات');
+                }
+            } catch (error) {
+                console.error('خطأ في الاشتراك:', error);
+                showToast('حدث خطأ في الاشتراك بالإشعارات');
+            }
+        }
+
+        async function saveTokenToFirestore(token) {
+            try {
+                const tokenDoc = window.doc(window.firestore, 'push_tokens', token);
+                
+                // التحقق من عدم وجود token مسبقاً
+                const docSnap = await window.getDoc(tokenDoc);
+                
+                if (!docSnap.exists()) {
+                    const deviceInfo = getDeviceInfo();
+                    
+                    await window.setDoc(tokenDoc, {
+                        token: token,
+                        user_uid: null, // يمكن تحديثه لاحقاً عند تسجيل الدخول
+                        email: null, // يمكن تحديثه لاحقاً عند تسجيل الدخول
+                        device_type: deviceInfo.deviceType,
+                        browser: deviceInfo.browser,
+                        os: deviceInfo.os,
+                        language: navigator.language,
+                        timestamp: new Date().toISOString(),
+                        is_active: true
+                    });
+                    
+                    console.log('Token saved to Firestore:', token);
+                } else {
+                    // تحديث timestamp للـ token الموجود
+                    await window.setDoc(tokenDoc, {
+                        timestamp: new Date().toISOString(),
+                        is_active: true
+                    }, { merge: true });
+                    
+                    console.log('Token updated in Firestore:', token);
+                }
+            } catch (error) {
+                console.error('Error saving token to Firestore:', error);
+                throw error;
+            }
+        }
+
+        function getDeviceInfo() {
+            const ua = navigator.userAgent;
+            let deviceType = 'desktop';
+            let browser = 'unknown';
+            let os = 'unknown';
+
+            // تحديد نوع الجهاز
+            if (/Mobile|Android|iPhone|iPad|iPod/i.test(ua)) {
+                deviceType = 'mobile';
+            } else if (/Tablet|iPad/i.test(ua)) {
+                deviceType = 'tablet';
+            }
+
+            // تحديد المتصفح
+            if (/Firefox/i.test(ua)) {
+                browser = 'Firefox';
+            } else if (/Chrome/i.test(ua)) {
+                browser = 'Chrome';
+            } else if (/Safari/i.test(ua)) {
+                browser = 'Safari';
+            } else if (/Edge/i.test(ua)) {
+                browser = 'Edge';
+            } else if (/Opera|OPR/i.test(ua)) {
+                browser = 'Opera';
+            }
+
+            // تحديد نظام التشغيل
+            if (/Windows/i.test(ua)) {
+                os = 'Windows';
+            } else if (/Macintosh|Mac OS X/i.test(ua)) {
+                os = 'macOS';
+            } else if (/Linux/i.test(ua)) {
+                os = 'Linux';
+            } else if (/Android/i.test(ua)) {
+                os = 'Android';
+            } else if (/iPhone|iPad|iPod/i.test(ua)) {
+                os = 'iOS';
+            }
+
+            return { deviceType, browser, os };
+        }
+
+        function updateSubscribeButton(subscribed) {
+            const btn = document.getElementById('subscribeBtn');
+            if (subscribed) {
+                btn.innerHTML = '<i class="fas fa-check-circle"></i> مشترك حالياً';
+                btn.classList.add('subscribed');
+                btn.disabled = true;
+                btn.onclick = null;
+                
+                // إخفاء رسالة رفض الإذن
+                document.getElementById('permissionDeniedMessage').classList.remove('show');
+            }
+        }
+
+        function showPermissionDeniedMessage() {
+            const messageDiv = document.getElementById('permissionDeniedMessage');
+            messageDiv.classList.add('show');
+            showToast('تم رفع الإشعارات. يرجى تفعيلها من الإعدادات');
+        }
+
+        function showPermissionGuide() {
+            const ua = navigator.userAgent;
+            let guide = '';
+            
+            if (/Chrome/i.test(ua)) {
+                guide = 'لتفعيل الإشعارات في Chrome:\n1. اضغط على أيقونة القفل 🔒 في شريط العنوان\n2. ابحث عن "الإشعارات"\n3. اختر "سماح"';
+            } else if (/Firefox/i.test(ua)) {
+                guide = 'لتفعيل الإشعارات في Firefox:\n1. اضغط على أيقونة i في شريط العنوان\n2. ابحث عن "إرسال الإشعارات"\n3. اختر "سماح"';
+            } else if (/Safari/i.test(ua)) {
+                guide = 'لتفعيل الإشعارات في Safari:\n1. اذهب إلى تفضيلات النظام\n2. اختر "الإشعارات"\n3. ابحث عن موقعنا واسمح بالإشعارات';
+            } else {
+                guide = 'يرجى الذهاب إلى إعدادات المتصفح والبحث عن إعدادات الإشعارات للموقع';
+            }
+            
+            alert(guide);
+        }
+
+        // التحقق من حالة الاشتراك عند التحميل
+        async function checkSubscriptionStatus() {
+            if (!('Notification' in window)) return;
+            
+            if (Notification.permission === 'granted') {
+                try {
+                    const registration = await navigator.serviceWorker.ready;
+                    const currentToken = await window.getToken(window.messaging, {
+                        vapidKey: window.VAPID_KEY,
+                        serviceWorkerRegistration: registration
+                    });
+                    
+                    if (currentToken) {
+                        // التحقق من وجود token في Firestore
+                        const tokenDoc = window.doc(window.firestore, 'push_tokens', currentToken);
+                        const docSnap = await window.getDoc(tokenDoc);
+                        
+                        if (docSnap.exists()) {
+                            updateSubscribeButton(true);
+                        } else {
+                            // Token موجود لكن غير مخزن، نقوم بتخزينه
+                            await saveTokenToFirestore(currentToken);
+                            updateSubscribeButton(true);
+                        }
+                    }
+                } catch (error) {
+                    console.error('خطأ في التحقق من حالة الاشتراك:', error);
+                }
+            } else if (Notification.permission === 'denied') {
+                showPermissionDeniedMessage();
+            }
+        }
+
         function toggleMobileMenu() {
             document.getElementById('mobileMenu').classList.toggle('open');
             document.getElementById('overlay').classList.toggle('active');
@@ -1633,7 +1952,6 @@
             document.getElementById('overlay').classList.remove('active');
         }
 
-        // التحكم في ظهور زر العودة للأعلى
         function handleScroll() {
             const scrollBtn = document.getElementById('scrollTopBtn');
             const toolbar = document.getElementById('topToolbar');
@@ -1670,10 +1988,32 @@
             document.getElementById('searchInput').addEventListener('input', performSearch);
             window.addEventListener('scroll', handleScroll);
             
+            // جعل دوال الإشعارات متاحة عالمياً
+            window.requestNotificationPermission = requestNotificationPermission;
+            window.showPermissionGuide = showPermissionGuide;
+            
             window.openLightbox = openLightbox;
             window.closeLightbox = closeLightbox;
             window.scrollToTop = scrollToTop;
+            
+            // التحقق من حالة الاشتراك
+            setTimeout(() => {
+                checkSubscriptionStatus();
+            }, 2000);
         });
+
+        // معالجة تغيير حالة الإذن
+        if ('permissions' in navigator) {
+            navigator.permissions.query({ name: 'notifications' }).then(permissionStatus => {
+                permissionStatus.addEventListener('change', () => {
+                    if (Notification.permission === 'granted') {
+                        subscribeToPush();
+                    } else if (Notification.permission === 'denied') {
+                        showPermissionDeniedMessage();
+                    }
+                });
+            });
+        }
     </script>
 </body>
 </html>
